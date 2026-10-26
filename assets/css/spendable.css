@@ -1,0 +1,28 @@
+/* QUO 01 — bloc « Ce que je peux encore dépenser ». Espacements 4/8/12/16/24/32, rayons 10/18 px. */
+.spendable-block { margin: 0 0 24px; padding: 24px; border-radius: 18px; }
+.spendable-head h2 { margin: 0 0 4px; font-size: 20px; font-weight: 700; color: var(--text-primary, #1d1d1f); }
+.spendable-scope { margin: 0 0 16px; color: var(--text-muted, #62646b); font-size: 14px; }
+.spendable-amount { display: block; font-size: 34px; font-weight: 700; font-variant-numeric: tabular-nums; color: #047857; }
+.spendable-main.shortfall .spendable-amount, .spendable-main.none-left .spendable-amount { color: var(--text-primary, #1d1d1f); }
+.spendable-sub, .spendable-note { margin: 4px 0 0; color: var(--text-muted, #62646b); font-size: 14px; }
+.spendable-alert, .spendable-error { margin: 8px 0 0; color: #b42318; font-size: 15px; font-weight: 600; }
+.spendable-alert::before { content: "⚠ "; }
+.spendable-formula { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.spendable-formula-part { display: grid; gap: 3px; min-width: 138px; padding: 10px 12px; border: 1px solid var(--border-color, #e2e8f0); border-radius: 12px; background: color-mix(in srgb, var(--surface-color, #fff) 82%, #f3f6f8); }
+.spendable-formula-part small { color: var(--text-muted, #62646b); font-size: 12px; }
+.spendable-formula-part strong { color: var(--text-primary, #1d1d1f); font-variant-numeric: tabular-nums; }
+.spendable-notes { margin: 12px 0 0; padding-left: 20px; color: var(--text-muted, #62646b); font-size: 14px; }
+.spendable-details { margin-top: 16px; }
+.spendable-details summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.spendable-lines { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; margin: 12px 0; font-variant-numeric: tabular-nums; }
+.spendable-lines dd { margin: 0; text-align: right; font-weight: 600; }
+.spendable-due { margin: 8px 0 0; padding: 0; list-style: none; }
+.spendable-due li { display: grid; grid-template-columns: 1fr auto; gap: 0 16px; padding: 8px 0; border-top: 1px solid var(--border-color, #e2e8f0); }
+.spendable-due small { grid-column: 1; color: var(--text-muted, #62646b); }
+.spendable-due strong { grid-row: 1 / span 2; grid-column: 2; align-self: center; text-align: right; font-variant-numeric: tabular-nums; }
+.spendable-form { display: grid; gap: 8px; max-width: 420px; margin-top: 16px; }
+.spendable-form label { font-size: 14px; font-weight: 600; }
+.spendable-form .btn { min-height: 44px; justify-self: start; }
+@media (max-width: 767px) { .spendable-block { padding: 16px; } .spendable-amount { font-size: 30px; } .spendable-formula { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } .spendable-formula-part { min-width: 0; } }
+@media (prefers-reduced-motion: no-preference) { .spendable-formula-part { animation: spendableStepIn 320ms cubic-bezier(.2,.75,.25,1) both; } .spendable-formula-part:nth-child(2) { animation-delay: 45ms; } .spendable-formula-part:nth-child(3) { animation-delay: 90ms; } }
+@keyframes spendableStepIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }

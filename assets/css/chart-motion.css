@@ -1,0 +1,59 @@
+/* Shared chart entrances and the hand-drawn planner forecast. */
+@keyframes freevChartReveal {
+  from { opacity: 0; transform: translateY(7px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.chart-container.chart-reveal {
+  animation: freevChartReveal .58s cubic-bezier(.2,.72,.25,1) both;
+  transform-origin: center top;
+}
+
+.v42-forecast-chart svg.is-animating .v42-forecast-line {
+  stroke-dasharray: var(--forecast-line-length, 1);
+  stroke-dashoffset: var(--forecast-line-length, 1);
+  transition: stroke-dashoffset 1.05s cubic-bezier(.2,.72,.25,1);
+}
+
+.v42-forecast-chart svg.is-animating .v42-forecast-line.is-drawn {
+  stroke-dashoffset: 0;
+}
+
+.v42-forecast-chart .v42-forecast-area {
+  opacity: 1;
+}
+
+.v42-forecast-chart svg.is-animating .v42-forecast-area {
+  opacity: 0;
+  transform: translateY(5px);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity .7s ease-out, transform .7s ease-out;
+}
+
+.v42-forecast-chart svg.is-animating .v42-forecast-area.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v42-forecast-chart .v42-forecast-point {
+  opacity: 1;
+}
+
+.v42-forecast-chart svg.is-animating .v42-forecast-point {
+  opacity: 0;
+  transform: scale(.72);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: freevForecastPoint .34s cubic-bezier(.2,.72,.25,1) both;
+  animation-delay: calc(.28s + var(--forecast-point-delay, 0ms));
+}
+
+@keyframes freevForecastPoint {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-container.chart-reveal { animation: none; }
+  .v42-forecast-chart svg.is-animating * { animation: none !important; transition: none !important; }
+}

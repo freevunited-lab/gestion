@@ -1,0 +1,143 @@
+body.freev-apple #accountProfileLayer[hidden],
+body.freev-apple .account-profile-view[hidden],
+body.freev-apple .account-profile-message[hidden] {display:none!important}
+
+body.freev-apple.account-profile-open {overflow:hidden}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-user-info {
+  appearance:none;-webkit-appearance:none;position:relative;cursor:pointer;
+  font:inherit;text-align:left;transition:background-color .18s,border-color .18s,transform .18s,box-shadow .18s;
+}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-user-info:hover,
+body.freev-apple .premium-v4-sidebar-tools .sidebar-user-info[aria-expanded="true"] {
+  background:var(--apple-tint);border-color:color-mix(in srgb,var(--apple-accent) 28%,var(--apple-outline));
+}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-user-info:active {transform:scale(.97)}
+body.freev-apple .account-profile-layer {
+  position:fixed;inset:0;z-index:960;pointer-events:none;opacity:0;
+  transition:opacity .18s ease;
+}
+body.freev-apple .account-profile-layer.is-open {opacity:1;pointer-events:auto}
+body.freev-apple .account-profile-scrim {
+  position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:0;
+  background:rgba(20,27,42,.17);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+  opacity:0;transition:opacity .2s ease;cursor:default;
+}
+body.freev-apple .account-profile-layer.is-open .account-profile-scrim {opacity:1}
+body.freev-apple .account-profile-popover {
+  position:fixed;left:101px;bottom:22px;display:flex;flex-direction:column;
+  width:min(398px,calc(100vw - 122px));max-height:calc(100dvh - 44px);padding:0;
+  overflow:hidden;color:var(--apple-ink);background:var(--apple-surface);
+  border:1px solid var(--apple-outline);border-radius:24px;box-shadow:0 24px 75px rgba(17,26,48,.22),0 5px 18px rgba(17,26,48,.08);
+  transform:translateY(11px) scale(.985);transform-origin:bottom left;opacity:0;
+  transition:transform .24s var(--apple-ease),opacity .2s ease;
+}
+body.freev-apple .account-profile-layer.is-open .account-profile-popover {transform:translateY(0) scale(1);opacity:1}
+body.freev-apple .account-profile-popover:focus {outline:none}
+body.freev-apple .account-profile-header {
+  display:flex;align-items:center;gap:12px;padding:19px 20px 17px;
+  border-bottom:1px solid var(--apple-outline);background:linear-gradient(145deg,var(--apple-surface),var(--apple-tint));
+}
+body.freev-apple .account-profile-mark {
+  display:grid;place-items:center;flex:0 0 43px;width:43px;height:43px;border-radius:15px;
+  color:#fff;background:linear-gradient(145deg,#2d8cf0,var(--signature-blue) 68%,#178f79);
+  box-shadow:0 6px 16px rgba(31,97,219,.19);font-size:16px;
+}
+body.freev-apple .account-profile-heading {min-width:0;flex:1}
+body.freev-apple .account-profile-heading h2 {margin:0;color:var(--apple-ink);font-size:1.05rem;line-height:1.25;letter-spacing:-.035em;font-weight:730}
+body.freev-apple .account-profile-heading p {margin:3px 0 0;color:var(--apple-muted);font-size:.77rem;line-height:1.35}
+body.freev-apple .account-profile-close {
+  display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;padding:0;border:1px solid var(--apple-outline);
+  border-radius:11px;color:var(--apple-muted);background:var(--apple-surface);cursor:pointer;
+  transition:background-color .16s,color .16s,transform .16s;
+}
+body.freev-apple .account-profile-close:hover {color:var(--apple-ink);background:var(--apple-hover)}
+body.freev-apple .account-profile-close:active {transform:scale(.94)}
+body.freev-apple .account-profile-view {padding:18px 20px 20px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+body.freev-apple .account-profile-label {display:block;color:var(--apple-muted);font-size:.69rem;font-weight:650;letter-spacing:.035em}
+body.freev-apple .account-profile-email {margin:5px 0 0;color:var(--apple-ink);font-size:.92rem;font-weight:650;overflow-wrap:anywhere}
+body.freev-apple .account-profile-section {margin-top:19px}
+body.freev-apple .account-profile-section-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+body.freev-apple .account-profile-section-heading h3,
+body.freev-apple .account-profile-danger h3 {margin:0;color:var(--apple-ink);font-size:.8rem;font-weight:700;letter-spacing:-.01em}
+body.freev-apple .account-profile-count {
+  display:grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:8px;
+  color:var(--signature-blue);background:var(--apple-tint);font-size:.68rem;font-weight:700;
+}
+body.freev-apple .account-profile-account-list {display:grid;gap:6px;margin:0;padding:0;list-style:none}
+body.freev-apple .account-profile-account {
+  display:flex;align-items:center;gap:10px;min-width:0;min-height:43px;padding:6px 9px;
+  border:1px solid var(--apple-outline);border-radius:13px;background:color-mix(in srgb,var(--apple-surface) 78%,var(--apple-canvas));
+}
+body.freev-apple .account-profile-account-mark {
+  display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:9px;
+  color:var(--signature-blue);background:var(--apple-tint);font-size:.72rem;font-weight:750;
+}
+body.freev-apple .account-profile-account-name {flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--apple-ink);font-size:.77rem;font-weight:620}
+body.freev-apple .account-profile-current {padding:4px 7px;border-radius:8px;color:var(--signature-green);background:color-mix(in srgb,var(--signature-green) 10%,transparent);font-size:.64rem;font-weight:700}
+body.freev-apple .account-profile-empty {padding:12px;border:1px dashed var(--apple-outline);border-radius:12px;color:var(--apple-muted);font-size:.75rem;text-align:center}
+body.freev-apple .account-profile-membership {
+  display:flex;align-items:center;gap:11px;margin-top:15px;padding:12px;
+  border:1px solid var(--apple-outline);border-radius:14px;background:var(--apple-tint);
+}
+body.freev-apple .account-profile-membership-icon {display:grid;place-items:center;flex:0 0 33px;width:33px;height:33px;border-radius:11px;color:var(--signature-blue);background:var(--apple-surface)}
+body.freev-apple .account-profile-membership strong {display:block;margin-top:3px;color:var(--apple-ink);font-size:.79rem;font-weight:700}
+body.freev-apple .account-profile-membership small {display:block;margin-top:2px;color:var(--apple-muted);font-size:.69rem}
+body.freev-apple .account-profile-danger {
+  display:flex;flex-direction:column;gap:12px;margin-top:17px;padding-top:15px;border-top:1px solid var(--apple-outline);
+}
+body.freev-apple .account-profile-danger p {margin:4px 0 0;color:var(--apple-muted);font-size:.72rem;line-height:1.45}
+body.freev-apple .account-profile-danger-button {
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 13px;
+  border:1px solid color-mix(in srgb,var(--signature-red) 24%,var(--apple-outline));border-radius:12px;
+  color:var(--signature-red);background:color-mix(in srgb,var(--signature-red) 7%,var(--apple-surface));
+  font-size:.76rem;font-weight:680;cursor:pointer;transition:background-color .16s,border-color .16s,transform .16s,box-shadow .16s;
+}
+body.freev-apple .account-profile-danger-button:hover {border-color:color-mix(in srgb,var(--signature-red) 42%,var(--apple-outline));background:color-mix(in srgb,var(--signature-red) 11%,var(--apple-surface))}
+body.freev-apple .account-profile-danger-button:active {transform:scale(.985)}
+body.freev-apple .account-profile-danger-button:disabled {opacity:.55;cursor:not-allowed}
+body.freev-apple .account-profile-back {
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin:-2px 0 15px;padding:5px 0;
+  border:0;color:var(--signature-blue);background:transparent;font-size:.76rem;font-weight:650;cursor:pointer;
+}
+body.freev-apple .account-profile-delete-intro {display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;padding:13px;border:1px solid color-mix(in srgb,var(--signature-red) 18%,var(--apple-outline));border-radius:15px;background:color-mix(in srgb,var(--signature-red) 5%,var(--apple-surface))}
+body.freev-apple .account-profile-delete-icon {display:grid;place-items:center;flex:0 0 35px;width:35px;height:35px;border-radius:11px;color:var(--signature-red);background:color-mix(in srgb,var(--signature-red) 11%,var(--apple-surface))}
+body.freev-apple .account-profile-delete-intro h3 {margin:1px 0 4px;color:var(--apple-ink);font-size:.86rem;font-weight:730}
+body.freev-apple .account-profile-delete-intro p {margin:0;color:var(--apple-muted);font-size:.72rem;line-height:1.5}
+body.freev-apple .account-profile-field {display:grid;gap:6px;margin-top:13px;color:var(--apple-muted);font-size:.72rem;font-weight:600}
+body.freev-apple .account-profile-field strong {color:var(--signature-red);letter-spacing:.04em}
+body.freev-apple .account-profile-field input {
+  width:100%;min-height:43px;padding:10px 12px;border:1px solid var(--apple-outline);border-radius:12px;
+  color:var(--apple-ink);background:var(--bg-input);font:inherit;font-size:.82rem;transition:border-color .16s,box-shadow .16s;
+}
+body.freev-apple .account-profile-field input:focus {outline:0;border-color:var(--signature-blue);box-shadow:0 0 0 4px var(--signature-ring)}
+body.freev-apple .account-profile-field input:disabled {opacity:.65}
+body.freev-apple .account-profile-message {margin:12px 0 0;padding:10px 11px;border:1px solid color-mix(in srgb,var(--signature-red) 22%,var(--apple-outline));border-radius:11px;color:var(--signature-red);background:color-mix(in srgb,var(--signature-red) 7%,var(--apple-surface));font-size:.72rem;line-height:1.45}
+body.freev-apple .account-profile-message.is-success {border-color:color-mix(in srgb,var(--signature-green) 25%,var(--apple-outline));color:var(--signature-green);background:color-mix(in srgb,var(--signature-green) 8%,var(--apple-surface))}
+body.freev-apple .account-profile-delete-actions {display:flex;gap:9px;margin-top:16px}
+body.freev-apple .account-profile-secondary-button {
+  min-height:42px;padding:9px 14px;border:1px solid var(--apple-outline);border-radius:12px;color:var(--apple-ink);background:var(--apple-surface);
+  font-size:.75rem;font-weight:650;cursor:pointer;transition:background-color .16s;
+}
+body.freev-apple .account-profile-secondary-button:hover {background:var(--apple-hover)}
+body.freev-apple .account-profile-delete-actions .account-profile-danger-button {flex:1}
+
+@media (max-width:768px) {
+  body.freev-apple .account-profile-popover {
+    left:0;right:0;bottom:0;width:100%;max-width:none;max-height:min(88dvh,760px);
+    padding-bottom:env(safe-area-inset-bottom);border-right:0;border-bottom:0;border-left:0;border-radius:25px 25px 0 0;
+    transform:translateY(25px);
+  }
+  body.freev-apple .account-profile-layer.is-open .account-profile-popover {transform:translateY(0)}
+  body.freev-apple .account-profile-header {padding:17px 18px 15px}
+  body.freev-apple .account-profile-view {padding:16px 18px calc(20px + env(safe-area-inset-bottom));max-height:calc(88dvh - 78px)}
+}
+
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple .account-profile-layer,
+  body.freev-apple .account-profile-scrim,
+  body.freev-apple .account-profile-popover,
+  body.freev-apple .premium-v4-sidebar-tools .sidebar-user-info,
+  body.freev-apple .account-profile-close,
+  body.freev-apple .account-profile-danger-button,
+  body.freev-apple .account-profile-secondary-button {transition:none!important}
+}

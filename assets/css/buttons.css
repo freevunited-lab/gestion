@@ -1,0 +1,278 @@
+/* Uiverse component adaptation: Button by gharsh11032000 (Harsh Gupta),
+   https://uiverse.io/gharsh11032000/loud-chicken-53 — MIT License, Copyright 2026 gharsh11032000.
+   The hover, active and arrow motion are adapted to Freev's buttons and tabs. */
+:root { --freev-button-ease: cubic-bezier(.22, 1, .36, 1); }
+
+.btn,
+.btn-icon,
+.v4-text-button,
+.view-mode-tab,
+.v4-horizon button,
+.v42-presets button,
+[data-dashboard-mode],
+[data-dashboard-range],
+[data-months],
+[data-v5-tab],
+.freev-help-tabs button,
+.freev-help-jumps button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform .24s var(--freev-button-ease), box-shadow .24s ease, border-color .24s ease, background .3s ease, color .2s ease;
+}
+
+.btn {
+  min-height: 2.65rem;
+  border-radius: .82rem;
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: .005em;
+  text-wrap: balance;
+}
+
+.btn-primary {
+  background: linear-gradient(112deg, #1d4ed8 0%, #2563eb 43%, #14b8a6 100%);
+  background-size: 175% 100%;
+  box-shadow: 0 9px 20px rgba(37, 99, 235, .24), inset 0 1px 0 rgba(255, 255, 255, .24);
+}
+
+.btn-primary:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px) scale(1.018);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, .3), inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+
+.btn-primary .fa-arrow-right {
+  transition: transform .24s var(--freev-button-ease);
+}
+
+.btn-primary:hover .fa-arrow-right {
+  transform: translateX(.32rem);
+}
+
+.btn-secondary {
+  border-color: rgba(100, 116, 139, .18);
+  background: linear-gradient(135deg, #64748b, #475569);
+  box-shadow: 0 7px 16px rgba(15, 23, 42, .15), inset 0 1px 0 rgba(255, 255, 255, .14);
+}
+
+.btn-secondary:hover,
+.btn-success:hover,
+.btn-danger:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.08) brightness(1.04);
+  box-shadow: 0 12px 23px rgba(15, 23, 42, .2), inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+
+.btn-icon {
+  display: inline-grid;
+  min-width: 2.55rem;
+  min-height: 2.55rem;
+  place-items: center;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: .78rem;
+  background: linear-gradient(135deg, var(--bg-card, #fff), var(--bg-input, #f8fafc));
+  box-shadow: 0 4px 11px rgba(15, 23, 42, .07);
+}
+
+.btn-icon:hover {
+  border-color: rgba(37, 99, 235, .35);
+  background: linear-gradient(135deg, rgba(37, 99, 235, .12), rgba(20, 184, 166, .09));
+  color: #2563eb;
+  transform: translateY(-2px) rotate(-2deg);
+  box-shadow: 0 10px 18px rgba(37, 99, 235, .16);
+}
+
+.v4-text-button {
+  border-radius: .45rem;
+  color: #2563eb;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.v4-text-button::after {
+  position: absolute;
+  right: .1rem;
+  bottom: .12rem;
+  left: .1rem;
+  height: 1px;
+  background: currentColor;
+  content: '';
+  transform: scaleX(.35);
+  transform-origin: left;
+  transition: transform .2s var(--freev-button-ease);
+}
+
+.v4-text-button:hover { transform: translateX(.18rem); }
+.v4-text-button:hover::after { transform: scaleX(1); }
+
+.v4-horizon button,
+.v42-presets button,
+[data-dashboard-mode],
+[data-dashboard-range],
+[data-months],
+[data-v5-tab] {
+  border-radius: .62rem;
+}
+
+.v4-horizon button:hover,
+.v42-presets button:hover,
+[data-dashboard-mode]:hover,
+[data-dashboard-range]:hover,
+[data-months]:hover,
+[data-v5-tab]:hover { transform: translateY(-1px); }
+
+.v4-horizon button.active,
+[data-dashboard-mode].active,
+[data-dashboard-range].active,
+[data-months].active,
+[data-v5-tab].active {
+  box-shadow: 0 5px 13px rgba(37, 99, 235, .17), inset 0 1px 0 rgba(255, 255, 255, .3);
+}
+
+.btn:active,
+.btn-icon:active,
+.v4-horizon button:active,
+.v42-presets button:active,
+[data-dashboard-mode]:active,
+[data-dashboard-range]:active,
+[data-months]:active,
+[data-v5-tab]:active,
+.freev-help-tabs button:active,
+.freev-help-jumps button:active { transform: translateY(1px) scale(.97); }
+
+.btn:focus-visible,
+.btn-icon:focus-visible,
+.v4-text-button:focus-visible,
+.view-mode-tab:focus-visible,
+.v4-horizon button:focus-visible,
+.v42-presets button:focus-visible,
+[data-dashboard-mode]:focus-visible,
+[data-dashboard-range]:focus-visible,
+[data-months]:focus-visible,
+[data-v5-tab]:focus-visible,
+.freev-help-tabs button:focus-visible,
+.freev-help-jumps button:focus-visible { outline: 3px solid rgba(20, 184, 166, .42); outline-offset: 3px; }
+
+.freev-button-ripple { position: absolute; z-index: 0; width: 1rem; height: 1rem; border-radius: 50%; background: rgba(255, 255, 255, .38); pointer-events: none; transform: translate(-50%, -50%) scale(0); animation: freevButtonRipple .58s ease-out both; }
+@keyframes freevButtonRipple { to { opacity: 0; transform: translate(-50%, -50%) scale(22); } }
+
+/* Actions compactes pour les tableaux : même langage visuel, sans surcharge. */
+#transactions-view .btn-icon,
+#recurring-view .btn-icon { width: 2.48rem; min-width: 2.48rem; min-height: 2.48rem; padding: 0; border-radius: .78rem; box-shadow: 0 3px 10px rgba(15, 23, 42, .07); }
+#transactions-view .btn-icon:hover,
+#recurring-view .btn-icon:hover { box-shadow: 0 7px 15px rgba(15, 23, 42, .12); transform: translateY(-1px); }
+#transactions-view .btn-icon:active,
+#recurring-view .btn-icon:active { transform: translateY(0) scale(.96); }
+
+/* Barre latérale : actions structurées comme des contrôles d'application. */
+.sidebar-action {
+  display: grid;
+  min-height: 3.12rem;
+  grid-template-columns: 1.15rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem .78rem;
+  border: 1px solid rgba(191, 219, 254, .2);
+  border-radius: .9rem;
+  color: #f8fafc;
+  font-size: .78rem;
+  font-weight: 760;
+  letter-spacing: .005em;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: 0 1px 1px rgba(15, 23, 42, .16);
+  transition: transform .2s var(--freev-button-ease), box-shadow .2s ease, border-color .2s ease, background .25s ease;
+}
+
+.sidebar-action i { width: 1.15rem; color: currentColor; font-size: .9rem; text-align: center; }
+.sidebar-action-label { min-width: 0; }
+.sidebar-action-meta { color: rgba(255, 255, 255, .72); font-size: .61rem; font-weight: 700; letter-spacing: .015em; text-align: right; }
+
+.sidebar-action-primary { border-color: rgba(147, 197, 253, .38); background: linear-gradient(135deg, #2563eb, #1d4ed8); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 6px 14px rgba(30, 64, 175, .22); }
+.sidebar-action-secondary { border-color: rgba(203, 213, 225, .2); background: linear-gradient(135deg, #64748b, #475569); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 5px 12px rgba(15, 23, 42, .16); }
+.sidebar-action-storage { border-color: rgba(148, 163, 184, .26); background: linear-gradient(135deg, #1e293b, #0f172a); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .09), 0 5px 12px rgba(2, 6, 23, .2); }
+
+.sidebar-action:hover { transform: translateY(-1px); }
+.sidebar-action-primary:hover { border-color: rgba(191, 219, 254, .78); background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .26), 0 10px 19px rgba(30, 64, 175, .28); }
+.sidebar-action-secondary:hover { border-color: rgba(226, 232, 240, .42); background: linear-gradient(135deg, #718096, #475569); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 9px 17px rgba(15, 23, 42, .22); }
+.sidebar-action-storage:hover { border-color: rgba(125, 211, 252, .45); background: linear-gradient(135deg, #24364f, #0f172a); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 9px 17px rgba(2, 6, 23, .28); }
+.sidebar-action:active { transform: translateY(0) scale(.985); box-shadow: inset 0 2px 5px rgba(2, 6, 23, .2); }
+
+/* Finition sobre : aplats, bordures fines et profondeur discrète. */
+.btn {
+  border: 1px solid transparent;
+  border-radius: .72rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .08);
+  transition: transform .16s ease-out, box-shadow .16s ease-out, border-color .16s ease-out, background-color .16s ease-out, color .16s ease-out;
+}
+
+.btn-primary {
+  background: #2563eb;
+  background-image: none;
+  box-shadow: 0 2px 5px rgba(37, 99, 235, .2);
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  background-position: 0 0;
+  box-shadow: 0 4px 9px rgba(37, 99, 235, .22);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .06);
+}
+
+.btn-secondary:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  color: #0f172a;
+  box-shadow: 0 3px 7px rgba(15, 23, 42, .1);
+  transform: translateY(-1px);
+  filter: none;
+}
+
+.btn-success { border-color: #059669; background: #059669; box-shadow: 0 2px 5px rgba(5, 150, 105, .18); }
+.btn-success:hover { background: #047857; box-shadow: 0 4px 9px rgba(5, 120, 87, .2); transform: translateY(-1px); filter: none; }
+.btn-danger { border-color: #dc2626; background: #dc2626; box-shadow: 0 2px 5px rgba(220, 38, 38, .16); }
+.btn-danger:hover { background: #b91c1c; box-shadow: 0 4px 9px rgba(185, 28, 28, .2); transform: translateY(-1px); filter: none; }
+
+.btn-icon {
+  border-color: #dbe3ee;
+  border-radius: .68rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+}
+
+.btn-icon:hover {
+  border-color: #93c5fd;
+  background: #eff6ff;
+  color: #1d4ed8;
+  box-shadow: 0 3px 7px rgba(37, 99, 235, .13);
+  transform: translateY(-1px);
+}
+
+.btn:active,
+.btn-icon:active { transform: translateY(0) scale(.98); box-shadow: 0 1px 2px rgba(15, 23, 42, .08); }
+
+.freev-button-ripple { display: none; animation: none; }
+
+.sidebar-action { border-radius: .78rem; box-shadow: 0 2px 5px rgba(2, 6, 23, .14); text-shadow: none; }
+.sidebar-action-primary { border-color: #3b82f6; background: #2563eb; }
+.sidebar-action-secondary { border-color: #64748b; background: #475569; }
+.sidebar-action-storage { border-color: #334155; background: #1e293b; }
+.sidebar-action.sidebar-action-primary,
+.sidebar-action.sidebar-action-secondary,
+.sidebar-action.sidebar-action-storage { color: #f8fafc; }
+.sidebar-action-primary:hover { border-color: #60a5fa; background: #1d4ed8; box-shadow: 0 4px 9px rgba(2, 6, 23, .2); }
+.sidebar-action-secondary:hover { border-color: #94a3b8; background: #334155; box-shadow: 0 4px 9px rgba(2, 6, 23, .2); }
+.sidebar-action-storage:hover { border-color: #64748b; background: #0f172a; box-shadow: 0 4px 9px rgba(2, 6, 23, .24); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn-icon, .v4-text-button, .view-mode-tab, .v4-horizon button, .v42-presets button, [data-dashboard-mode], [data-dashboard-range], [data-months], [data-v5-tab], .freev-help-tabs button, .freev-help-jumps button, .btn-primary .fa-arrow-right { transform: none !important; transition: none !important; }
+  .freev-button-ripple { display: none; animation: none; }
+}

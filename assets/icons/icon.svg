@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Freev Valeur">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path fill="#fff" d="M124 166c0-31 25-56 56-56h176c31 0 56 25 56 56v22H180c-31 0-56 25-56 56v-78Z" opacity=".82"/>
+  <rect x="100" y="170" width="312" height="232" rx="58" fill="#fff"/>
+  <rect x="292" y="242" width="142" height="92" rx="38" fill="#10b981"/>
+  <circle cx="337" cy="288" r="15" fill="#fff"/>
+</svg>

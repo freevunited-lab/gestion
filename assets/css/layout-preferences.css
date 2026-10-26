@@ -1,0 +1,21 @@
+.freev-layout-settings-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.freev-layout-account{display:inline-flex;align-items:center;min-height:36px;padding:.35rem .7rem;border:1px solid var(--border-color,#dbe2ea);border-radius:999px;color:var(--text-secondary,#526071);font-size:.78rem;font-weight:650}
+.freev-layout-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:.55rem;max-width:880px}
+.freev-layout-controls>#freevLayoutScope{max-width:380px;min-height:44px}
+.freev-layout-list,.freev-layout-group>ol{display:grid;gap:.6rem;margin:0;padding:0;list-style:none}
+.freev-layout-group{display:grid;gap:.45rem}
+.freev-layout-group>h3{margin:.85rem 0 0;color:var(--text-secondary,#526071);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.045em}
+.freev-layout-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.8rem;padding:.65rem .75rem;border:1px solid var(--border-color,#dbe2ea);border-radius:14px;background:var(--bg-card,#fff)}
+.freev-layout-visibility{display:flex;align-items:center;gap:.5rem;min-height:44px;color:var(--text-secondary,#526071);font-size:.8rem;font-weight:650;cursor:pointer}
+.freev-layout-visibility input{width:20px;height:20px;margin:0;accent-color:#0069d3}
+.freev-layout-label{display:grid;gap:.2rem;min-width:0}
+.freev-layout-label strong{color:var(--text-primary,#1e293b);font-size:.9rem}
+.freev-layout-label small{color:var(--text-secondary,#64748b);font-size:.75rem}
+.freev-layout-move{display:flex;gap:.4rem}
+.freev-layout-move button{min-width:44px;min-height:44px;font-size:1.1rem;font-weight:700}
+.freev-layout-move button:disabled{cursor:not-allowed;opacity:.45}
+.freev-layout-footer{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-top:.55rem;padding-top:.85rem;border-top:1px solid var(--border-color,#e2e8f0)}
+.freev-layout-footer p{min-height:1.25rem;margin:0;color:var(--text-secondary,#64748b);font-size:.82rem}
+.freev-layout-empty{padding:.8rem;color:var(--text-secondary,#64748b)}
+.freev-layout-hidden{display:none!important}
+@media(max-width:560px){.freev-layout-row{grid-template-columns:1fr auto}.freev-layout-visibility{grid-column:1 / -1;min-height:38px}.freev-layout-label{grid-column:1}.freev-layout-move{grid-column:2;grid-row:2}.freev-layout-footer>*{width:100%}}

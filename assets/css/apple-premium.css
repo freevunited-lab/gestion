@@ -1,0 +1,412 @@
+/* FREEV Gestion · Edition Signature · design inspiré des principes d'interface Apple.
+   Couche de présentation seule : aucun montant, événement ou état financier modifié.
+   Ne requiert aucune police externe ni bibliothèque d'animation. */
+body.freev-apple {
+  --apple-accent:#0069d3;
+  --apple-accent-hover:#005bb5;
+  --apple-ink:#1d1d1f;
+  --apple-muted:#6e6e73;
+  --apple-surface:#ffffff;
+  --apple-canvas:#f5f5f7;
+  --apple-sidebar:#fafafcf2;
+  --apple-outline:#e6e6eb;
+  --apple-tint:#f2f6ff;
+  --apple-hover:#f2f2f5;
+  --apple-shadow:0 2px 8px rgba(0,0,0,.025),0 14px 35px rgba(26,33,58,.035);
+  --apple-ease:cubic-bezier(.2,.7,.2,1);
+  --bg-app:var(--apple-canvas);
+  --bg-main:var(--apple-canvas);
+  --bg-card:var(--apple-surface);
+  --bg-topbar:rgba(250,250,252,.88);
+  --bg-input:#fff;
+  --border-color:var(--apple-outline);
+  --text-primary:var(--apple-ink);
+  --text-secondary:var(--apple-muted);
+  --text-muted:#86868b;
+  --v4-accent:var(--apple-accent);
+  --v4-accent-dark:#0062c3;
+  --v4-surface:var(--apple-surface);
+  --v4-soft:var(--apple-tint);
+  --v4-subtle:#ecf1fa;
+  --v4-line:var(--apple-outline);
+  --v4-shadow:var(--apple-shadow);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,"Segoe UI",sans-serif;
+  font-kerning:normal;
+  font-feature-settings:"tnum" 1;
+  letter-spacing:-.01em;
+  color-scheme:light;
+}
+body.freev-apple.dark-mode {
+  --apple-accent:#69acff;
+  --apple-accent-hover:#87bdff;
+  --apple-ink:#f5f5f7;
+  --apple-muted:#a1a1aa;
+  --apple-surface:#202126;
+  --apple-canvas:#101114;
+  --apple-sidebar:#1a1b20f2;
+  --apple-outline:#383940;
+  --apple-tint:#1b2e4a;
+  --apple-hover:#2b2d34;
+  --apple-shadow:0 4px 20px rgba(0,0,0,.15);
+  --bg-app:var(--apple-canvas);
+  --bg-main:var(--apple-canvas);
+  --bg-card:var(--apple-surface);
+  --bg-topbar:rgba(27,28,32,.88);
+  --bg-input:#292b32;
+  --border-color:var(--apple-outline);
+  --text-primary:var(--apple-ink);
+  --text-secondary:#b2b2bb;
+  --text-muted:#9d9da8;
+  --v4-accent:var(--apple-accent);
+  --v4-accent-dark:var(--apple-accent);
+  --v4-surface:var(--apple-surface);
+  --v4-soft:var(--apple-tint);
+  --v4-line:var(--apple-outline);
+  --v4-shadow:var(--apple-shadow);
+  color-scheme:dark;
+}
+body.freev-apple :is(button,input,select,textarea) {font-family:inherit}
+body.freev-apple :is(button,a,input,select,textarea,[tabindex]):focus-visible {
+  outline:3px solid var(--apple-accent)!important;
+  outline-offset:3px;
+  box-shadow:0 0 0 5px rgba(0,113,227,.12);
+}
+body.freev-apple :is(button,summary,a){-webkit-tap-highlight-color:transparent}
+body.freev-apple .sidebar {
+  width:268px;
+  color:var(--apple-ink);
+  background:var(--apple-sidebar);
+  border-right:1px solid var(--apple-outline);
+  box-shadow:none;
+  -webkit-backdrop-filter:blur(20px) saturate(155%);
+  backdrop-filter:blur(20px) saturate(155%);
+}
+body.freev-apple .sidebar-header {
+  padding:1.45rem 1.25rem 1rem;
+  border-bottom:0;
+  background:transparent;
+}
+body.freev-apple .premium-brand-mark {
+  background:linear-gradient(155deg,#298cff,#0064cd);
+  color:#fff;
+  border-radius:14px;
+  box-shadow:0 5px 12px rgba(0,113,227,.16),inset 0 1px 0 rgba(255,255,255,.3);
+  width:43px;height:43px;font-size:1rem;
+}
+body.freev-apple .premium-brand-copy strong {
+  font-size:1.24rem;font-weight:760;color:var(--apple-ink);
+  letter-spacing:-.055em;
+}
+body.freev-apple .premium-brand-copy small {
+  color:var(--apple-muted);font-size:.6rem;letter-spacing:.065em;font-weight:600;
+}
+body.freev-apple .premium-brand-tagline {color:var(--apple-muted);font-size:.76rem;margin:.8rem 0 0}
+body.freev-apple .accounts-sidebar-section {
+  background:transparent;padding:.85rem .95rem .9rem;
+  border-bottom:1px solid var(--apple-outline);
+}
+body.freev-apple .accounts-sidebar-label,
+body.freev-apple .sidebar-mobile-sep,
+body.freev-apple .premium-v4-tools-label {
+  color:var(--apple-muted);
+  font-size:.65rem;font-weight:730;letter-spacing:.06em;
+}
+body.freev-apple .accounts-sidebar-btn {
+  border:1px solid var(--apple-outline);
+  border-radius:8px;background:var(--apple-surface);
+  color:var(--apple-muted);min-height:30px;padding:.3rem .55rem;
+}
+body.freev-apple .accounts-sidebar-btn:hover {background:var(--apple-hover);color:var(--apple-ink)}
+body.freev-apple .account-sidebar-item {border-radius:10px;min-height:39px}
+body.freev-apple .account-sidebar-name {color:var(--apple-ink);font-weight:550}
+body.freev-apple .account-sidebar-item:hover {background:var(--apple-hover);border-color:transparent}
+body.freev-apple .account-sidebar-item.active,
+body.freev-apple .account-sidebar-item.group-selected {background:var(--apple-tint);border-color:rgba(0,113,227,.12)}
+body.freev-apple .account-sidebar-item.active .account-sidebar-name {color:var(--apple-accent)}
+body.freev-apple .sidebar-nav {padding:.75rem .65rem 1rem;scrollbar-color:#d7d7df transparent}
+body.freev-apple .sidebar-nav .nav-item {
+  width:calc(100% - .35rem);margin:.12rem .175rem;
+  min-height:43px;padding:.63rem .85rem;gap:.82rem;
+  border:0;border-radius:11px;
+  box-shadow:none;background:transparent;color:var(--apple-muted);
+  font:600 .81rem/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:-.015em;
+  transition:background-color .18s var(--apple-ease),color .18s var(--apple-ease);
+}
+body.freev-apple .sidebar-nav .nav-item i {width:20px;color:#91919b;font-size:.97rem;transform:none}
+body.freev-apple .sidebar-nav .nav-item:hover {background:var(--apple-hover);color:var(--apple-ink);border-color:transparent}
+body.freev-apple .sidebar-nav .nav-item:hover i {color:var(--apple-accent);transform:none}
+body.freev-apple .sidebar-nav .nav-item.active,
+body.freev-apple .sidebar-nav .nav-item[aria-current="page"] {
+  background:var(--apple-tint);box-shadow:none;border-color:transparent;
+  color:var(--apple-accent);font-weight:720;
+}
+body.freev-apple .sidebar-nav .nav-item.active i,
+body.freev-apple .sidebar-nav .nav-item[aria-current="page"] i {color:var(--apple-accent)}
+body.freev-apple .sidebar-nav .v4-new-badge,
+body.freev-apple .sidebar-nav .v5-new-badge {box-shadow:none}
+body.freev-apple .premium-v4-sidebar-tools {
+  background:transparent;border-top:1px solid var(--apple-outline);
+  padding:.95rem;
+}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-action {
+  min-height:41px;border-radius:10px;font-weight:630;font-size:.73rem;
+  box-shadow:none;
+}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-action-primary {
+  background:var(--apple-tint);border:1px solid transparent;color:var(--apple-accent);
+}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-action-secondary,
+body.freev-apple .premium-v4-sidebar-tools .sidebar-action-storage {
+  background:var(--apple-surface);border:1px solid var(--apple-outline);color:var(--apple-ink);
+}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-action:hover {background:var(--apple-hover);color:var(--apple-ink)}
+body.freev-apple .premium-v4-sidebar-tools .sidebar-action-meta {opacity:.7}
+body.freev-apple .premium-v4-preferences {border-color:var(--apple-outline)}
+body.freev-apple :is(.premium-v4-density-toggle,.dark-mode-toggle) {
+  min-height:47px;border:1px solid var(--apple-outline);border-radius:11px;
+  background:var(--apple-surface);box-shadow:none;color:var(--apple-ink);
+  font-weight:600;transition:background-color .18s,border-color .18s;
+}
+body.freev-apple :is(.premium-v4-density-toggle,.dark-mode-toggle):hover {
+  background:var(--apple-hover);border-color:var(--apple-outline);box-shadow:none;transform:none;
+}
+body.freev-apple .premium-v4-density-icon,
+body.freev-apple .premium-v4-density-state {color:var(--apple-accent)}
+body.freev-apple .premium-v4-density-label small,
+body.freev-apple .theme-toggle-state {color:var(--apple-muted)}
+body.freev-apple .sidebar-user-info {color:var(--apple-ink);background:var(--apple-hover);border:1px solid var(--apple-outline)}
+body.freev-apple .sidebar-user-email {color:var(--apple-muted)}
+/* Workspace : une seule lecture visuelle, sans bandeau décoratif agressif. */
+body.freev-apple .main-content {background:var(--apple-canvas)}
+body.freev-apple .top-bar {
+  min-height:73px;padding:.8rem clamp(1rem,2.2vw,2.4rem);
+  background:var(--bg-topbar);border-bottom:1px solid var(--apple-outline);
+  box-shadow:none;z-index:12;
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+}
+body.freev-apple .content-area {padding:1.8rem clamp(1rem,2.4vw,2.7rem) 2.8rem}
+body.freev-apple .top-bar .btn {min-height:38px;border-radius:11px}
+body.freev-apple .month-picker {
+  border:1px solid var(--apple-outline);border-radius:11px;
+  background:var(--apple-surface);box-shadow:0 1px 3px rgba(0,0,0,.025);
+}
+body.freev-apple .month-nav-btn {border-radius:8px;color:var(--apple-muted)}
+body.freev-apple .month-nav-btn:hover {background:var(--apple-hover);color:var(--apple-accent)}
+body.freev-apple .view-mode-tabs {background:var(--apple-hover);border-radius:11px;gap:1px}
+body.freev-apple .view-mode-tab {border-radius:8px;color:var(--apple-muted);font-weight:630}
+body.freev-apple .view-mode-tab.active-mode {background:var(--apple-surface);color:var(--apple-ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+body.freev-apple .premium-workspace-head {
+  min-height:0;padding:2.25rem clamp(1.3rem,2.7vw,2.75rem);margin-bottom:1.5rem;
+  border:1px solid var(--apple-outline);border-radius:24px;
+  background:radial-gradient(circle at 95% 10%,rgba(0,113,227,.085),transparent 43%),var(--apple-surface);
+  box-shadow:var(--apple-shadow);gap:1.5rem;
+}
+body.freev-apple .premium-workspace-head::before,
+body.freev-apple .premium-workspace-head::after {content:none}
+body.freev-apple .premium-workspace-kicker {color:var(--apple-accent);letter-spacing:.09em;font-size:.62rem;font-weight:740}
+body.freev-apple .premium-live-dot {background:#30b566;box-shadow:0 0 0 4px rgba(48,181,102,.11)}
+body.freev-apple .premium-workspace-head h1 {
+  color:var(--apple-ink);font-size:clamp(2rem,3vw,3.05rem);
+  font-weight:760;line-height:1.08;letter-spacing:-.055em;
+  margin:.65rem 0 .75rem;
+}
+body.freev-apple .premium-workspace-head p {
+  color:var(--apple-muted);font-size:clamp(.83rem,1.1vw,.91rem);
+  max-width:60ch;line-height:1.6;
+}
+body.freev-apple .premium-v4-context {
+  border:1px solid var(--apple-outline);background:var(--apple-hover);
+  color:var(--apple-muted);padding:.43rem .75rem;margin-top:1.05rem;
+  border-radius:999px;font-size:.72rem;
+}
+body.freev-apple .premium-v4-context strong {color:var(--apple-ink);font-weight:700}
+body.freev-apple .premium-workspace-action {min-height:43px;border-radius:11px;box-shadow:none;font-weight:670;transition:background-color .16s,transform .16s}
+body.freev-apple .premium-workspace-action-primary {background:var(--apple-accent);border-color:var(--apple-accent);color:#fff}
+body.freev-apple .premium-workspace-action-primary:hover {background:var(--apple-accent-hover);border-color:var(--apple-accent-hover);color:#fff}
+body.freev-apple .premium-workspace-action-secondary {background:var(--apple-hover);color:var(--apple-ink);border-color:var(--apple-outline);backdrop-filter:none}
+body.freev-apple .premium-workspace-action-secondary:hover {background:var(--apple-tint)}
+body.freev-apple .premium-workspace-action:hover {transform:translateY(-1px);box-shadow:none}
+/* KPI : chiffres en vedette, iconographie minimale, nuances différenciées. */
+body.freev-apple .premium-stat-grid {gap:1rem;margin-bottom:1.55rem}
+body.freev-apple .premium-v4-stat {
+  border:1px solid var(--apple-outline);border-radius:20px;
+  box-shadow:var(--apple-shadow);background:var(--apple-surface);
+  min-height:162px;padding:1.35rem 1.4rem;gap:1.05rem;
+  transition:box-shadow .2s var(--apple-ease),transform .2s var(--apple-ease);
+}
+body.freev-apple .premium-v4-stat::before {display:none}
+body.freev-apple .premium-v4-stat:hover {border-color:var(--apple-outline);transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.06)}
+body.freev-apple .premium-v4-stat .stat-icon {
+  width:39px;height:39px;border-radius:12px;
+  background:var(--apple-hover);color:var(--apple-accent);box-shadow:none;font-size:1rem;
+}
+body.freev-apple .premium-v4-stat .stat-icon i {color:inherit!important}
+body.freev-apple .premium-v4-stat-income .stat-icon {background:rgba(48,181,102,.10);color:#238a4d}
+body.freev-apple .premium-v4-stat-expense .stat-icon {background:rgba(255,69,58,.09);color:#d43c35}
+body.freev-apple .premium-v4-stat-savings .stat-icon {background:rgba(175,82,222,.11);color:#9846ce}
+body.freev-apple .premium-v4-stat .text-sm {color:var(--apple-muted);font-size:.77rem;font-weight:580}
+body.freev-apple .premium-v4-stat .text-2xl {
+  font-size:clamp(1.4rem,1.9vw,2.15rem);font-weight:760;letter-spacing:-.06em;
+  line-height:1.15;color:var(--apple-ink);
+}
+body.freev-apple .premium-v4-stat-income #totalIncome {color:#248c52}
+body.freev-apple .premium-v4-stat-expense #totalExpenses {color:#d63f3a}
+body.freev-apple .premium-v4-stat-savings #totalSavings {color:var(--apple-ink)}
+body.freev-apple .premium-v4-stat #balanceChange {color:var(--apple-muted)}
+body.freev-apple :is(.card,.fp2-panel,.fp2-metric,.rec-calendar-wrap,.rec-detail-card,.rec-history-card) {
+  background:var(--apple-surface);border:1px solid var(--apple-outline);
+  border-radius:20px;box-shadow:var(--apple-shadow);
+}
+body.freev-apple .card {padding:clamp(1rem,1.7vw,1.6rem)}
+body.freev-apple :is(.card,.fp2-panel):hover {box-shadow:var(--apple-shadow)}
+body.freev-apple :is(.fp2-heading h2,.dashboard-chart-head h3,.card h3,.rec-calendar-head h3) {
+  color:var(--apple-ink);letter-spacing:-.035em;font-weight:700;
+}
+body.freev-apple .fp2-heading h2 {font-size:clamp(1.35rem,1.8vw,1.8rem)}
+body.freev-apple :is(.fp2-heading p,.fp2-note,.fp2-eyebrow) {color:var(--apple-muted)}
+body.freev-apple .fp2-eyebrow {font-size:.62rem;letter-spacing:.08em}
+body.freev-apple .fp2-metric-value {letter-spacing:-.055em}
+body.freev-apple .progress-bar {height:9px;background:var(--apple-hover);border-radius:999px}
+body.freev-apple .progress-fill {border-radius:999px}
+/* Tableaux et formulaires : contrôle, contraste, et densité mesurée. */
+body.freev-apple .table-container {
+  border-radius:14px;max-width:100%;overflow-x:auto;
+  border:1px solid var(--apple-outline);background:var(--apple-surface);
+}
+body.freev-apple .table {border-collapse:separate;border-spacing:0;width:100%}
+body.freev-apple .table thead {background:var(--apple-hover)}
+body.freev-apple .table th {
+  color:var(--apple-muted);font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.045em;font-weight:690;border-color:var(--apple-outline);
+  padding:.8rem .9rem;white-space:nowrap;
+}
+body.freev-apple .table td {padding:.88rem .9rem;border-color:var(--apple-outline);font-size:.81rem}
+body.freev-apple .table tbody tr:hover {background:var(--apple-hover)}
+body.freev-apple :is(.btn,.premium-workspace-action,.btn-icon) {font-weight:660}
+body.freev-apple .btn {border-radius:11px;min-height:39px;box-shadow:none;transition:background-color .16s var(--apple-ease),color .16s,border-color .16s,transform .16s}
+body.freev-apple .btn-primary {background:var(--apple-accent);border-color:var(--apple-accent);color:#fff;box-shadow:none}
+body.freev-apple .btn-primary:hover {background:var(--apple-accent-hover);border-color:var(--apple-accent-hover);color:#fff}
+body.freev-apple :is(.btn-secondary,.btn-icon) {background:var(--apple-surface);color:var(--apple-ink);border:1px solid var(--apple-outline)}
+body.freev-apple :is(.btn-secondary,.btn-icon):hover {background:var(--apple-hover)}
+body.freev-apple .btn:hover {transform:translateY(-1px)}
+body.freev-apple .btn:active {transform:scale(.99)}
+body.freev-apple :is(.form-input,.form-select,.form-textarea,input[type="month"]) {
+  border-radius:11px;border-color:var(--apple-outline);
+  background:var(--bg-input);color:var(--apple-ink);
+  font-size:max(.84rem,14px);
+}
+body.freev-apple :is(.form-input,.form-select,.form-textarea):focus {
+  border-color:var(--apple-accent);box-shadow:0 0 0 3px rgba(0,113,227,.13);
+}
+body.freev-apple .premium-v4-filter-bar {border:1px solid var(--apple-outline);border-radius:17px;background:var(--apple-surface);box-shadow:var(--apple-shadow)}
+body.freev-apple :is(.modal-content,.accounts-modal-content,.v4-dialog) {
+  background:var(--apple-surface);border:1px solid var(--apple-outline);
+  border-radius:23px;box-shadow:0 26px 70px rgba(0,0,0,.20);
+}
+body.freev-apple :is(.modal-header,.modal-footer) {border-color:var(--apple-outline)}
+body.freev-apple .modal-header h2 {letter-spacing:-.04em}
+body.freev-apple .rec-month {
+  background:var(--apple-surface);border-color:var(--apple-outline);
+  border-radius:14px;box-shadow:none;
+  transition:background .16s,border-color .16s;
+}
+body.freev-apple .rec-month:hover {background:var(--apple-hover);border-color:var(--apple-accent);box-shadow:none}
+body.freev-apple .rec-month.is-selected {background:var(--apple-tint);outline:2px solid var(--apple-accent)}
+body.freev-apple .rec-month.is-past {background:var(--apple-hover);border-style:dashed}
+body.freev-apple .rec-impact-preview {background:var(--apple-tint);border-left:3px solid var(--apple-accent)}
+body.freev-apple .bottom-nav {background:var(--bg-topbar);border-top:1px solid var(--apple-outline);backdrop-filter:blur(18px) saturate(140%)}
+body.freev-apple .bottom-nav-item {color:var(--apple-muted)}
+body.freev-apple .bottom-nav-item.active,
+body.freev-apple .bottom-nav-item[aria-current="page"] {color:var(--apple-accent)}
+body.freev-apple .bottom-nav-item.active::after {background:var(--apple-accent)}
+body.freev-apple #fabAddBtn {background:var(--apple-accent);border-color:var(--apple-surface);box-shadow:0 8px 25px rgba(0,113,227,.23)}
+body.freev-apple.dark-mode .premium-v4-stat-income #totalIncome {color:#5bc987}
+body.freev-apple.dark-mode .premium-v4-stat-expense #totalExpenses {color:#ff857e}
+body.freev-apple.dark-mode .premium-v4-stat-income .stat-icon {color:#5bc987}
+body.freev-apple.dark-mode .premium-v4-stat-expense .stat-icon {color:#ff857e}
+body.freev-apple.dark-mode .premium-v4-stat-savings .stat-icon {color:#d0a0fb}
+body.freev-apple.dark-mode .table thead {background:var(--apple-hover)}
+body.freev-apple.dark-mode .table tbody tr:hover {background:var(--apple-hover)}
+/* La densité compacte reste un choix explicite, sans masquer les données. */
+body.freev-apple.freev-v4-compact .premium-workspace-head {padding:1.2rem 1.5rem}
+body.freev-apple.freev-v4-compact .premium-v4-stat {min-height:116px;padding:.9rem 1rem}
+@media (min-width:1500px) {
+  body.freev-apple .content-area {max-width:1920px;width:100%;margin:0 auto}
+}
+@media (max-width:1350px) {
+  body.freev-apple .premium-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:1050px) {
+  body.freev-apple .premium-workspace-head {align-items:flex-start;flex-direction:column}
+  body.freev-apple .premium-workspace-actions {justify-content:flex-start;width:100%;max-width:none}
+  body.freev-apple .premium-workspace-action {width:auto}
+}
+@media (max-width:768px) {
+  body.freev-apple .sidebar {width:min(86vw,340px)}
+  body.freev-apple .sidebar-header {padding:1.2rem 1rem 1rem}
+  body.freev-apple .sidebar-close-btn {color:var(--apple-ink);background:var(--apple-hover);border-color:var(--apple-outline)}
+  body.freev-apple .sidebar-nav .nav-item {width:calc(100% - .3rem);min-height:46px}
+  body.freev-apple .top-bar {min-height:61px;padding:.65rem .85rem;flex-wrap:nowrap}
+  body.freev-apple .content-area {padding:1rem .85rem calc(6.3rem + env(safe-area-inset-bottom))}
+  body.freev-apple .premium-workspace-head {border-radius:20px;padding:1.4rem 1.25rem;margin-bottom:1.1rem}
+  body.freev-apple .premium-workspace-head h1 {font-size:clamp(1.6rem,6vw,2.15rem)}
+  body.freev-apple .premium-workspace-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+  body.freev-apple .premium-workspace-action {width:100%;min-height:44px;font-size:.73rem}
+  body.freev-apple .premium-stat-grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+  body.freev-apple .premium-v4-stat {min-height:132px;padding:.95rem;gap:.5rem;border-radius:16px}
+  body.freev-apple .premium-v4-stat .text-2xl {font-size:clamp(1.1rem,3.8vw,1.45rem)}
+  body.freev-apple :is(.card,.fp2-panel,.fp2-metric,.rec-calendar-wrap) {border-radius:16px}
+  body.freev-apple .premium-v4-chart-grid {grid-template-columns:1fr}
+  body.freev-apple .premium-v4-filter-bar :is(input,select) {max-width:100%}
+  body.freev-apple .modal-content {max-width:calc(100vw - 1rem)}
+}
+@media (max-width:430px) {
+  body.freev-apple .premium-stat-grid {grid-template-columns:1fr}
+  body.freev-apple .premium-v4-stat {flex-direction:row;align-items:center;min-height:100px;gap:.85rem}
+  body.freev-apple .premium-v4-stat .flex-1 {width:auto;flex:1}
+  body.freev-apple .premium-v4-stat .text-2xl {font-size:1.45rem}
+  body.freev-apple .premium-workspace-actions {grid-template-columns:1fr}
+  body.freev-apple .month-picker input[type="month"] {width:112px;min-width:0}
+  body.freev-apple .month-nav-btn {width:30px;height:30px}
+}
+@media (prefers-reduced-transparency:reduce) {
+  body.freev-apple .sidebar,body.freev-apple .top-bar,body.freev-apple .bottom-nav {
+    backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--apple-surface)
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple *,body.freev-apple *::before,body.freev-apple *::after {
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+  body.freev-apple .btn:hover,body.freev-apple .premium-v4-stat:hover,body.freev-apple .premium-workspace-action:hover {transform:none!important}
+}
+/* Parcours de connexion et préférences dans la même grammaire visuelle. */
+body.freev-apple .auth-overlay {background:rgba(17,19,27,.58);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+body.freev-apple .auth-card {
+  border-radius:25px;border:1px solid var(--apple-outline);
+  background:var(--apple-surface);color:var(--apple-ink);
+  box-shadow:0 28px 80px rgba(0,0,0,.2);
+}
+body.freev-apple .auth-logo {color:var(--apple-ink);letter-spacing:-.05em}
+body.freev-apple .auth-logo i {color:var(--apple-accent)}
+body.freev-apple .auth-tabs {background:var(--apple-hover);border-radius:12px}
+body.freev-apple .auth-tab {border-radius:9px}
+body.freev-apple .auth-tab.active {background:var(--apple-surface);color:var(--apple-accent);box-shadow:0 1px 5px rgba(0,0,0,.07)}
+body.freev-apple :is(.rec-year-controls,.fp2-alert,.account-card-modal) {border-color:var(--apple-outline);border-radius:13px}
+body.freev-apple .rec-year-controls {background:var(--apple-hover)}
+body.freev-apple .dark-mode-toggle[aria-pressed="true"] {
+  background:var(--apple-surface);border-color:var(--apple-outline);color:var(--apple-ink)
+}
+body.freev-apple .dark-mode-toggle[aria-pressed="true"] .theme-toggle-state {color:var(--apple-muted)}
+body.freev-apple :is(.dark-mode-toggle,.premium-v4-density-toggle):active {transform:scale(.995)}
+@media (max-width:430px) {
+  body.freev-apple :is(.form-input,.form-select,.form-textarea) {font-size:16px}
+  body.freev-apple .sidebar-nav .nav-item {min-height:44px}
+}
+
+/* Contraste AA des boutons en mode sombre (texte foncé sur bleu clair). */
+body.freev-apple.dark-mode :is(.btn-primary,.premium-workspace-action-primary) {color:#101a2b}
+body.freev-apple.dark-mode :is(.btn-primary,.premium-workspace-action-primary):hover {color:#101a2b}

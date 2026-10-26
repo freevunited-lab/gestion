@@ -1,0 +1,31 @@
+/* Uiverse component adaptation: Switch by m1her (Maher Nas),
+   https://uiverse.io/m1her/odd-fireant-56 — MIT License, Copyright 2026 m1her.
+   The switch motion is adapted to Freev's day/night theme control. */
+.dark-mode-toggle { display: flex; width: 100%; min-height: 3.15rem; align-items: center; justify-content: space-between; gap: .75rem; padding: .35rem .42rem .35rem .85rem; border: 1px solid rgba(255, 255, 255, .16); border-radius: 1rem; background: linear-gradient(135deg, rgba(59, 130, 246, .18), rgba(14, 165, 233, .09)); color: #e0f2fe; cursor: pointer; font: 800 .73rem/1 Inter, sans-serif; letter-spacing: .02em; transition: border-color .28s ease, box-shadow .28s ease, background .38s ease, transform .25s cubic-bezier(.22, 1, .36, 1); }
+.dark-mode-toggle:hover { border-color: rgba(125, 211, 252, .65); background: linear-gradient(135deg, rgba(59, 130, 246, .29), rgba(45, 212, 191, .16)); box-shadow: 0 10px 22px rgba(2, 6, 23, .24); transform: translateY(-1px); }
+.dark-mode-toggle:active { transform: translateY(1px) scale(.985); }
+.dark-mode-toggle:focus-visible { outline: 3px solid rgba(45, 212, 191, .55); outline-offset: 3px; }
+.theme-toggle-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.theme-toggle-track { display: grid; position: relative; flex: 0 0 3.55rem; width: 3.55rem; height: 1.95rem; align-items: center; grid-template-columns: 1fr 1fr; padding: .17rem; overflow: hidden; border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px; background: linear-gradient(135deg, #38bdf8, #2563eb); box-shadow: inset 0 2px 5px rgba(2, 6, 23, .24), 0 3px 8px rgba(2, 6, 23, .16); transition: background .45s ease; }
+.theme-toggle-track > i { z-index: 1; color: rgba(255, 255, 255, .72); font-size: .66rem; text-align: center; transition: opacity .25s ease, transform .35s cubic-bezier(.22, 1, .36, 1); }
+.theme-toggle-knob { display: grid; position: absolute; z-index: 2; top: .17rem; left: .17rem; width: 1.55rem; height: 1.55rem; place-items: center; border-radius: 50%; background: radial-gradient(circle at 33% 28%, #fffef1, #fde68a 55%, #f59e0b); box-shadow: 0 3px 8px rgba(2, 6, 23, .35), inset 0 1px 1px rgba(255, 255, 255, .85); color: #b45309; transition: transform .42s cubic-bezier(.34, 1.56, .64, 1), background .38s ease, color .3s ease; }
+.theme-toggle-knob i { font-size: .67rem; transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+.dark-mode-toggle[aria-pressed="true"] { background: linear-gradient(135deg, rgba(30, 41, 59, .96), rgba(67, 56, 202, .42)); color: #e0e7ff; }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-track { background: linear-gradient(135deg, #111827, #4338ca); }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-knob { color: #c4b5fd; background: radial-gradient(circle at 35% 28%, #f8fafc, #c4b5fd 58%, #6d28d9); transform: translateX(1.6rem) rotate(320deg); }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-sun { opacity: .36; transform: rotate(-90deg) scale(.72); }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-moon { opacity: 1; transform: rotate(0) scale(1.08); }
+.dark-mode-toggle[aria-pressed="false"] .theme-toggle-moon { opacity: .35; transform: rotate(90deg) scale(.72); }
+/* Finition "application" : hiérarchie claire, surfaces plus calmes et mouvement continu. */
+.dark-mode-toggle { min-height: 3.65rem; padding: .46rem .5rem .46rem .78rem; border-color: rgba(148, 163, 184, .28); border-radius: 1.05rem; background: linear-gradient(145deg, rgba(30, 41, 59, .96), rgba(15, 23, 42, .98)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .09), 0 8px 18px rgba(2, 6, 23, .18); }
+.dark-mode-toggle:hover { border-color: rgba(125, 211, 252, .72); background: linear-gradient(145deg, rgba(40, 55, 79, .98), rgba(15, 23, 42, 1)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 11px 21px rgba(2, 6, 23, .25); transform: translateY(-1px); }
+.theme-toggle-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; align-items: flex-start; gap: .14rem; }
+.theme-toggle-label { overflow: visible; color: #f8fafc; font-size: .72rem; font-weight: 800; letter-spacing: .035em; }
+.theme-toggle-state { color: #94a3b8; font-size: .66rem; font-weight: 700; letter-spacing: .01em; transition: color .3s ease, transform .3s cubic-bezier(.22, 1, .36, 1); }
+.theme-toggle-track { flex-basis: 4.1rem; width: 4.1rem; height: 2.25rem; border-color: rgba(191, 219, 254, .75); background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%); }
+.theme-toggle-knob { top: .18rem; left: .18rem; width: 1.8rem; height: 1.8rem; background: linear-gradient(145deg, #fff7c2, #fbbf24); }
+.dark-mode-toggle[aria-pressed="true"] { border-color: rgba(167, 139, 250, .42); background: linear-gradient(145deg, rgba(49, 46, 129, .62), rgba(15, 23, 42, 1)); }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-track { border-color: rgba(196, 181, 253, .62); background: linear-gradient(135deg, #312e81 0%, #111827 100%); }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-knob { color: #e2e8f0; background: linear-gradient(145deg, #e2e8f0, #94a3b8); box-shadow: 0 3px 8px rgba(2, 6, 23, .48), inset 0 1px 0 rgba(255, 255, 255, .8); transform: translateX(1.72rem) rotate(360deg); }
+.dark-mode-toggle[aria-pressed="true"] .theme-toggle-state { color: #ddd6fe; transform: translateX(.06rem); }
+@media (prefers-reduced-motion: reduce) { .dark-mode-toggle, .theme-toggle-track, .theme-toggle-track > i, .theme-toggle-knob, .theme-toggle-knob i, .theme-toggle-state { transition: none; transform: none !important; } }

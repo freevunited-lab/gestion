@@ -1,0 +1,100 @@
+/* Repères de focus cohérents : un seul contour visible, dans la palette FREEV. */
+body.freev-apple :is(button,a,input,select,textarea,[tabindex]):focus-visible {
+  outline:2px solid var(--signature-teal,#139b81)!important;
+  outline-offset:2px!important;
+  box-shadow:none!important;
+}
+
+/* Les champs utilisent leur bordure comme repère de focus. */
+body.freev-apple :is(.form-input,.form-select,.form-textarea,input[type="month"],.account-profile-field input):focus {
+  outline:0!important;
+  border-color:var(--signature-teal,#139b81)!important;
+  box-shadow:none!important;
+}
+
+/* La bordure du conteneur porte le focus des recherches : pas de second cadre interne. */
+body.freev-apple .v4-search-box {
+  border-color:var(--apple-outline);
+  color:var(--apple-muted);
+  transition:border-color .16s var(--apple-ease),background-color .16s var(--apple-ease);
+}
+body.freev-apple .v4-search-box:focus-within {
+  border-color:var(--signature-teal,#139b81);
+  color:var(--signature-teal,#139b81);
+}
+body.freev-apple .v4-search-box input:focus-visible {
+  outline:0!important;
+  outline-offset:0!important;
+  box-shadow:none!important;
+}
+
+body.freev-apple .freev-help-search {
+  color:var(--apple-muted);
+  transition:border-color .16s var(--apple-ease),box-shadow .16s var(--apple-ease);
+}
+body.freev-apple .freev-help-search:focus-within {
+  border-color:var(--signature-teal,#139b81);
+  color:var(--signature-teal,#139b81);
+}
+body.freev-apple .freev-help-search:has(.freev-help-search-clear:focus-visible) {
+  border-color:var(--apple-outline);
+  color:var(--apple-muted);
+}
+body.freev-apple .freev-help-search input:focus-visible {
+  outline:0!important;
+  outline-offset:0!important;
+  box-shadow:none!important;
+}
+
+/* Les contrôles dont le parent signale déjà le focus gardent un seul indicateur. */
+body.freev-apple .freev-color-choice input:focus-visible,
+body.freev-apple .v5-switch input:focus-visible,
+body.freev-apple .v5-file-drop input:focus-visible {
+  outline:0!important;
+  outline-offset:0!important;
+  box-shadow:none!important;
+}
+body.freev-apple .freev-color-choice:focus-within .freev-color-choice-ui {
+  outline:2px solid var(--signature-teal,#139b81)!important;
+  outline-offset:2px!important;
+  box-shadow:none!important;
+}
+body.freev-apple .v5-switch input:focus-visible + span {
+  outline:2px solid var(--signature-teal,#139b81)!important;
+  outline-offset:2px!important;
+}
+body.freev-apple .v5-file-drop:focus-within {
+  border-color:var(--signature-teal,#139b81);
+  background:color-mix(in srgb,var(--signature-teal,#139b81) 5%,var(--apple-surface));
+}
+body.freev-apple .v5-file-drop:focus-within > i {color:var(--signature-teal,#139b81)}
+
+/* Harmonise les états de focus qui ajoutaient encore un accent bleu intérieur. */
+body.freev-apple .v42-presets button:focus-visible {
+  outline:0!important;
+  outline-offset:0!important;
+  border-color:var(--signature-teal,#139b81)!important;
+  color:var(--signature-green,#187b68)!important;
+}
+body.freev-apple .freev-select-trigger:focus-visible {
+  border-color:var(--signature-teal,#139b81);
+}
+body.freev-apple .freev-select.is-open .freev-select-trigger:focus-visible {
+  outline:0!important;
+  outline-offset:0!important;
+  border-color:var(--signature-teal,#139b81)!important;
+  box-shadow:none!important;
+}
+body.freev-apple .freev-select-option:focus-visible {
+  outline:0!important;
+  outline-offset:0!important;
+  background:color-mix(in srgb,var(--signature-teal,#139b81) 10%,var(--apple-surface))!important;
+  color:var(--signature-green,#187b68)!important;
+  transform:none;
+}
+body.freev-apple .v4-search-chip-remove:focus-visible {background:transparent}
+
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple .v4-search-box,
+  body.freev-apple .freev-help-search {transition:none}
+}

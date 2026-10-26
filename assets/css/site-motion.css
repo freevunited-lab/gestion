@@ -1,0 +1,584 @@
+/* One quiet motion language for the whole workspace. Keep financial values still. */
+body.freev-apple {
+  --freev-motion-quick: 150ms;
+  --freev-motion-standard: 240ms;
+  --freev-motion-ease: cubic-bezier(.22,.68,0,1);
+  --freev-motion-shadow: 0 12px 30px rgba(25,40,68,.075);
+  --signature-motion-ease: var(--freev-motion-ease);
+  --signature-motion-fast: var(--freev-motion-quick);
+  --signature-motion-surface: var(--freev-motion-standard);
+}
+
+/* Clearer hierarchy without adding decoration or delaying the data. */
+body.freev-apple :is(.v4-section-head,.v5-section-head,.fp2-section-head) h2,
+body.freev-apple :is(.v4-section-head,.v5-section-head,.fp2-section-head) h3 {
+  letter-spacing: -.025em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+body.freev-apple :is(.v4-section-head,.v5-section-head,.fp2-section-head) p {
+  max-width: 70ch;
+  line-height: 1.55;
+}
+body.freev-apple :is(.premium-v4-stat,.fp2-metric,.v5-stat) strong,
+body.freev-apple :is(#cardBalance,#cardIncome,#cardExpenses,#cardSavings) {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.025em;
+}
+body.freev-apple :is(.premium-workspace-head,.v4-hero,.v5-hero) {
+  transition: border-color var(--freev-motion-standard) ease,
+    box-shadow var(--freev-motion-standard) var(--freev-motion-ease);
+}
+body.freev-apple :is(.v4-story-heading,.v5-story-heading) {
+  margin-block: clamp(1.2rem,2vw,1.8rem) .85rem;
+}
+body.freev-apple :is(.v4-story-heading,.v5-story-heading) h3 {
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+body.freev-apple .premium-workspace-head {
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 92% 12%,color-mix(in srgb,var(--apple-accent,#2563eb) 10%,transparent),transparent 34%),
+    radial-gradient(circle at 3% 98%,color-mix(in srgb,var(--signature-teal,#139b81) 6%,transparent),transparent 40%),
+    var(--apple-surface,#fff);
+  box-shadow: 0 1px 2px rgba(24,39,68,.035),0 18px 45px rgba(24,39,68,.075);
+}
+body.freev-apple .premium-workspace-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  max-width: 100%;
+  padding: .43rem .68rem;
+  border: 1px solid color-mix(in srgb,var(--apple-accent,#2563eb) 14%,transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb,var(--apple-accent,#2563eb) 5%,var(--apple-surface,#fff));
+}
+body.freev-apple :is(.premium-workspace-head,.v4-hero,.v5-hero) h1,
+body.freev-apple :is(.v4-hero,.v5-hero) h2 { text-wrap: balance; }
+body.freev-apple :is(.premium-workspace-head,.v4-hero,.v5-hero) p { text-wrap: pretty; }
+body.freev-apple .premium-v4-stat {
+  background: linear-gradient(150deg,
+    color-mix(in srgb,var(--v4-stat-accent,var(--apple-accent,#2563eb)) 5%,var(--apple-surface,#fff)),
+    var(--apple-surface,#fff) 65%);
+  box-shadow: 0 1px 2px rgba(24,39,68,.035),0 10px 28px rgba(24,39,68,.055);
+}
+/* The first page explains why it is useful before showing the numbers. */
+body.freev-apple .freev-dashboard-only {display:none}
+body.freev-apple[data-freev-view="dashboard"] .premium-workspace-head {
+  min-height:clamp(12.5rem,17vw,14.5rem);
+  padding:clamp(1.15rem,2.3vw,2rem);
+  gap:clamp(1rem,2vw,2rem);
+  overflow:hidden;
+}
+body.freev-apple[data-freev-view="dashboard"] .premium-workspace-intro {position:relative;z-index:2;max-width:46rem}
+body.freev-apple[data-freev-view="dashboard"] .premium-workspace-head h1 {
+  margin:.45rem 0 .42rem;
+  font-size:clamp(2rem,3vw,3.15rem);
+  letter-spacing:-.055em;
+}
+body.freev-apple[data-freev-view="dashboard"] .premium-workspace-head #premiumWorkspaceDesc {
+  max-width:58ch;
+  font-size:clamp(.84rem,1vw,.96rem);
+  line-height:1.5;
+}
+body.freev-apple[data-freev-view="dashboard"] .premium-workspace-actions {position:relative;z-index:3}
+body.freev-apple[data-freev-view="dashboard"] .freev-dashboard-benefits {
+  display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem;
+}
+body.freev-apple .freev-dashboard-benefits span {
+  display:inline-flex;align-items:center;gap:.42rem;
+  min-height:2rem;padding:.38rem .68rem;
+  border:1px solid var(--apple-outline,#dce5ef);border-radius:999px;
+  background:color-mix(in srgb,var(--apple-surface,#fff) 85%,transparent);
+  color:var(--apple-muted,#64748b);font-size:.72rem;font-weight:650;line-height:1.2;
+}
+body.freev-apple .freev-dashboard-benefits i {color:var(--signature-teal,#139b81);font-size:.67rem}
+body.freev-apple[data-freev-view="dashboard"] .freev-dashboard-benefits span {animation:freevFeatureStepIn 360ms var(--freev-motion-ease) both}
+body.freev-apple[data-freev-view="dashboard"] .freev-dashboard-benefits span:nth-child(2) {animation-delay:80ms}
+body.freev-apple[data-freev-view="dashboard"] .freev-dashboard-benefits span:nth-child(3) {animation-delay:160ms}
+body.freev-apple[data-freev-view="dashboard"] .freev-dashboard-explore {
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:.85rem;padding:.24rem 0;
+  border:0;background:transparent;color:var(--apple-accent,#2563eb);
+  font-size:.8rem;font-weight:730;cursor:pointer;text-align:left;
+}
+body.freev-apple .freev-dashboard-explore i {transition:transform var(--freev-motion-standard) var(--freev-motion-ease)}
+body.freev-apple .freev-dashboard-explore:focus-visible {outline:2px solid var(--apple-accent,#2563eb);outline-offset:4px;border-radius:3px}
+body.freev-apple #dashboardFlowChart {scroll-margin-top:clamp(5rem,9vh,7rem)}
+/* Each workspace has its own illustrative motion instead of a repeated badge. */
+body.freev-apple .freev-workspace-illustration {display:none}
+@media (min-width:1251px) {
+  body.freev-apple[data-freev-view="dashboard"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="transactions"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="recurring"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="analytics"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="savings"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="debts"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="history"] .freev-workspace-illustration,
+  body.freev-apple[data-freev-view="settings"] .freev-workspace-illustration {
+    display:block;position:absolute;z-index:1;right:clamp(12.5rem,16vw,17rem);top:50%;
+    width:11.5rem;transform:translateY(-50%);pointer-events:none;
+  }
+  body.freev-apple[data-freev-view="dashboard"] .freev-workspace-illustration {width:13rem}
+  body.freev-apple[data-freev-view]:not([data-freev-view="dashboard"]):not([data-freev-view="planner"]):not([data-freev-view="smart"]) .premium-workspace-head {
+    min-height:8.15rem;padding:1.1rem 1.45rem;overflow:hidden;
+  }
+  body.freev-apple[data-freev-view]:not([data-freev-view="dashboard"]) .premium-workspace-intro {
+    position:relative;z-index:2;max-width:min(62%,42rem);
+  }
+  body.freev-apple[data-freev-view] .premium-workspace-actions {position:relative;z-index:3}
+}
+body.freev-apple .freev-workspace-illustration svg {
+  display:block;width:100%;height:auto;overflow:visible;
+  animation:freevArtReveal 440ms var(--freev-motion-ease) both;
+}
+body.freev-apple .freev-workspace-illustration :is(.art-surface,.art-debt-step) {
+  fill:color-mix(in srgb,var(--apple-accent,#2563eb) 6%,var(--apple-surface,#fff));
+  stroke:color-mix(in srgb,var(--apple-accent,#2563eb) 25%,transparent);stroke-width:1.5;
+}
+body.freev-apple .freev-workspace-illustration .art-guide {
+  fill:none;stroke:color-mix(in srgb,var(--apple-accent,#2563eb) 21%,transparent);
+  stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 6;
+}
+body.freev-apple .freev-workspace-illustration .art-line {
+  fill:none;stroke:var(--signature-teal,#139b81);stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;
+  animation:freevArtDraw 1s var(--freev-motion-ease) 120ms forwards;
+}
+body.freev-apple .freev-workspace-illustration .art-dot {
+  fill:var(--apple-surface,#fff);stroke:var(--signature-teal,#139b81);stroke-width:3;
+  transform-box:fill-box;transform-origin:center;opacity:0;
+  animation:freevFeatureAppear 300ms var(--freev-motion-ease) 850ms forwards,
+    freevArtPulse 3.4s ease-in-out 1.2s infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-bar {
+  fill:color-mix(in srgb,var(--signature-teal,#139b81) 28%,var(--apple-surface,#fff));
+  transform-box:fill-box;transform-origin:center bottom;
+  animation:freevArtBar 3.6s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-bar-two {animation-delay:400ms}
+body.freev-apple .freev-workspace-illustration .art-bar-three {animation-delay:800ms}
+body.freev-apple .freev-workspace-illustration .art-bar-four {animation-delay:1.2s}
+body.freev-apple .freev-workspace-illustration .art-receipt {animation:freevArtFloat 4.8s ease-in-out infinite}
+body.freev-apple .freev-workspace-illustration .art-row {
+  fill:none;stroke:var(--apple-muted,#64748b);stroke-width:3;stroke-linecap:round;
+  animation:freevArtRow 3.8s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-row-two {animation-delay:450ms}
+body.freev-apple .freev-workspace-illustration .art-row-three {animation-delay:900ms}
+body.freev-apple .freev-workspace-illustration .art-row-four {animation-delay:1.35s}
+body.freev-apple .freev-workspace-illustration .art-status {fill:var(--signature-teal,#139b81)}
+body.freev-apple .freev-workspace-illustration .art-check {
+  fill:none;stroke:var(--apple-surface,#fff);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:100;stroke-dashoffset:100;
+  animation:freevArtDraw 550ms var(--freev-motion-ease) 500ms forwards;
+}
+body.freev-apple .freev-workspace-illustration .art-calendar-date {
+  fill:var(--apple-surface,#fff);stroke:color-mix(in srgb,var(--apple-accent,#2563eb) 32%,transparent);stroke-width:2;
+}
+body.freev-apple .freev-workspace-illustration .art-calendar-focus {
+  fill:var(--signature-teal,#139b81);stroke:var(--signature-teal,#139b81);
+  transform-box:fill-box;transform-origin:center;animation:freevArtPulse 3.2s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-line-tip {fill:none;stroke:var(--signature-teal,#139b81);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+body.freev-apple .freev-workspace-illustration .art-coin {
+  fill:color-mix(in srgb,var(--signature-teal,#139b81) 15%,var(--apple-surface,#fff));
+  stroke:var(--signature-teal,#139b81);stroke-width:2;
+}
+body.freev-apple .freev-workspace-illustration :is(.art-coin-one,.art-coin-two,.art-coin-three) {
+  transform-box:fill-box;transform-origin:center;
+  animation:freevSavingsCoin 5.2s cubic-bezier(.2,.7,.2,1) infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-coin-two {animation-delay:-1.7s}
+body.freev-apple .freev-workspace-illustration .art-coin-three {animation-delay:-3.4s}
+body.freev-apple .freev-workspace-illustration .art-savings-basket {
+  transform-box:fill-box;transform-origin:center bottom;
+  animation:freevSavingsBasket 5.2s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-savings-glint {
+  fill:none;stroke:var(--signature-teal,#139b81);stroke-width:2;stroke-linecap:round;
+  transform-box:fill-box;transform-origin:center;
+  animation:freevSavingsGlint 5.2s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-coin-mark {fill:none;stroke:var(--signature-teal,#139b81);stroke-width:2;stroke-linecap:round}
+body.freev-apple .freev-workspace-illustration .art-debt-step {
+  transform-box:fill-box;transform-origin:center bottom;animation:freevArtBar 4.2s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-debt-two {animation-delay:400ms}
+body.freev-apple .freev-workspace-illustration .art-debt-three {animation-delay:800ms}
+body.freev-apple .freev-workspace-illustration .art-debt-four {animation-delay:1.2s}
+body.freev-apple .freev-workspace-illustration .art-history-node {
+  fill:var(--apple-surface,#fff);stroke:var(--signature-teal,#139b81);stroke-width:3;
+  transform-box:fill-box;transform-origin:center;animation:freevArtPulse 3.8s ease-in-out infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-history-two {animation-delay:500ms}
+body.freev-apple .freev-workspace-illustration .art-history-three {animation-delay:1s}
+body.freev-apple .freev-workspace-illustration .art-history-four {animation-delay:1.5s}
+body.freev-apple .freev-workspace-illustration .art-slider-handle {
+  fill:var(--apple-surface,#fff);stroke:var(--apple-accent,#2563eb);stroke-width:3;
+  transform-box:fill-box;transform-origin:center;
+  animation:freevSettingsSlider 4.8s cubic-bezier(.45,0,.25,1) infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-slider-two {animation-delay:-1.6s}
+body.freev-apple .freev-workspace-illustration .art-slider-three {animation-delay:-3.2s}
+body.freev-apple .freev-workspace-illustration .art-slider-progress {
+  fill:none;stroke:var(--apple-accent,#2563eb);stroke-width:2.5;stroke-linecap:round;
+  stroke-dasharray:30 160;opacity:.52;
+  animation:freevSettingsTrack 4.8s linear infinite;
+}
+body.freev-apple .freev-workspace-illustration .art-slider-progress-two {animation-delay:-1.6s}
+body.freev-apple .freev-workspace-illustration .art-slider-progress-three {animation-delay:-3.2s}
+@keyframes freevArtReveal {from{opacity:0;transform:translate3d(0,7px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes freevArtDraw {to{stroke-dashoffset:0}}
+@keyframes freevArtPulse {50%{transform:scale(1.18);opacity:.72}}
+@keyframes freevArtBar {50%{transform:scaleY(.78)}}
+@keyframes freevArtFloat {50%{transform:translate3d(0,-5px,0)}}
+@keyframes freevArtRow {50%{opacity:.45}}
+@keyframes freevArtSlide {50%{transform:translate3d(6px,0,0)}}
+@keyframes freevSavingsCoin {
+  0%,100% {transform:translate3d(0,0,0) scale(1)}
+  20% {transform:translate3d(0,-13px,0) scale(1.04)}
+  35% {transform:translate3d(0,2px,0) scale(.96)}
+  45% {transform:translate3d(0,-3px,0) scale(1.01)}
+  55%,85% {transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes freevSavingsBasket {25%,45%{transform:scale(1.025)}65%{transform:scale(1)}}
+@keyframes freevSavingsGlint {0%,18%,60%,100%{opacity:.2;transform:scale(.75)}32%,40%{opacity:1;transform:scale(1.16)}}
+@keyframes freevSettingsSlider {
+  0%,100% {transform:translate3d(0,0,0) scale(1)}
+  25% {transform:translate3d(16px,0,0) scale(1.08)}
+  50% {transform:translate3d(-10px,0,0) scale(1)}
+  75% {transform:translate3d(8px,0,0) scale(1.04)}
+}
+@keyframes freevSettingsTrack {to{stroke-dashoffset:-190}}
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple .freev-dashboard-explore:hover i {transform:translateX(3px)}
+  body.freev-apple .freev-dashboard-explore:hover {color:var(--apple-accent-hover,var(--apple-accent,#2563eb))}
+}
+@media (max-width:768px) {
+  body.freev-apple[data-freev-view="dashboard"] .premium-workspace-head {min-height:0;padding:1.25rem;gap:1rem}
+  body.freev-apple[data-freev-view="dashboard"] .premium-workspace-head h1 {font-size:clamp(1.9rem,7vw,2.5rem)}
+  body.freev-apple[data-freev-view="dashboard"] .premium-workspace-actions {max-width:none}
+}
+@media (max-width:430px) {
+  body.freev-apple[data-freev-view="dashboard"] .premium-workspace-head {padding:1.05rem}
+  body.freev-apple .freev-dashboard-benefits span {font-size:.68rem}
+}
+body.freev-apple #dashboardAlerts:not(:empty) {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));
+  gap:.7rem;margin:1rem 0 1.3rem;
+}
+body.freev-apple #dashboardAlerts:empty {display:none}
+body.freev-apple #dashboardAlerts > div {
+  min-width:0;min-height:5.25rem;margin:0!important;padding:.9rem 1rem;
+  border:1px solid var(--apple-outline,#dce5ef);border-radius:17px;
+  background:var(--apple-surface,#fff);color:var(--apple-ink,#17243a);
+  box-shadow:0 4px 18px rgba(24,39,68,.04);
+}
+body.freev-apple #dashboardAlerts > div > i {
+  display:grid;place-items:center;flex:0 0 2rem;width:2rem;height:2rem;
+  margin:0;border-radius:10px;background:color-mix(in srgb,currentColor 9%,var(--apple-surface,#fff));
+}
+body.freev-apple #dashboardAlerts > div > div {color:var(--apple-muted,#64748b);line-height:1.45}
+body.freev-apple #dashboardAlerts > div > div strong:first-child {color:var(--apple-ink,#17243a)}
+body.freev-apple #dashboardAlerts > .bg-blue-50 {border-left:3px solid var(--apple-accent,#2563eb)}
+body.freev-apple #dashboardAlerts > .bg-yellow-50 {border-left:3px solid #d8971d}
+body.freev-apple #dashboardAlerts > .bg-rose-50 {border-left:3px solid #d45662}
+/* Planner and smart tools use the same calm presentation as the dashboard. */
+body.freev-apple #planner-view .v4-hero,
+body.freev-apple #smart-view .v5-hero {
+  min-height: 13.5rem;
+  border-color: var(--apple-outline,#dce5ef);
+  background:
+    radial-gradient(circle at 91% 13%,color-mix(in srgb,var(--apple-accent,#2563eb) 10%,transparent),transparent 34%),
+    radial-gradient(circle at 5% 95%,color-mix(in srgb,var(--signature-teal,#139b81) 8%,transparent),transparent 42%),
+    var(--apple-surface,#fff);
+  box-shadow: 0 1px 2px rgba(24,39,68,.035),0 18px 42px rgba(24,39,68,.075);
+}
+body.freev-apple #planner-view .v4-hero::after,
+body.freev-apple #smart-view .v5-hero::after {
+  border-color: color-mix(in srgb,var(--apple-accent,#2563eb) 13%,transparent);
+  box-shadow: 0 0 0 4rem color-mix(in srgb,var(--apple-accent,#2563eb) 2%,transparent),
+    0 0 0 8rem color-mix(in srgb,var(--signature-teal,#139b81) 2%,transparent);
+}
+body.freev-apple #planner-view .v4-hero h2,
+body.freev-apple #smart-view .v5-hero h2 {
+  max-width: 21ch;
+  color: var(--apple-ink,#17243a);
+  text-transform: none;
+}
+body.freev-apple #planner-view .v4-hero p,
+body.freev-apple #smart-view .v5-hero p { color: var(--apple-muted,#64748b); }
+body.freev-apple #planner-view .v4-hero .v4-eyebrow,
+body.freev-apple #smart-view .v5-hero .v5-eyebrow { color: var(--signature-teal,#139b81); }
+body.freev-apple #planner-view .v4-hero-actions .btn,
+body.freev-apple #smart-view .v5-hero-status .btn {
+  border-color: var(--apple-outline,#dce5ef);
+  color: var(--apple-ink,#17243a);
+  background: var(--apple-surface,#fff);
+}
+body.freev-apple #planner-view .v4-summary-card:first-child,
+body.freev-apple #smart-view .v5-summary article:first-child {
+  border-color: color-mix(in srgb,var(--apple-accent,#2563eb) 22%,var(--apple-outline,#dce5ef));
+  background: linear-gradient(145deg,
+    color-mix(in srgb,var(--apple-accent,#2563eb) 8%,var(--apple-surface,#fff)),
+    var(--apple-surface,#fff) 70%);
+  box-shadow: 0 1px 2px rgba(24,39,68,.035),0 12px 28px rgba(24,39,68,.07);
+  color: var(--apple-ink,#17243a);
+}
+body.freev-apple #planner-view .v4-summary-card:first-child :is(span,strong,small),
+body.freev-apple #smart-view .v5-summary article:first-child :is(span,strong,small) {
+  color: var(--apple-ink,#17243a);
+}
+body.freev-apple #planner-view .v4-summary-card:first-child .v4-summary-icon,
+body.freev-apple #smart-view .v5-summary article:first-child > i {
+  color: var(--apple-accent,#2563eb);
+  background: color-mix(in srgb,var(--apple-accent,#2563eb) 10%,var(--apple-surface,#fff));
+}
+body.freev-apple #smart-view .v5-tabs button.active {
+  color: var(--apple-surface,#fff);
+  background: var(--apple-ink,#17243a);
+  box-shadow: 0 5px 14px rgba(22,35,57,.16);
+}
+@media (max-width:800px) {
+  body.freev-apple #planner-view .v4-hero,
+  body.freev-apple #smart-view .v5-hero { min-height:0; }
+  body.freev-apple #planner-view .v4-hero-actions,
+  body.freev-apple #smart-view .v5-hero-status { align-self:stretch; }
+}
+
+/* Feature artwork adds continuous, decorative motion without implying forecast data. */
+body.freev-apple .freev-feature-hero { isolation:isolate; }
+body.freev-apple .freev-feature-intro { position:relative;z-index:1;max-width:min(56%,42rem); }
+body.freev-apple .freev-feature-steps {display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.15rem}
+body.freev-apple .freev-feature-steps span {
+  display:inline-flex;align-items:center;gap:.42rem;min-height:2rem;
+  padding:.38rem .68rem;border:1px solid var(--apple-outline,#dce5ef);
+  border-radius:999px;background:color-mix(in srgb,var(--apple-surface,#fff) 85%,transparent);
+  color:var(--apple-muted,#64748b);font-size:.72rem;font-weight:650;line-height:1.2;
+}
+body.freev-apple .freev-feature-steps i {color:var(--signature-teal,#139b81);font-size:.67rem}
+body.freev-apple :is(#planner-view,#smart-view):not(.hidden) .freev-feature-steps span {animation:freevFeatureStepIn 360ms var(--freev-motion-ease) both}
+body.freev-apple :is(#planner-view,#smart-view):not(.hidden) .freev-feature-steps span:nth-child(2) {animation-delay:80ms}
+body.freev-apple :is(#planner-view,#smart-view):not(.hidden) .freev-feature-steps span:nth-child(3) {animation-delay:160ms}
+@keyframes freevFeatureStepIn {from{opacity:0;transform:translate3d(0,7px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+body.freev-apple .freev-feature-art {
+  position:absolute;z-index:0;top:1.1rem;right:clamp(1rem,6vw,6rem);
+  width:clamp(11rem,20vw,16rem);height:auto;
+  opacity:.86;pointer-events:none;
+}
+body.freev-apple .freev-feature-art svg {display:block;width:100%;height:auto;overflow:visible}
+body.freev-apple :is(#planner-view,#smart-view):not(.hidden) .freev-feature-art {
+  animation:freevFeatureFloat 5.6s ease-in-out 1s infinite;
+}
+@keyframes freevFeatureFloat {50%{transform:translate3d(0,-4px,0)}}
+body.freev-apple .freev-feature-guide {fill:none;stroke:color-mix(in srgb,var(--apple-accent,#2563eb) 13%,transparent);stroke-width:1.2;stroke-dasharray:3 6}
+body.freev-apple .freev-feature-area {fill:color-mix(in srgb,var(--signature-teal,#139b81) 9%,transparent)}
+body.freev-apple .freev-feature-stroke {fill:none;stroke:var(--signature-teal,#139b81);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400}
+body.freev-apple .freev-feature-trace {
+  fill:none;stroke:var(--apple-accent,#2563eb);stroke-width:3.5;stroke-linecap:round;
+  stroke-dasharray:9 91;stroke-dashoffset:100;opacity:0;
+}
+body.freev-apple .freev-feature-point {fill:var(--apple-surface,#fff);stroke:var(--signature-teal,#139b81);stroke-width:3;opacity:0}
+body.freev-apple .freev-feature-orbit {fill:none;stroke:color-mix(in srgb,var(--apple-accent,#2563eb) 30%,transparent);stroke-width:2;stroke-dasharray:300;stroke-dashoffset:300}
+body.freev-apple .freev-feature-node {fill:var(--apple-surface,#fff);stroke:var(--apple-accent,#2563eb);stroke-width:2.5;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.65)}
+body.freev-apple .freev-feature-node:nth-of-type(2) {fill:color-mix(in srgb,var(--apple-accent,#2563eb) 12%,var(--apple-surface,#fff))}
+body.freev-apple .freev-feature-check {fill:none;stroke:var(--signature-teal,#139b81);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40}
+body.freev-apple #planner-view:not(.hidden) .freev-feature-stroke {animation:freevFeatureDraw 850ms var(--freev-motion-ease) 100ms forwards}
+body.freev-apple #planner-view:not(.hidden) .freev-feature-trace {animation:freevPlannerTrace 5s linear 1s infinite}
+body.freev-apple #planner-view:not(.hidden) .freev-feature-area {animation:freevPlannerArea 5s ease-in-out 1s infinite}
+body.freev-apple #planner-view:not(.hidden) .freev-feature-point {
+  transform-box:fill-box;transform-origin:center;
+  animation:freevFeatureAppear 320ms var(--freev-motion-ease) 760ms forwards,
+    freevArtPulse 3.6s ease-in-out 1.3s infinite;
+}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-orbit {animation:freevFeatureDraw 700ms var(--freev-motion-ease) 90ms forwards}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-node {animation:freevFeatureAppear 360ms var(--freev-motion-ease) 280ms forwards}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-node:nth-of-type(3) {animation-delay:360ms}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-node:nth-of-type(4) {animation-delay:430ms}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-node:nth-of-type(5) {animation-delay:500ms}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-node:nth-of-type(6) {animation-delay:570ms}
+body.freev-apple #smart-view:not(.hidden) .freev-feature-check {animation:freevFeatureDraw 390ms var(--freev-motion-ease) 620ms forwards}
+body.freev-apple .freev-smart-signal {
+  fill:var(--signature-teal,#139b81);transform-box:view-box;transform-origin:120px 70px;
+}
+body.freev-apple #smart-view:not(.hidden) .freev-smart-signal {animation:freevSmartSignal 8s linear 1s infinite}
+@keyframes freevFeatureDraw {to {stroke-dashoffset:0}}
+@keyframes freevFeatureAppear {to {opacity:1;transform:scale(1)}}
+@keyframes freevPlannerTrace {
+  0%{stroke-dashoffset:100;opacity:0}
+  12%,82%{opacity:.8}
+  100%{stroke-dashoffset:0;opacity:0}
+}
+@keyframes freevPlannerArea {50%{opacity:.55}}
+@keyframes freevSmartSignal {to{transform:rotate(1turn)}}
+
+body.freev-apple #planner-view .v4-hero-actions,
+body.freev-apple #smart-view .v5-hero-status {position:relative;z-index:2;gap:.55rem;max-width:28rem}
+body.freev-apple #planner-view .v4-hero-actions #v4HelpButton,
+body.freev-apple #planner-view .v4-hero-actions .freev-feature-cta,
+body.freev-apple #smart-view .v5-hero-status #v5HelpButton {display:inline-flex}
+body.freev-apple :is(#planner-view .v4-hero-actions,#smart-view .v5-hero-status) .freev-feature-cta {
+  color:var(--apple-surface,#fff);background:var(--apple-ink,#17243a);
+  border-color:var(--apple-ink,#17243a);box-shadow:0 9px 22px rgba(22,35,57,.16);
+  white-space:normal;text-align:center;
+}
+body.freev-apple .freev-feature-cta .fa-arrow-right {transition:transform var(--freev-motion-standard) var(--freev-motion-ease)}
+body.freev-apple :is(#v42ForecastChart,#v5Overview) {scroll-margin-top:clamp(5rem,9vh,7rem)}
+body.freev-apple :is(#planner-view .v4-summary-icon,#smart-view .v5-summary article > i,#smart-view .v5-insights article > i) {
+  transition:transform 280ms var(--freev-motion-ease),background-color var(--freev-motion-standard) ease;
+}
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple .freev-feature-cta:hover .fa-arrow-right {transform:translateX(3px)}
+  body.freev-apple :is(#planner-view .v4-hero-actions,#smart-view .v5-hero-status) .freev-feature-cta:hover {box-shadow:0 13px 26px rgba(22,35,57,.2)}
+  body.freev-apple :is(#planner-view .v4-summary-card,#smart-view .v5-summary article,#smart-view .v5-insights article):hover > :is(.v4-summary-icon,i) {transform:translate3d(0,-2px,0) scale(1.06)}
+}
+@media (max-width:1050px) {
+  body.freev-apple .freev-feature-intro {max-width:100%}
+  body.freev-apple .freev-feature-art {display:none}
+}
+@media (max-width:600px) {
+  body.freev-apple #planner-view .v4-hero-actions,
+  body.freev-apple #smart-view .v5-hero-status {max-width:none}
+  body.freev-apple :is(#planner-view .v4-hero-actions,#smart-view .v5-hero-status) .freev-feature-cta {width:100%;justify-content:center;min-height:46px}
+}
+body.freev-apple :is(.card,.v5-card) > :is(.v4-section-head,.v5-section-head) {
+  gap: .75rem;
+  padding-bottom: .85rem;
+  margin-bottom: .85rem;
+  border-bottom: 1px solid color-mix(in srgb,var(--apple-outline,#dce5ef) 80%,transparent);
+}
+body.freev-apple :is(.v4-section-head,.v5-section-head,.v4-story-heading,.v5-story-heading) p {
+  text-wrap: pretty;
+}
+
+body.freev-apple :is(.card,.v5-card,.fp2-panel,.fp2-metric,.premium-v4-stat,.dashboard-chart-card,.rec-detail-card,.rec-history-card) {
+  transition: transform var(--freev-motion-standard) var(--freev-motion-ease),
+    box-shadow var(--freev-motion-standard) var(--freev-motion-ease),
+    border-color var(--freev-motion-quick) ease,
+    background-color var(--freev-motion-quick) ease;
+}
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple :is(.card,.v5-card,.fp2-panel,.fp2-metric,.premium-v4-stat,.dashboard-chart-card,.rec-detail-card,.rec-history-card):hover {
+    box-shadow: var(--freev-motion-shadow);
+  }
+  body.freev-apple :is(.btn,.btn-icon,.premium-workspace-action,.freev-select-trigger,.premium-workspace-add-item):not(:disabled):active {
+    transform: scale(.975);
+    transition-duration: 90ms;
+  }
+}
+
+body.freev-apple :is(.sidebar-nav .nav-item,.bottom-nav-item,.view-mode-tab,[data-v5-tab],.v4-horizon button,.premium-workspace-action) {
+  transition: color var(--freev-motion-quick) ease,
+    background-color var(--freev-motion-quick) ease,
+    border-color var(--freev-motion-quick) ease,
+    box-shadow var(--freev-motion-standard) var(--freev-motion-ease),
+    transform var(--freev-motion-standard) var(--freev-motion-ease);
+}
+body.freev-apple :is(.sidebar-nav .nav-item,.bottom-nav-item)[aria-current="page"] {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb,var(--apple-accent,#2563eb) 12%,transparent);
+}
+body.freev-apple :is(.btn-primary,.premium-workspace-action-primary) {
+  box-shadow: 0 5px 13px color-mix(in srgb,var(--apple-accent,#2563eb) 17%,transparent);
+}
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple :is(.btn-primary,.premium-workspace-action-primary):not(:disabled):hover {
+    box-shadow: 0 9px 20px color-mix(in srgb,var(--apple-accent,#2563eb) 23%,transparent);
+  }
+}
+
+body.freev-apple :is(.freev-select-list,#recurring-view .recurring-more-actions) {
+  transform-origin: top center;
+  animation: freevMenuArrive 210ms var(--freev-motion-ease) both;
+}
+body.freev-apple .freev-select.opens-up .freev-select-list { transform-origin: bottom center; }
+body.freev-apple .premium-workspace-add-panel:not([hidden]) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--freev-motion-ease);
+}
+body.freev-apple .premium-workspace-add-chevron {
+  transition: transform var(--freev-motion-standard) var(--freev-motion-ease);
+}
+body.freev-apple #workspaceAddTrigger[aria-expanded="true"] .premium-workspace-add-chevron {
+  transform: rotate(180deg);
+}
+@keyframes freevMenuArrive {
+  from { opacity:0; transform:translate3d(0,-5px,0) scale(.985); }
+  to { opacity:1; transform:translate3d(0,0,0) scale(1); }
+}
+
+body.freev-apple :is(details > summary,.freev-select-trigger,.form-input,.form-select) {
+  transition: background-color var(--freev-motion-quick) ease,
+    border-color var(--freev-motion-quick) ease,
+    box-shadow var(--freev-motion-standard) var(--freev-motion-ease);
+}
+body.freev-apple details[open] > :not(summary) {
+  animation: freevDetailArrive 220ms var(--freev-motion-ease) both;
+}
+body.freev-apple :is(.v4-detail-disclosure,.v4-simulator-disclosure) > summary > .fa-chevron-down {
+  transition: transform var(--freev-motion-standard) var(--freev-motion-ease);
+}
+body.freev-apple :is(.v4-detail-disclosure,.v4-simulator-disclosure)[open] > summary > .fa-chevron-down {
+  transform: rotate(180deg);
+}
+@keyframes freevDetailArrive {
+  from { opacity:0; transform:translate3d(0,-5px,0); }
+  to { opacity:1; transform:translate3d(0,0,0); }
+}
+
+/* Chart animation is a single entrance; interaction and values remain immediate. */
+body.freev-apple .chart-container.chart-reveal {
+  animation-duration: 440ms;
+  animation-timing-function: var(--freev-motion-ease);
+}
+body.freev-apple :is(.v42-forecast-chart,.dashboard-chart-card) :is(svg,canvas) {
+  transform-origin: center center;
+}
+body.freev-apple .modal-overlay:not(.hidden) > :is(.modal-content,.accounts-modal-content) {
+  animation-duration: 260ms;
+  animation-timing-function: var(--freev-motion-ease);
+}
+body.freev-apple .toast.show {
+  animation-duration: 280ms;
+  animation-timing-function: var(--freev-motion-ease);
+}
+body.freev-apple [data-v5-tab] > i {
+  transition: transform var(--freev-motion-standard) var(--freev-motion-ease),
+    color var(--freev-motion-quick) ease;
+}
+body.freev-apple [data-v5-tab].active > i { transform: scale(1.08); }
+body.freev-apple .v5-panel:not([hidden]) {
+  animation: freevDetailArrive 240ms var(--freev-motion-ease) both;
+}
+@media (max-width:768px) {
+  body.freev-apple .modal-overlay:not(.hidden) > :is(.modal-content,.accounts-modal-content) {
+    animation-name: freevSheetArrive;
+    animation-duration: 280ms;
+  }
+  @keyframes freevSheetArrive {
+    from { opacity:0; transform:translate3d(0,22px,0) scale(.99); }
+    to { opacity:1; transform:translate3d(0,0,0) scale(1); }
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple :is(.card,.v5-card,.fp2-panel,.fp2-metric,.premium-v4-stat,.dashboard-chart-card,.rec-detail-card,.rec-history-card,.premium-workspace-head,.v4-hero,.v5-hero,.sidebar-nav .nav-item,.bottom-nav-item,.view-mode-tab,[data-v5-tab],[data-v5-tab] > i,.v4-horizon button,.premium-workspace-action,.premium-workspace-add-chevron,.freev-select-list,.premium-workspace-add-panel,.recurring-more-actions,details > summary,details[open] > :not(summary),.v4-detail-disclosure > summary > .fa-chevron-down,.v4-simulator-disclosure > summary > .fa-chevron-down,.freev-select-trigger,.form-input,.form-select,.chart-container.chart-reveal,.v5-panel:not([hidden]),.toast.show,.modal-overlay:not(.hidden) > .modal-content,.modal-overlay:not(.hidden) > .accounts-modal-content) {
+    animation:none!important;
+    transition:none!important;
+  }
+  body.freev-apple :is(#workspaceAddTrigger[aria-expanded="true"] .premium-workspace-add-chevron,[data-v5-tab].active > i,.v4-detail-disclosure[open] > summary > .fa-chevron-down,.v4-simulator-disclosure[open] > summary > .fa-chevron-down) { transform:none!important; }
+  body.freev-apple :is(.freev-feature-stroke,.freev-feature-point,.freev-feature-orbit,.freev-feature-node,.freev-feature-check,.freev-feature-cta .fa-arrow-right) {animation:none!important;transition:none!important}
+  body.freev-apple .freev-feature-steps span {animation:none!important}
+  body.freev-apple .freev-dashboard-benefits span {animation:none!important;transform:none!important;opacity:1}
+  body.freev-apple .freev-workspace-illustration svg,
+  body.freev-apple .freev-workspace-illustration svg * {animation:none!important;transition:none!important;transform:none!important;opacity:1!important}
+  body.freev-apple .freev-workspace-illustration :is(.art-line,.art-check) {stroke-dashoffset:0}
+  body.freev-apple .freev-feature-art {animation:none!important;transform:none!important}
+  body.freev-apple .freev-feature-trace {display:none}
+  body.freev-apple .freev-smart-signal,
+  body.freev-apple .freev-feature-area {animation:none!important;transform:none!important}
+  body.freev-apple .freev-dashboard-explore i {transition:none!important;transform:none!important}
+  body.freev-apple :is(#planner-view .v4-summary-icon,#smart-view .v5-summary article > i,#smart-view .v5-insights article > i) {transition:none!important;transform:none!important}
+  body.freev-apple :is(.freev-feature-stroke,.freev-feature-orbit,.freev-feature-check) {stroke-dashoffset:0}
+  body.freev-apple :is(.freev-feature-point,.freev-feature-node) {opacity:1;transform:none}
+}

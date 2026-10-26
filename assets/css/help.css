@@ -1,0 +1,228 @@
+/* Centre d’aide interactif Freev 4.3 / 5.1. */
+.freev-help-dialog {
+  display: flex;
+  width: min(68rem, 100%);
+  max-height: min(94vh, 60rem);
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.freev-help-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .8rem 1rem;
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  background: linear-gradient(135deg, rgba(37, 99, 235, .055), rgba(20, 184, 166, .035) 55%, transparent);
+}
+.freev-help-heading h2 { margin: .2rem 0 .3rem; color: var(--text-primary, #0f172a); font-size: 1.45rem; line-height: 1.2; }
+.freev-help-heading p { margin: 0; color: var(--text-muted, #64748b); font-size: .8rem; line-height: 1.5; }
+.freev-help-close { flex: 0 0 auto; }
+
+.freev-help-search {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 1.2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .55rem;
+  min-height: 3rem;
+  padding: .35rem .55rem .35rem .85rem;
+  border: 1px solid var(--border-color, #cbd5e1);
+  border-radius: .85rem;
+  background: var(--bg-card, #fff);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, .05);
+  color: #2563eb;
+}
+.freev-help-search:focus-within { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, .13); }
+.freev-help-search input { min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary, #0f172a); font: 600 .8rem/1.4 Inter, sans-serif; }
+.freev-help-search input::-webkit-search-cancel-button { display: none; appearance: none; }
+.freev-help-search input::placeholder { color: var(--text-muted, #64748b); font-weight: 500; }
+.freev-help-search-clear { display: grid; width: 2rem; height: 2rem; place-items: center; border: 0; border-radius: .55rem; background: var(--bg-input, #f1f5f9); color: var(--text-muted, #64748b); cursor: pointer; }
+.freev-help-search-clear[hidden] { display: none; }
+.freev-help-search-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.freev-help-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem;
+  padding: .7rem 1.5rem;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  background: var(--bg-input, #f8fafc);
+}
+.freev-help-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-height: 2.7rem;
+  padding: .55rem .8rem;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: .75rem;
+  background: var(--bg-card, #fff);
+  color: var(--text-secondary, #475569);
+  cursor: pointer;
+  font: 750 .78rem/1 Inter, sans-serif;
+}
+.freev-help-tabs button:not([aria-selected="true"]) { color: #334155; }
+.freev-help-tabs button[aria-selected="true"] { border-color: #2563eb; background: #2563eb; color: #fff; box-shadow: 0 8px 20px rgba(37, 99, 235, .2); }
+.freev-help-tabs button:focus-visible,
+.freev-help-dialog button:focus-visible,
+.freev-help-dialog summary:focus-visible,
+.freev-help-dialog input:focus-visible { outline: 3px solid rgba(37, 99, 235, .32); outline-offset: 2px; }
+
+.freev-help-content { overflow: auto; overscroll-behavior: contain; scroll-behavior: smooth; }
+.freev-help-panel { display: grid; gap: 1rem; padding: 1rem 1.5rem 1.5rem; }
+.freev-help-panel[hidden],
+.freev-help-panel [hidden] { display: none !important; }
+
+.freev-help-jumps { display: grid; position: sticky; z-index: 3; top: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; padding: .4rem; border: 1px solid var(--border-color, #e2e8f0); border-radius: .8rem; background: color-mix(in srgb, var(--bg-card, #fff) 92%, transparent); backdrop-filter: blur(10px); }
+.freev-help-jumps button { display: flex; align-items: center; justify-content: center; gap: .35rem; min-height: 2.35rem; border: 0; border-radius: .58rem; background: transparent; color: var(--text-secondary, #475569); cursor: pointer; font: 700 .7rem/1 Inter, sans-serif; }
+.freev-help-jumps button:hover { background: var(--bg-input, #f1f5f9); color: #2563eb; }
+
+.freev-help-callout { display: flex; align-items: flex-start; gap: .8rem; padding: 1rem; border: 1px solid rgba(37, 99, 235, .2); border-radius: .9rem; background: rgba(37, 99, 235, .07); }
+.freev-help-callout > i { margin-top: .12rem; color: #2563eb; font-size: 1.15rem; }
+.freev-help-callout > div { display: flex; flex-direction: column; gap: .22rem; }
+.freev-help-callout strong { color: var(--text-primary, #0f172a); font-size: .82rem; }
+.freev-help-callout span { color: var(--text-secondary, #475569); font-size: .75rem; line-height: 1.55; }
+.freev-help-callout-purple { border-color: rgba(124, 58, 237, .22); background: rgba(124, 58, 237, .07); }
+.freev-help-callout-purple > i { color: #7c3aed; }
+
+.freev-help-section { display: grid; gap: .75rem; padding-top: .2rem; scroll-margin-top: 3.5rem; }
+.freev-help-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.freev-help-section-head h3 { margin: .12rem 0 .18rem; color: var(--text-primary, #0f172a); font-size: 1rem; }
+.freev-help-section-head p { margin: 0; color: var(--text-muted, #64748b); font-size: .72rem; line-height: 1.45; }
+.freev-help-kicker { color: #2563eb; font-size: .6rem; font-weight: 850; letter-spacing: .09em; }
+.freev-help-reset { flex: 0 0 auto; border: 0; background: transparent; color: #2563eb; cursor: pointer; font: 700 .68rem/1 Inter, sans-serif; }
+
+.freev-help-progress-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
+.freev-help-progress { height: .48rem; overflow: hidden; border-radius: 99rem; background: var(--border-color, #e2e8f0); }
+.freev-help-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2563eb, #14b8a6); transition: width .25s ease; }
+.freev-help-progress-row > strong { min-width: 5.8rem; color: var(--text-secondary, #475569); font-size: .68rem; text-align: right; }
+
+.freev-help-checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+.freev-help-checklist label { display: grid; grid-template-columns: 1.1rem 2rem minmax(0, 1fr); align-items: flex-start; gap: .55rem; padding: .8rem; border: 1px solid var(--border-color, #e2e8f0); border-radius: .8rem; background: var(--bg-card, #fff); cursor: pointer; }
+.freev-help-checklist label:has(input:checked) { border-color: rgba(16, 185, 129, .4); background: rgba(16, 185, 129, .06); }
+.freev-help-checklist input { width: 1rem; height: 1rem; margin-top: .45rem; accent-color: #10b981; }
+.freev-help-step-number { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: .6rem; background: #0f172a; color: #fff; font-size: .72rem; font-weight: 850; }
+.freev-help-checklist label:has(input:checked) .freev-help-step-number { background: #059669; }
+.freev-help-checklist label > span:last-child { display: flex; min-width: 0; flex-direction: column; gap: .18rem; }
+.freev-help-checklist strong { color: var(--text-primary, #0f172a); font-size: .76rem; }
+.freev-help-checklist small { color: var(--text-muted, #64748b); font-size: .68rem; line-height: 1.45; }
+
+.freev-help-task-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.freev-help-task-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.freev-help-task-grid article { display: grid; grid-template-columns: 2.35rem minmax(0, 1fr); gap: .65rem; padding: .85rem; border: 1px solid var(--border-color, #e2e8f0); border-radius: .85rem; background: var(--bg-card, #fff); }
+.freev-help-task-grid article > i { display: grid; width: 2.35rem; height: 2.35rem; place-items: center; border-radius: .7rem; background: rgba(37, 99, 235, .09); color: #2563eb; }
+.freev-help-task-grid article > div { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; }
+.freev-help-task-grid strong { color: var(--text-primary, #0f172a); font-size: .76rem; }
+.freev-help-task-grid p { flex: 1; margin: .25rem 0 .55rem; color: var(--text-muted, #64748b); font-size: .68rem; line-height: 1.45; }
+.freev-help-task-grid button { display: inline-flex; align-items: center; gap: .3rem; padding: 0; border: 0; background: transparent; color: #2563eb; cursor: pointer; font: 750 .68rem/1.3 Inter, sans-serif; text-align: left; }
+
+.freev-help-accordions { display: grid; gap: .55rem; }
+.freev-help-accordions details { overflow: hidden; border: 1px solid var(--border-color, #e2e8f0); border-radius: .85rem; background: var(--bg-card, #fff); }
+.freev-help-accordions summary { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr) auto; align-items: center; gap: .7rem; min-height: 3.8rem; padding: .65rem .8rem; cursor: pointer; list-style: none; }
+.freev-help-accordions summary::-webkit-details-marker { display: none; }
+.freev-help-summary-icon { display: grid; width: 2.4rem; height: 2.4rem; place-items: center; border-radius: .7rem; background: rgba(16, 185, 129, .1); color: #059669; }
+.freev-help-summary-purple { background: rgba(124, 58, 237, .1); color: #7c3aed; }
+.freev-help-accordions summary > span:nth-child(2) { display: flex; min-width: 0; flex-direction: column; gap: .15rem; }
+.freev-help-accordions summary strong { color: var(--text-primary, #0f172a); font-size: .78rem; }
+.freev-help-accordions summary small { color: var(--text-muted, #64748b); font-size: .66rem; }
+.freev-help-accordions summary > i { color: var(--text-muted, #64748b); transition: transform .2s ease; }
+.freev-help-accordions details[open] summary > i { transform: rotate(180deg); }
+.freev-help-details-body { padding: 0 1rem 1rem 3.85rem; color: var(--text-secondary, #475569); font-size: .72rem; line-height: 1.55; }
+.freev-help-accordions details[open] .freev-help-details-body { animation: freevHelpMenuReveal .24s cubic-bezier(.22, 1, .36, 1) both; }
+.freev-help-details-body ol { display: grid; gap: .3rem; margin: 0 0 .75rem; padding-left: 1.1rem; }
+.freev-help-details-body p { margin: 0 0 .75rem; }
+.freev-help-details-body pre { margin: 0 0 .75rem; padding: .8rem; overflow: auto; border-radius: .65rem; background: #0f172a; color: #e2e8f0; font: 600 .68rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+.freev-help-faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+.freev-help-faq-grid details { align-self: start; border: 1px solid var(--border-color, #e2e8f0); border-radius: .75rem; background: var(--bg-card, #fff); }
+.freev-help-faq-grid summary { display: flex; align-items: center; justify-content: space-between; gap: .7rem; min-height: 3rem; padding: .7rem .8rem; color: var(--text-primary, #0f172a); cursor: pointer; font-size: .73rem; font-weight: 750; list-style: none; }
+.freev-help-faq-grid summary::-webkit-details-marker { display: none; }
+.freev-help-faq-grid summary i { color: #2563eb; transition: transform .2s ease; }
+.freev-help-faq-grid details[open] summary i { transform: rotate(45deg); }
+.freev-help-faq-grid p { margin: 0; padding: 0 .8rem .8rem; color: var(--text-muted, #64748b); font-size: .69rem; line-height: 1.55; }
+.freev-help-faq-grid details[open] p { animation: freevHelpMenuReveal .2s cubic-bezier(.22, 1, .36, 1) both; }
+
+@keyframes freevHelpMenuReveal {
+  from { opacity: 0; transform: translateY(-.35rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.freev-help-glossary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+.freev-help-glossary span { display: flex; flex-direction: column; gap: .18rem; padding: .7rem; border-left: 3px solid #14b8a6; border-radius: 0 .65rem .65rem 0; background: rgba(20, 184, 166, .06); color: var(--text-muted, #64748b); font-size: .65rem; line-height: 1.4; }
+.freev-help-glossary strong { color: var(--text-primary, #0f172a); font-size: .7rem; }
+
+.freev-help-no-results { display: grid; min-height: 18rem; place-items: center; align-content: center; gap: .45rem; margin: 1rem 1.5rem; padding: 2rem; border: 1px dashed var(--border-color, #cbd5e1); border-radius: 1rem; color: var(--text-muted, #64748b); text-align: center; }
+.freev-help-no-results[hidden] { display: none; }
+.freev-help-no-results > i { color: #2563eb; font-size: 1.7rem; }
+.freev-help-no-results strong { color: var(--text-primary, #0f172a); font-size: .9rem; }
+.freev-help-no-results span { margin-bottom: .4rem; font-size: .72rem; }
+
+body.dark-mode .freev-help-header,
+body.dark-mode .freev-help-tabs,
+body.dark-mode .freev-help-jumps,
+body.dark-mode .freev-help-checklist label,
+body.dark-mode .freev-help-task-grid article,
+body.dark-mode .freev-help-accordions details,
+body.dark-mode .freev-help-faq-grid details { background-color: var(--bg-input); }
+body.dark-mode .freev-help-tabs button,
+body.dark-mode .freev-help-search { background: var(--bg-card); }
+body.dark-mode .freev-help-tabs button:not([aria-selected="true"]) { color: #e2e8f0; }
+body.dark-mode .freev-help-tabs button[aria-selected="true"] { background: #2563eb; }
+
+/* L’onglet actif reste lisible, y compris après le changement dynamique de rubrique. */
+.freev-help-tabs button[aria-selected="true"],
+.freev-help-tabs button[aria-selected="true"] > span,
+.freev-help-tabs button[aria-selected="true"] > i { background: #1d4ed8 !important; color: #fff !important; }
+
+@media (max-width: 900px) {
+  .freev-help-task-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .freev-help-glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .freev-help-dialog { max-height: 96dvh; }
+  .freev-help-header { gap: .65rem; padding: .9rem 1rem .8rem; }
+  .freev-help-heading h2 { font-size: 1.15rem; }
+  .freev-help-heading p { font-size: .72rem; }
+  .freev-help-search { min-height: 2.75rem; }
+  .freev-help-tabs { padding: .6rem 1rem; }
+  .freev-help-tabs button { min-height: 2.6rem; padding: .5rem; font-size: .69rem; }
+  .freev-help-panel { gap: .85rem; padding: .8rem 1rem 1.2rem; }
+  .freev-help-jumps { grid-template-columns: repeat(4, max-content); overflow-x: auto; justify-content: start; }
+  .freev-help-jumps button { padding: 0 .65rem; }
+  .freev-help-section-head { align-items: flex-start; flex-direction: column; gap: .35rem; }
+  .freev-help-checklist,
+  .freev-help-task-grid,
+  .freev-help-task-grid-four,
+  .freev-help-faq-grid { grid-template-columns: 1fr; }
+  .freev-help-details-body { padding-left: 1rem; }
+  .freev-help-glossary { grid-template-columns: 1fr 1fr; }
+  .v4-hero-actions { grid-template-columns: 1fr; }
+  .v5-hero-status { align-items: stretch; }
+  .v5-hero-status .btn { justify-content: center; }
+}
+
+@media (max-width: 430px) {
+  .freev-help-header { grid-template-columns: minmax(0, 1fr) 2.25rem; }
+  .freev-help-search input { font-size: .73rem; }
+  .freev-help-tabs button span { max-width: 8rem; line-height: 1.2; }
+  .freev-help-callout { padding: .85rem; }
+  .freev-help-checklist label { grid-template-columns: 1rem 1.8rem minmax(0, 1fr); padding: .7rem; }
+  .freev-help-step-number { width: 1.8rem; height: 1.8rem; }
+  .freev-help-task-grid article { grid-template-columns: 2.1rem minmax(0, 1fr); }
+  .freev-help-task-grid article > i { width: 2.1rem; height: 2.1rem; }
+  .freev-help-glossary { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .freev-help-dialog,
+  .freev-help-progress span,
+  .freev-help-accordions summary > i,
+  .freev-help-faq-grid summary i,
+  .freev-help-accordions details[open] .freev-help-details-body,
+  .freev-help-faq-grid details[open] p { animation: none; transition: none; }
+  .freev-help-content { scroll-behavior: auto; }
+}

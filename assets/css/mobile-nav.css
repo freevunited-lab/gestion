@@ -1,0 +1,29 @@
+/* Uiverse component adaptation: Button by gharsh11032000 (Harsh Gupta),
+   https://uiverse.io/gharsh11032000/loud-chicken-53 — MIT License, Copyright 2026 gharsh11032000.
+   Its tactile hover and active motion are adapted to Freev's mobile navigation. */
+@media (max-width: 768px) {
+  .sidebar .nav-item[data-mobile-hidden] { display: none !important; }
+  .sidebar { width: min(86vw, 21.5rem); max-width: none; border-right: 1px solid rgba(148, 163, 184, .18); background: linear-gradient(165deg, #0f172a, #172554 52%, #0f172a); }
+  .sidebar.open { box-shadow: 16px 0 40px rgba(2, 6, 23, .42); }
+  .sidebar-nav { padding: .55rem .7rem 1rem; }
+  .sidebar-mobile-sep { margin: .55rem .2rem .42rem; color: rgba(191, 219, 254, .72); font-size: .57rem; font-weight: 850; letter-spacing: .13em; }
+  .sidebar-nav > .nav-item:not(.primary-nav) { min-height: 2.9rem; margin: .25rem 0; border: 1px solid transparent; border-radius: .8rem; color: #dbeafe; transition: transform .22s cubic-bezier(.22, 1, .36, 1), background .22s ease, border-color .22s ease; }
+  .sidebar-nav > .nav-item:not(.primary-nav):hover,
+  .sidebar-nav > .nav-item:not(.primary-nav):active { border-color: rgba(125, 211, 252, .22); background: linear-gradient(90deg, rgba(37, 99, 235, .28), rgba(20, 184, 166, .12)); transform: translateX(.24rem); }
+  .sidebar-nav > .nav-item:not(.primary-nav) > i { width: 1.45rem; color: #7dd3fc; text-align: center; }
+  .pwa-install-nav { width: 100%; font: inherit; text-align: left; }
+
+  .bottom-nav { height: calc(4.65rem + env(safe-area-inset-bottom)); padding: .35rem .45rem calc(.35rem + env(safe-area-inset-bottom)); border: 0; border-top: 1px solid rgba(148, 163, 184, .18); background: color-mix(in srgb, #0f172a 92%, transparent); box-shadow: 0 -12px 30px rgba(2, 6, 23, .16); backdrop-filter: blur(18px); }
+  .bottom-nav-item { min-width: 0; border-radius: .9rem; color: #94a3b8; font-size: .6rem; font-weight: 750; transition: color .22s ease, background .22s ease, transform .22s cubic-bezier(.22, 1, .36, 1); }
+  .bottom-nav-item i { display: grid; width: 2.05rem; height: 2.05rem; place-items: center; border-radius: .7rem; font-size: 1rem; transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), background .22s ease; }
+  .bottom-nav-item::after { display: none; }
+  .bottom-nav-item.active { color: #e0f2fe; background: linear-gradient(135deg, rgba(37, 99, 235, .38), rgba(20, 184, 166, .2)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12); }
+  .bottom-nav-item.active i { background: rgba(255, 255, 255, .13); color: #5eead4; transform: translateY(-1px) scale(1.08); }
+  .bottom-nav-item:hover { color: #e0f2fe; transform: translateY(-2px); }
+  .bottom-nav-item:active { transform: translateY(1px) scale(.94); }
+  #bnav-scan i { background: linear-gradient(145deg, #24a784, #14745f); color: white; box-shadow: 0 4px 12px rgba(20,116,95,.26); }
+  #bnav-scan:active i { transform: scale(.9); }
+  #fabAddBtn { bottom: calc(5.65rem + env(safe-area-inset-bottom)); border: 3px solid rgba(255, 255, 255, .92); box-shadow: 0 13px 28px rgba(37, 99, 235, .38), 0 0 0 5px rgba(37, 99, 235, .12); }
+  #fabAddBtn:hover { transform: translateY(-2px) rotate(90deg); }
+  @media (prefers-reduced-motion: reduce) { .sidebar, .sidebar-nav > .nav-item:not(.primary-nav), .bottom-nav-item, .bottom-nav-item i, #fabAddBtn { animation: none; transition: none; transform: none !important; } }
+}

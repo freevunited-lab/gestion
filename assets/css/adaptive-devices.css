@@ -1,0 +1,87 @@
+/* Une même interface de consultation pour téléphones étroits, grands téléphones
+   tactiles et appareils dont le navigateur expose deux segments d'écran. */
+@media (max-width: 768px), (pointer: coarse) and (max-width: 1024px), (horizontal-viewport-segments: 2), (vertical-viewport-segments: 2) {
+  html, body, .main-content, .content-area { min-width: 0; max-width: 100%; }
+  .main-content { width: 100%; }
+  body.freev-apple .sidebar { width: min(86vw, 21.5rem); max-width: none; }
+  .content-area { min-height: 0; padding-inline: max(.75rem, env(safe-area-inset-left)) max(.75rem, env(safe-area-inset-right)); padding-bottom: calc(6.1rem + env(safe-area-inset-bottom)); overflow-x: hidden; }
+  .content-area > *, #dashboard-view, #transactions-view, #settings-view { min-width: 0; max-width: 100%; }
+  .content-area :is(img, svg, canvas) { max-width: 100%; }
+  .top-bar { min-width: 0; padding-inline: max(.75rem, env(safe-area-inset-left)) max(.75rem, env(safe-area-inset-right)); }
+  .top-bar > *, .top-bar > .flex { min-width: 0; }
+  body.freev-apple .top-bar #viewModeTabs { display: none !important; }
+  .month-picker { min-width: 0; max-width: 100%; }
+  .month-picker input[type="month"] { min-width: 0; max-width: min(35vw, 9rem); }
+
+  /* La navigation reste accessible au pouce et ne dépend pas du rendu desktop. */
+  .bottom-nav { display: flex !important; width: 100%; height: calc(4.7rem + env(safe-area-inset-bottom)); padding: .35rem max(.3rem, env(safe-area-inset-right)) calc(.35rem + env(safe-area-inset-bottom)) max(.3rem, env(safe-area-inset-left)); border-top: 1px solid rgba(154,218,190,.15); background: color-mix(in srgb, #10231f 94%, transparent); box-shadow: 0 -12px 30px rgba(2,25,20,.16); backdrop-filter: blur(18px); }
+  .bottom-nav-item { min-width: 0; min-height: 3.2rem; flex: 1 1 0; border-radius: .9rem; color: #a7c4b9; font-size: .61rem; }
+  .bottom-nav-item i { display: grid; width: 2.05rem; height: 2.05rem; flex: 0 0 auto; place-items: center; border-radius: .7rem; }
+  .bottom-nav-item.active { color: #e9fff2; background: rgba(43,152,113,.23); }
+  .bottom-nav-item.active i { color: #93e6b2; background: rgba(255,255,255,.1); }
+  .bottom-nav-item::after { display: none; }
+  #bnav-scan i { background: linear-gradient(145deg,#26a783,#14745f); color: #fff; }
+  #fabAddBtn { display: none !important; }
+
+  /* Sur mobile, le tableau de bord sert à consulter le solde et les mouvements. */
+  body[data-freev-view="dashboard"] :is(#premiumWorkspaceDesc, .freev-dashboard-benefits, .freev-dashboard-explore, #premiumWorkspaceIllustration, .premium-v4-context, .premium-workspace-actions, #dashboardAlerts, .premium-v4-chart-grid, #budgetCard, #spendableBlock, #financePriority2) { display: none !important; }
+  body[data-freev-view="dashboard"] .premium-stat-grid > :not(.premium-v4-stat-balance) { display: none !important; }
+  body[data-freev-view="dashboard"] .premium-stat-grid { display: block !important; margin-bottom: 1rem !important; }
+  body[data-freev-view="dashboard"] .premium-v4-stat-balance { display: flex; min-height: 9rem; min-width: 0; align-items: center; gap: 1rem; padding: clamp(1rem, 3vw, 1.4rem); border-radius: 1.3rem; background: linear-gradient(140deg, #172b35, #164d55 66%, #187666); color: #fff; }
+  body[data-freev-view="dashboard"] .premium-v4-stat-balance :is(#balanceLabel, #balanceChange) { color: rgba(255,255,255,.78) !important; }
+  body[data-freev-view="dashboard"] .premium-v4-stat-balance #cardBalance { color: #fff !important; font-size: clamp(1.7rem, 6vw, 2.45rem); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  body[data-freev-view="dashboard"] #dashboardRecentTransactionsBlock { min-width: 0; border-radius: 1.25rem; }
+  .mobile-recent-list { display: grid; gap: .1rem; padding: 0; margin: 0; list-style: none; }
+  .mobile-recent-list li { display: flex; min-width: 0; align-items: center; gap: .65rem; padding: .78rem 0; border-bottom: 1px solid var(--border-color, #e8ecea); }
+  .mobile-recent-list li:last-child { border-bottom: 0; }
+  .mobile-recent-info { display: grid; min-width: 0; flex: 1; gap: .12rem; }
+  .mobile-recent-info strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mobile-recent-amount { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+
+  .receipt-scan-entry { display: grid; grid-template-columns: 2.6rem minmax(0,1fr); align-items: center; gap: .65rem; margin: .25rem 0 1rem; padding: .85rem; border: 1px solid rgba(22,131,107,.16); border-radius: 1.15rem; background: var(--bg-card,#fff); }
+  .receipt-scan-entry-mark { display: grid; width: 2.55rem; height: 2.55rem; grid-row: span 2; place-items: center; border-radius: .85rem; background: #e3f4e9; color: #18785d; }
+  .receipt-scan-entry-copy { min-width: 0; }
+  .receipt-scan-entry-copy h2 { margin: .15rem 0; font-size: clamp(.84rem, 2vw, 1rem); line-height: 1.25; }
+  .receipt-scan-entry-copy p { margin: 0; color: var(--text-muted,#68766f); font-size: .72rem; line-height: 1.4; }
+  .receipt-scan-entry-button { display: inline-flex; min-height: 2.8rem; grid-column: 2; align-items: center; justify-content: center; gap: .5rem; padding: .55rem .8rem; border: 0; border-radius: .8rem; background: #1b7e63; color: #fff; font: inherit; font-size: .78rem; font-weight: 750; }
+  .receipt-scan-entry-arrow { margin-left: auto; }
+}
+
+@media (max-width: 360px) {
+  .top-bar { gap: .25rem; }
+  .month-picker { gap: .12rem; }
+  .month-picker input[type="month"] { max-width: 6.6rem; font-size: .75rem; }
+  .bottom-nav-item { padding-inline: .12rem; font-size: .56rem; }
+  .bottom-nav-item i { width: 1.9rem; height: 1.9rem; }
+  #dashboardRecentTransactionsBlock { padding: .85rem; }
+  .mobile-recent-list li { gap: .4rem; }
+  .mobile-recent-amount { font-size: .76rem; }
+  .receipt-scan-entry { padding: .7rem; }
+  .receipt-scan-entry-copy p { font-size: .65rem; }
+}
+
+/* Deux volets côte à côte : solde et scan sur le premier, mouvements sur le
+   second. Aucun bouton ni montant important ne traverse la charnière. */
+@media (horizontal-viewport-segments: 2) {
+  .bottom-nav { left: env(viewport-segment-left 0 0, 0px); right: auto; width: env(viewport-segment-width 0 0, 50vw); }
+  .top-bar > :is(.flex, div) { max-width: calc(env(viewport-segment-width 0 0, 50vw) - 1.5rem); }
+  body[data-freev-view="dashboard"] .premium-workspace-head { max-width: calc(env(viewport-segment-width 0 0, 50vw) - 1.5rem); }
+  body[data-freev-view="dashboard"] #dashboard-view { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); column-gap: max(1rem, calc(env(viewport-segment-left 1 0, 50vw) - env(viewport-segment-right 0 0, 50vw) + 1rem)); align-content: start; }
+  body[data-freev-view="dashboard"] #dashboardWelcomeGuide,
+  body[data-freev-view="dashboard"] .receipt-scan-entry,
+  body[data-freev-view="dashboard"] .premium-stat-grid { grid-column: 1; }
+  body[data-freev-view="dashboard"] #dashboardRecentTransactionsBlock { grid-column: 2; grid-row: 1 / span 3; align-self: start; }
+  .content-area { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+}
+
+/* Charnière horizontale : les contrôles de navigation restent dans le volet bas. */
+@media (vertical-viewport-segments: 2) {
+  .main-content { height: env(viewport-segment-height 0 0, 50vh); max-height: env(viewport-segment-height 0 0, 50vh); }
+  .content-area { padding-bottom: 1rem; }
+  .bottom-nav { top: env(viewport-segment-top 0 1, 50vh); bottom: auto; min-height: 4.7rem; padding-top: .45rem; }
+  .sidebar { height: env(viewport-segment-height 0 0, 50vh); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-nav-item, .receipt-scan-entry-button { transition: none !important; }
+}

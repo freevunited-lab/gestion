@@ -1,0 +1,101 @@
+body.freev-apple .freev-color-choice {
+  position:relative;display:inline-flex;align-items:center;min-height:40px;min-width:0;
+  border-radius:13px;cursor:pointer;vertical-align:middle;
+}
+body.freev-apple .freev-color-choice input[type="color"] {
+  position:absolute;inset:0;z-index:2;width:100%;height:100%;margin:0;padding:0;
+  border:0;opacity:0;cursor:pointer;appearance:none;-webkit-appearance:none;
+}
+body.freev-apple .freev-color-choice-ui {
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:40px;padding:7px 11px;
+  border:1px solid var(--apple-outline);border-radius:13px;color:var(--apple-ink);background:var(--apple-surface);
+  font-size:.76rem;font-weight:650;line-height:1.2;white-space:nowrap;
+  transition:background-color .16s,border-color .16s,box-shadow .16s,transform .16s;
+}
+body.freev-apple .freev-color-choice-ui > i:first-child {
+  display:grid;place-items:center;width:25px;height:25px;border-radius:9px;color:var(--signature-blue);background:var(--apple-tint);font-size:.78rem;
+}
+body.freev-apple .freev-color-choice:hover .freev-color-choice-ui {background:var(--apple-hover);border-color:color-mix(in srgb,var(--signature-blue) 28%,var(--apple-outline))}
+body.freev-apple .freev-color-choice:active .freev-color-choice-ui {transform:scale(.985)}
+body.freev-apple .freev-color-choice:focus-within .freev-color-choice-ui {outline:3px solid var(--apple-accent);outline-offset:3px;box-shadow:0 0 0 5px var(--signature-ring)}
+body.freev-apple .freev-color-choice-dot {
+  display:inline-block;flex:0 0 13px;width:13px;height:13px;border:2px solid var(--apple-surface);border-radius:50%;
+  background:var(--apple-accent);box-shadow:0 0 0 1px var(--apple-outline),0 1px 3px rgba(0,0,0,.13);
+}
+body.freev-apple .freev-color-choice-compact,
+body.freev-apple .freev-color-choice-compact .freev-color-choice-ui {min-height:36px}
+body.freev-apple .freev-color-choice-compact .freev-color-choice-ui {gap:7px;padding:5px 8px;font-size:.7rem}
+body.freev-apple .freev-color-choice-icon-only .freev-color-choice-ui {gap:6px;padding:5px 7px}
+body.freev-apple .freev-color-choice-icon-only .freev-color-choice-ui > i:first-child {width:23px;height:23px}
+
+body.freev-apple .freev-color-preset-list {display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:4px 0 18px}
+body.freev-apple .freev-color-preset {
+  display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;padding:0;border:2px solid var(--apple-surface);border-radius:50%;
+  color:#fff;background:var(--freev-color-choice);box-shadow:0 0 0 1px var(--apple-outline);cursor:pointer;
+  transition:transform .16s,box-shadow .16s;
+}
+body.freev-apple .freev-color-preset:hover {transform:scale(1.08);box-shadow:0 0 0 2px var(--freev-color-choice)}
+body.freev-apple .freev-color-preset.is-selected {box-shadow:0 0 0 2px var(--freev-color-choice),0 0 0 5px var(--signature-ring)}
+body.freev-apple .freev-color-preset:focus-visible,
+body.freev-apple .freev-color-preset-default:focus-visible,
+body.freev-apple .freev-account-color-preset:focus-visible {outline:3px solid var(--apple-accent);outline-offset:3px}
+body.freev-apple .freev-color-preset-list-compact {gap:6px;margin:0}
+body.freev-apple .freev-color-preset-list-compact .freev-color-preset {flex-basis:27px;width:27px;height:27px}
+body.freev-apple .freev-account-color-setting[hidden] {display:none!important}
+
+body.freev-apple .freev-color-settings-heading {display:flex;align-items:center;gap:13px;margin-bottom:18px}
+body.freev-apple .freev-color-settings-heading h2 {margin-bottom:3px}
+body.freev-apple .freev-color-settings-heading p {margin:0}
+body.freev-apple .freev-color-settings-icon {
+  display:grid;place-items:center;flex:0 0 43px;width:43px;height:43px;border:1px solid var(--apple-outline);
+  border-radius:15px;color:var(--signature-blue);background:var(--apple-tint);font-size:1rem;
+}
+body.freev-apple .freev-account-color-setting {
+  display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px;
+  border:1px solid var(--apple-outline);border-radius:18px;background:color-mix(in srgb,var(--apple-surface) 78%,var(--apple-canvas));
+}
+body.freev-apple .freev-account-color-current {display:flex;align-items:center;gap:11px;min-width:0}
+body.freev-apple .freev-account-color-preview {
+  display:grid;place-items:center;flex:0 0 43px;width:43px;height:43px;border:2px solid var(--apple-surface);
+  border-radius:50%;color:white;box-shadow:0 0 0 1px var(--apple-outline),0 4px 12px rgba(0,0,0,.12);font-size:.9rem;
+}
+body.freev-apple .freev-account-color-current-copy {display:grid;gap:3px;min-width:0}
+body.freev-apple .freev-account-color-current-copy small {color:var(--apple-muted);font-size:.67rem;font-weight:600}
+body.freev-apple .freev-account-color-current-copy strong {overflow:hidden;color:var(--apple-ink);font-size:.84rem;font-weight:720;text-overflow:ellipsis;white-space:nowrap}
+body.freev-apple .freev-account-color-controls {display:flex;align-items:center;justify-content:flex-end;gap:11px;flex-wrap:wrap}
+body.freev-apple .freev-account-color-presets {display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+body.freev-apple .freev-account-color-preset {
+  display:grid;place-items:center;width:30px;height:30px;padding:0;border:2px solid var(--apple-surface);border-radius:50%;
+  color:white;background:var(--account-color-choice);box-shadow:0 0 0 1px var(--apple-outline);cursor:pointer;
+  transition:transform .16s,box-shadow .16s;
+}
+body.freev-apple .freev-account-color-preset:hover {transform:scale(1.1);box-shadow:0 0 0 2px var(--account-color-choice)}
+body.freev-apple .freev-account-color-preset[aria-pressed="true"] {box-shadow:0 0 0 2px var(--account-color-choice)}
+body.freev-apple .freev-account-color-preset i {font-size:.65rem;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+body.freev-apple .freev-color-reset {
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:7px 10px;
+  border:1px solid var(--apple-outline);border-radius:12px;color:var(--apple-muted);background:var(--apple-surface);
+  font-size:.72rem;font-weight:630;cursor:pointer;transition:background-color .16s,color .16s;
+}
+body.freev-apple .freev-color-reset:hover:not(:disabled) {color:var(--apple-ink);background:var(--apple-hover)}
+body.freev-apple .freev-color-reset:disabled {opacity:.48;cursor:not-allowed}
+body.freev-apple .freev-color-preset-default {
+  display:grid;place-items:center;width:29px;height:29px;padding:0;border:1px solid var(--apple-outline);border-radius:50%;
+  color:var(--apple-muted);background:var(--apple-hover);cursor:pointer;transition:color .16s,border-color .16s,box-shadow .16s;
+}
+body.freev-apple .freev-color-preset-default:hover,
+body.freev-apple .freev-color-preset-default.is-selected {color:var(--signature-blue);border-color:var(--signature-blue);box-shadow:0 0 0 3px var(--signature-ring)}
+body.freev-apple .freev-color-preset-default i {font-size:.7rem}
+
+@media (max-width:700px) {
+  body.freev-apple .freev-account-color-setting {align-items:flex-start;flex-direction:column;gap:14px}
+  body.freev-apple .freev-account-color-controls {justify-content:flex-start;gap:9px}
+  body.freev-apple .freev-account-color-presets {width:100%}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple .freev-color-choice-ui,
+  body.freev-apple .freev-account-color-preset,
+  body.freev-apple .freev-color-reset,
+  body.freev-apple .freev-color-preset,
+  body.freev-apple .freev-color-preset-default {transition:none!important}
+}

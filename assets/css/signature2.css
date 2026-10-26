@@ -1,0 +1,562 @@
+/* FREEV Gestion · Signature 2.0 · presentation only.
+   Motion: opacity/transform only; no remote fonts, no financial-data mutations. */
+body.freev-apple {
+  --signature-blue:#0069d3;
+  --signature-ring:rgba(0,105,211,.14);
+  --signature-raise:0 12px 28px rgba(35,45,75,.075);
+  --signature-chart-grid:rgba(112,117,127,.11);
+  --signature-green:#21864d;
+  --signature-red:#d63f3a;
+}
+body.freev-apple.dark-mode {
+  --signature-blue:#69acff;
+  --signature-ring:rgba(105,172,255,.22);
+  --signature-raise:0 12px 36px rgba(0,0,0,.24);
+  --signature-chart-grid:rgba(195,199,216,.11);
+  --signature-green:#5bc987;
+  --signature-red:#ff857e;
+}
+/* Cohesive shell: calm layering, readable navigational hierarchy. */
+body.freev-apple .main-content {min-width:0}
+body.freev-apple .content-area {min-width:0}
+body.freev-apple .premium-workspace-head {
+  position:relative;
+  background:var(--apple-surface);
+  border:1px solid var(--apple-outline);
+  box-shadow:var(--apple-shadow);
+  overflow:hidden;
+}
+body.freev-apple .premium-workspace-head::before {
+  content:"";position:absolute;inset:0 0 auto;height:3px;
+  background:linear-gradient(90deg,var(--signature-blue),transparent 74%);
+  opacity:.65;pointer-events:none;
+}
+body.freev-apple .premium-workspace-head h1 {line-height:1.13;letter-spacing:-.055em}
+body.freev-apple .premium-v4-stat,
+body.freev-apple .dashboard-chart-card,
+body.freev-apple .fp2-panel,
+body.freev-apple .fp2-metric {isolation:isolate}
+body.freev-apple .premium-v4-stat .text-2xl {font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+/* Financial charts: focus on the data instead of heavy decorations. */
+body.freev-apple .premium-v4-chart-grid {gap:clamp(.8rem,1.6vw,1.4rem)}
+body.freev-apple .dashboard-chart-card {min-width:0;padding:clamp(1.1rem,1.7vw,1.65rem);border-radius:23px}
+body.freev-apple .dashboard-chart-head {align-items:flex-start;gap:.75rem}
+body.freev-apple .dashboard-chart-head h3 {font-size:clamp(1rem,1.45vw,1.25rem);font-weight:750;letter-spacing:-.035em}
+body.freev-apple .dashboard-chart-head p {color:var(--apple-muted);line-height:1.5}
+body.freev-apple .dashboard-chart-toolbar {column-gap:.9rem;row-gap:.65rem;flex-wrap:wrap}
+body.freev-apple .dashboard-chart-segment {
+  border:1px solid var(--apple-outline);border-radius:12px;
+  padding:3px;background:var(--apple-hover);
+}
+body.freev-apple .dashboard-chart-segment button {border-radius:9px;min-height:34px;transition:color .16s,background-color .16s,box-shadow .16s}
+body.freev-apple .dashboard-chart-segment button.active,
+body.freev-apple .dashboard-chart-segment button[aria-pressed="true"] {
+  background:var(--apple-surface);color:var(--apple-ink);
+  box-shadow:0 1px 4px rgba(0,0,0,.075);
+}
+body.freev-apple .dashboard-chart-toggle {
+  gap:.5rem;color:var(--apple-muted);font-size:.75rem;line-height:1.35;white-space:nowrap;
+}
+body.freev-apple .dashboard-chart-toggle input {
+  width:1.125rem;height:1.125rem;flex:0 0 1.125rem;
+}
+body.freev-apple .dashboard-chart-card .chart-container {width:100%;min-width:0;overflow:hidden;border-radius:14px}
+body.freev-apple .dashboard-chart-summary {
+  color:var(--apple-muted);font-size:.78rem;line-height:1.6;
+  border-top:1px solid var(--apple-outline);padding-top:.75rem;
+}
+body.freev-apple .dashboard-chart-empty {color:var(--apple-muted)}
+/* Subtle and efficient hover/press feedback, only for real pointer devices. */
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple .premium-v4-stat:hover {box-shadow:var(--signature-raise);transform:translate3d(0,-2px,0)}
+  body.freev-apple .dashboard-chart-card:hover {box-shadow:var(--signature-raise)}
+  body.freev-apple .sidebar-nav .nav-item:hover {transform:translateX(2px)}
+  body.freev-apple .btn-primary:hover,
+  body.freev-apple .premium-workspace-action-primary:hover {filter:brightness(1.05)}
+}
+body.freev-apple .sidebar-nav .nav-item {transition:background-color .17s,color .17s,transform .17s}
+body.freev-apple :is(.btn,.premium-workspace-action,.bottom-nav-item,.nav-item):active {transform:scale(.985)}
+body.freev-apple .bottom-nav-item[aria-current="page"] i {color:var(--signature-blue)}
+body.freev-apple .bottom-nav-item:focus-visible {outline-offset:-3px}
+body.freev-apple .btn-primary:focus-visible {box-shadow:0 0 0 5px var(--signature-ring)}
+body.freev-apple .rec-month.is-past {opacity:.9}
+body.freev-apple .rec-month.is-past:is(:hover,:focus-visible) {opacity:1}
+/* Tables can scroll without expanding the app beyond the viewport. */
+body.freev-apple .table-container {overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+body.freev-apple .table-container .table {min-width:max-content}
+/* Dialogs should remain usable with very short viewports / mobile keyboards. */
+body.freev-apple :is(.modal-content,.accounts-modal-content,.v4-dialog) {max-height:min(92dvh,920px);overflow-y:auto;overscroll-behavior:contain}
+body.freev-apple .modal-content:focus-visible {outline-offset:-3px}
+@media (max-width:768px) {
+  body.freev-apple.freev-mobile-nav-open {overflow:hidden;touch-action:none}
+  body.freev-apple .content-area {padding-bottom:calc(7.75rem + env(safe-area-inset-bottom))}
+  body.freev-apple .premium-workspace-head {padding:1.15rem;gap:.9rem}
+  body.freev-apple .premium-v4-chart-grid {gap:.8rem}
+  body.freev-apple .dashboard-chart-card {padding:1rem;border-radius:18px}
+  body.freev-apple .dashboard-chart-toolbar {align-items:flex-start}
+  body.freev-apple .dashboard-chart-segment button {min-height:42px;min-width:45px}
+  body.freev-apple .bottom-nav {
+    padding-bottom:calc(.4rem + env(safe-area-inset-bottom));
+    padding-left:max(.4rem,env(safe-area-inset-left));
+    padding-right:max(.4rem,env(safe-area-inset-right));
+  }
+  body.freev-apple .bottom-nav-item {min-height:43px;min-width:0;gap:1px}
+  body.freev-apple .bottom-nav-item i {transition:color .18s,background-color .18s,transform .18s}
+  body.freev-apple .bottom-nav-item[aria-current="page"] {
+    background:var(--apple-tint);color:var(--signature-blue);
+  }
+  body.freev-apple .bottom-nav-item[aria-current="page"] i {transform:translateY(-1px);background:transparent}
+  body.freev-apple .bottom-nav-item::after {display:none}
+  body.freev-apple #fabAddBtn {z-index:11}
+}
+@media (max-width:390px) {
+  body.freev-apple .dashboard-chart-head {flex-wrap:wrap}
+  body.freev-apple .dashboard-chart-toolbar {gap:.45rem}
+  body.freev-apple .dashboard-chart-toggle {width:100%}
+  body.freev-apple .premium-workspace-actions {display:grid;grid-template-columns:1fr;min-width:0}
+  body.freev-apple .bottom-nav-item {font-size:.58rem}
+  body.freev-apple .bottom-nav-item i {font-size:.95rem}
+}
+@media (prefers-contrast:more) {
+  body.freev-apple .dashboard-chart-card,
+  body.freev-apple .premium-v4-stat,
+  body.freev-apple .bottom-nav {border-color:var(--apple-muted)}
+}
+@media (prefers-reduced-transparency:reduce) {
+  body.freev-apple .bottom-nav,
+  body.freev-apple .top-bar,
+  body.freev-apple .sidebar {backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--apple-surface)}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple .dashboard-chart-card,
+  body.freev-apple .premium-v4-stat,
+  body.freev-apple .nav-item,
+  body.freev-apple .bottom-nav-item,
+  body.freev-apple .bottom-nav-item i {animation:none!important;transition:none!important;transform:none!important}
+}
+
+/* Signature 2.1 · composition inspirée du tableau de bord de référence,
+   avec la palette FREEV bleu cobalt / turquoise et les commandes existantes. */
+body.freev-apple {
+  --signature-blue:#1f61db;
+  --signature-teal:#139b81;
+  --signature-green:#187b68;
+  --signature-ring:rgba(31,97,219,.16);
+  --apple-accent:var(--signature-blue);
+  --apple-accent-hover:#194ebd;
+  --apple-canvas:#f5f5f7;
+  --apple-sidebar:rgba(250,252,255,.94);
+  --apple-outline:#e2e8f0;
+  --apple-tint:#edf4ff;
+  --apple-hover:#f1f4f8;
+  --apple-shadow:0 1px 2px rgba(18,39,69,.035),0 13px 34px rgba(18,39,69,.045);
+  --v4-accent:var(--signature-blue);
+  --v4-accent-dark:#194ebd;
+  --v4-teal:var(--signature-teal);
+  --v4-line:var(--apple-outline);
+  --v4-soft:var(--apple-tint);
+  --v4-shadow:var(--apple-shadow);
+  --bg-app:var(--apple-canvas);
+  --bg-main:var(--apple-canvas);
+}
+body.freev-apple.dark-mode {
+  --signature-blue:#83b5ff;
+  --signature-teal:#54d2b2;
+  --signature-green:#54d2b2;
+  --signature-ring:rgba(131,181,255,.22);
+  --apple-accent:var(--signature-blue);
+  --apple-accent-hover:#a3c9ff;
+  --v4-accent:var(--signature-blue);
+  --v4-accent-dark:var(--signature-blue);
+  --v4-teal:var(--signature-teal);
+}
+
+/* Rail latéral compact : les noms restent présents pour les lecteurs d’écran
+   et disponibles au survol des icônes. Le tiroir mobile conserve ses libellés. */
+@media (min-width:769px) {
+  body.freev-apple .sidebar {
+    width:86px;flex:0 0 86px;align-items:center;
+    border-right:1px solid var(--apple-outline);box-shadow:none;
+  }
+  body.freev-apple .sidebar-header {
+    width:100%;padding:.95rem .45rem .85rem;border-bottom:1px solid var(--apple-outline);
+  }
+  body.freev-apple .premium-brand {flex-direction:column;align-items:center;gap:.35rem}
+  body.freev-apple .premium-brand-mark {
+    width:43px;height:43px;border-radius:15px;
+    background:linear-gradient(145deg,#2582ee,#1f61db 62%,#139b81);
+    box-shadow:0 7px 18px rgba(31,97,219,.2);color:#fff;
+  }
+  body.freev-apple .premium-brand-copy {display:flex;align-items:center}
+  body.freev-apple .premium-brand-copy strong {font-size:.72rem;letter-spacing:.08em}
+  body.freev-apple .premium-brand-copy small,
+  body.freev-apple .premium-brand-tagline {display:none}
+  body.freev-apple .accounts-sidebar-section {
+    width:100%;padding:.65rem .2rem .55rem;border-bottom:1px solid var(--apple-outline);
+  }
+  body.freev-apple .accounts-sidebar-header {position:relative;justify-content:center;margin:0 0 .45rem}
+  body.freev-apple .accounts-sidebar-label {
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  body.freev-apple .accounts-sidebar-actions {justify-content:center;gap:.3rem}
+  body.freev-apple .accounts-sidebar-btn {
+    width:30px;height:30px;min-height:30px;padding:0;justify-content:center;
+    border-radius:10px;font-size:0;
+  }
+  body.freev-apple .accounts-sidebar-btn i {font-size:.7rem}
+  body.freev-apple #accountsSidebarList {max-height:23vh;overflow:auto;scrollbar-width:none}
+  body.freev-apple #accountsSidebarList::-webkit-scrollbar {display:none}
+  body.freev-apple .account-sidebar-item {
+    position:relative;width:48px;min-height:46px;margin:.18rem auto;padding:.25rem;
+    justify-content:center;border-color:transparent;border-radius:14px;
+  }
+  body.freev-apple .account-sidebar-name {
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  body.freev-apple .account-avatar {width:32px;height:32px;font-size:.68rem!important}
+  body.freev-apple .account-sidebar-check {
+    position:absolute;right:1px;top:0;width:15px;height:15px;display:grid;place-items:center;
+    border:2px solid var(--apple-sidebar);border-radius:50%;background:var(--apple-surface);
+    font-size:.48rem;
+  }
+  body.freev-apple .sidebar-nav {
+    width:100%;min-height:0;flex:1 1 auto;padding:.65rem .35rem 1rem;overflow-x:hidden;overflow-y:auto;
+  }
+  body.freev-apple .sidebar-nav .nav-item {
+    position:relative;width:50px;min-height:49px;margin:.19rem auto;padding:0;
+    justify-content:center;gap:0;border:1px solid transparent;border-radius:15px;
+  }
+  body.freev-apple .sidebar-nav .nav-item > span:not(.v4-new-badge):not(.v5-new-badge) {
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  body.freev-apple .sidebar-nav .nav-item i {width:auto;font-size:1.05rem}
+  body.freev-apple .sidebar-nav .nav-item.active,
+  body.freev-apple .sidebar-nav .nav-item[aria-current="page"] {
+    background:var(--apple-tint);color:var(--signature-blue);box-shadow:none;
+  }
+  body.freev-apple .sidebar-nav .nav-item.active i,
+  body.freev-apple .sidebar-nav .nav-item[aria-current="page"] i {color:var(--signature-blue)}
+  body.freev-apple .premium-v4-sidebar-tools {
+    display:flex;flex:0 0 auto;flex-direction:column;align-items:center;gap:.22rem;
+    width:100%;padding:.6rem .3rem calc(.65rem + env(safe-area-inset-bottom));border-top:1px solid var(--apple-outline);
+  }
+  body.freev-apple .premium-v4-sidebar-tools .sidebar-user-info {
+    display:flex;flex:0 0 48px;align-items:center;justify-content:center;
+    width:48px;height:48px;min-height:48px;margin:0 0 .12rem;padding:0;
+    overflow:hidden;border:1px solid var(--apple-outline);border-radius:16px;
+    background:var(--apple-hover);cursor:default;
+  }
+  body.freev-apple .premium-v4-sidebar-tools .sidebar-user-avatar {
+    display:grid;place-items:center;width:35px;height:35px;flex:0 0 35px;
+    border:2px solid var(--apple-surface);border-radius:50%;
+    background:linear-gradient(145deg,#638cff,var(--signature-blue));
+    color:#fff;font-size:.78rem;font-weight:750;box-shadow:0 3px 8px rgba(31,97,219,.16);
+  }
+  body.freev-apple .premium-v4-sidebar-tools .sidebar-user-email {
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  body.freev-apple .premium-v4-sidebar-tools .cloud-sync-badge {
+    display:inline-flex;align-items:center;justify-content:center;flex:0 0 36px;
+    width:36px;height:36px;min-height:36px;margin:0 auto;padding:0;gap:0;
+    overflow:hidden;border:1px solid transparent;border-radius:13px;
+    font-size:0;line-height:1;transition:background-color .18s,color .18s,border-color .18s,transform .18s;
+  }
+  body.freev-apple .premium-v4-sidebar-tools .cloud-sync-badge.synced {
+    background:rgba(19,155,129,.12);border-color:rgba(19,155,129,.14);color:#13866f;
+  }
+  body.freev-apple .premium-v4-sidebar-tools .cloud-sync-badge.syncing {
+    background:var(--apple-tint);border-color:var(--apple-outline);color:var(--signature-blue);
+  }
+  body.freev-apple .premium-v4-sidebar-tools .cloud-sync-badge.offline {
+    background:var(--apple-hover);border-color:var(--apple-outline);color:var(--apple-muted);
+  }
+  body.freev-apple .premium-v4-sidebar-tools .cloud-sync-badge i {font-size:.9rem}
+  body.freev-apple .premium-v4-sidebar-tools .cloud-sync-badge .auth-spinner {margin:0}
+  body.freev-apple .premium-v4-sidebar-tools > .sidebar-auth-action {
+    width:42px;min-width:42px;min-height:42px;height:42px;margin:.05rem auto 0!important;padding:0;
+    display:flex;align-items:center;justify-content:center;gap:0;border-radius:14px;font-size:0;
+    transition:background-color .18s,color .18s,border-color .18s,box-shadow .18s,transform .18s;
+  }
+  body.freev-apple .premium-v4-sidebar-tools > #sidebarLogoutBtn {
+    background:rgba(214,63,58,.09);color:var(--signature-red);border:1px solid rgba(214,63,58,.2);
+  }
+  body.freev-apple .premium-v4-sidebar-tools > #sidebarLoginBtn {
+    background:var(--signature-blue);color:#fff;border:1px solid transparent;
+  }
+  body.freev-apple .premium-v4-sidebar-tools > .sidebar-auth-action i {font-size:.95rem}
+  body.freev-apple .premium-v4-sidebar-tools :is(.sidebar-auth-action,.cloud-sync-badge):focus-visible {
+    outline:0;box-shadow:0 0 0 4px var(--signature-ring);
+  }
+  @keyframes sidebarToolEnter {
+    from {opacity:0;transform:translateY(5px) scale(.96)}
+    to {opacity:1;transform:translateY(0) scale(1)}
+  }
+  body.freev-apple .premium-v4-sidebar-tools :is(.sidebar-user-info,.cloud-sync-badge,.sidebar-auth-action) {
+    animation:sidebarToolEnter .22s var(--apple-ease) both;
+  }
+  body.freev-apple .premium-v4-sidebar-tools > .btn {
+    width:42px;min-width:42px;min-height:42px;height:42px;margin:.05rem auto 0!important;padding:0;
+    justify-content:center;font-size:0;border-radius:14px;
+  }
+  body.freev-apple .premium-v4-sidebar-tools > .btn i {font-size:.95rem}
+
+  /* La barre de commande reprend la forme capsule de la référence. */
+  body.freev-apple .top-bar {
+    min-height:68px;margin:.75rem .9rem 0;padding:.55rem .7rem;
+    gap:.55rem;border:1px solid var(--apple-outline);border-radius:20px;
+    background:var(--bg-topbar);box-shadow:0 5px 18px rgba(21,39,66,.045);
+  }
+  body.freev-apple .top-bar > .flex:first-child {flex:0 0 auto;gap:.55rem;min-width:0}
+  body.freev-apple .top-bar > .flex:last-child {
+    flex:1 1 auto;justify-content:flex-end;gap:.38rem;flex-wrap:nowrap;min-width:0;
+  }
+  body.freev-apple .top-bar .btn {min-height:39px;border-radius:13px;white-space:nowrap}
+  body.freev-apple .top-bar .btn-secondary {background:transparent;border-color:transparent}
+  body.freev-apple .top-bar .btn-secondary:hover {background:var(--apple-hover);border-color:var(--apple-outline)}
+  body.freev-apple .month-picker {min-height:42px;border-radius:999px;padding:.15rem .35rem}
+  body.freev-apple .view-mode-tabs {padding:.2rem;border-radius:999px;gap:.12rem}
+  body.freev-apple .view-mode-tab {min-height:34px;padding:.45rem .72rem;border-radius:999px}
+  body.freev-apple .view-mode-tab.active-mode {
+    background:var(--signature-blue);color:#fff;box-shadow:0 3px 9px rgba(31,97,219,.2);
+  }
+  body.freev-apple .view-mode-tab.active-mode i {color:inherit}
+
+  /* En-tête discret pour laisser place aux chiffres et aux graphiques. */
+  body.freev-apple .content-area {padding:.4rem clamp(1rem,2.1vw,2rem) 2.5rem}
+  body.freev-apple .premium-workspace-head {
+    display:flex;flex-direction:row;align-items:center;justify-content:space-between;
+    min-height:0;margin:.25rem 0 .65rem;padding:.75rem .2rem;
+    border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;
+  }
+  body.freev-apple .premium-workspace-head::before,
+  body.freev-apple .premium-workspace-head::after {content:none}
+  body.freev-apple .premium-workspace-intro {min-width:0}
+  body.freev-apple .premium-workspace-head h1 {
+    margin:.28rem 0 .3rem;font-size:clamp(1.65rem,2.2vw,2.25rem);line-height:1.12;
+  }
+  body.freev-apple .premium-workspace-head p {font-size:.84rem;line-height:1.45}
+  body.freev-apple .premium-v4-context {margin-top:.6rem;padding:.36rem .68rem}
+  body.freev-apple .premium-workspace-head .premium-v4-context {display:none}
+  body.freev-apple .premium-workspace-actions {flex:0 0 auto;gap:.5rem}
+  body.freev-apple .premium-workspace-action {min-height:41px;border-radius:13px}
+  body.freev-apple .premium-workspace-action-primary {box-shadow:0 5px 13px rgba(31,97,219,.16)}
+}
+
+/* Résumé puis grand graphique, comme la hiérarchie de la photo. */
+body.freev-apple .premium-workspace-head .premium-v4-context {display:none}
+body.freev-apple .premium-stat-grid {gap:.78rem;margin-bottom:1rem}
+body.freev-apple .premium-v4-stat {
+  min-height:132px;padding:1rem 1.1rem;gap:.7rem;border-radius:18px;
+  box-shadow:0 1px 2px rgba(18,39,69,.025),0 8px 22px rgba(18,39,69,.035);
+}
+body.freev-apple .premium-v4-stat .stat-icon {width:35px;height:35px;border-radius:11px}
+body.freev-apple .premium-v4-stat-balance .stat-icon {background:rgba(31,97,219,.1);color:var(--signature-blue)}
+body.freev-apple .premium-v4-stat-savings .stat-icon {background:rgba(19,155,129,.11);color:var(--signature-teal)}
+body.freev-apple .premium-v4-stat-income .stat-icon {background:rgba(19,155,129,.1);color:var(--signature-teal)}
+body.freev-apple .premium-v4-stat-income #totalIncome {color:#187b68}
+body.freev-apple .premium-v4-stat .text-2xl {font-size:clamp(1.3rem,1.7vw,1.75rem)}
+body.freev-apple .premium-v4-chart-grid {grid-template-columns:minmax(0,1fr);gap:.8rem;margin-bottom:1.15rem}
+body.freev-apple .dashboard-chart-card {
+  padding:clamp(1rem,1.5vw,1.45rem);border-radius:21px;
+  box-shadow:0 1px 2px rgba(18,39,69,.025),0 9px 25px rgba(18,39,69,.04);
+}
+body.freev-apple .dashboard-chart-card .chart-container {height:clamp(260px,34vw,360px);padding:.6rem .15rem}
+body.freev-apple .dashboard-chart-toolbar {align-items:center;margin:.55rem 0 .25rem}
+body.freev-apple .dashboard-chart-segment {border-radius:999px;padding:3px}
+body.freev-apple .dashboard-chart-segment button {border-radius:999px}
+body.freev-apple .dashboard-chart-segment button.active,
+body.freev-apple .dashboard-chart-segment button[aria-pressed="true"] {
+  background:var(--signature-blue);color:#fff;box-shadow:0 2px 7px rgba(31,97,219,.18);
+}
+body.freev-apple .dashboard-chart-card .btn-icon {border-radius:12px}
+@media (min-width:1000px) {
+  body.freev-apple .premium-stat-grid,
+  body.freev-apple.freev-premium-v3.freev-premium-v4 #dashboard-view > .premium-stat-grid {
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+  body.freev-apple .premium-v4-stat {min-height:112px}
+  body.freev-apple .dashboard-chart-card {position:relative}
+  body.freev-apple .dashboard-chart-head > div {max-width:clamp(16rem,38vw,28rem)}
+  body.freev-apple .dashboard-chart-toolbar {
+    position:absolute;top:1.08rem;right:5rem;max-width:calc(100% - 30rem);
+    justify-content:flex-end;flex-wrap:nowrap;margin:0;
+  }
+  body.freev-apple .dashboard-chart-toggle {white-space:nowrap}
+  body.freev-apple .dashboard-chart-card .chart-container {margin-top:.35rem}
+}
+@media (min-width:1000px) and (max-width:1250px) {
+  body.freev-apple .premium-workspace-actions {width:auto;max-width:none;display:flex}
+  body.freev-apple .premium-workspace-action {width:auto;white-space:nowrap}
+  body.freev-apple .premium-workspace-add-wrap {width:auto}
+}
+
+/* Les vues et indicateurs utilisent les transitions déjà optimisées de FREEV. */
+body.freev-apple :is(.sidebar-nav .nav-item,.premium-v4-stat,.dashboard-chart-card,.btn,.premium-workspace-action) {
+  transition-timing-function:var(--apple-ease);
+}
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple .sidebar-nav .nav-item:hover {transform:translateY(-1px)}
+  body.freev-apple .premium-v4-stat:hover {transform:translateY(-2px);box-shadow:var(--signature-raise)}
+}
+@media (min-width:769px) and (max-width:1050px) {
+  body.freev-apple .top-bar {flex-wrap:wrap}
+  body.freev-apple .top-bar > .flex:last-child {flex:1 1 100%;justify-content:flex-end}
+  body.freev-apple .premium-workspace-head {align-items:flex-start}
+}
+@media (min-width:769px) and (max-width:1220px) {
+  body.freev-apple .top-bar .v4-search-trigger > span,
+  body.freev-apple .top-bar .v4-search-trigger > kbd {display:none}
+  body.freev-apple .top-bar > .flex:last-child > .btn-secondary {
+    width:41px;min-width:41px;padding:.4rem;font-size:0;justify-content:center;
+  }
+  body.freev-apple .top-bar > .flex:last-child > .btn-secondary i {font-size:.9rem}
+  body.freev-apple .top-bar > .flex:last-child > .btn-primary {font-size:0;gap:0}
+  body.freev-apple .top-bar > .flex:last-child > .btn-primary i {font-size:.9rem}
+  body.freev-apple .top-bar > .flex:last-child > .btn-primary::after {
+    content:"Ajouter";font-size:.78rem;font-weight:680;
+  }
+}
+@media (max-width:768px) {
+  body.freev-apple .top-bar {
+    min-height:0;margin:.45rem .5rem 0;padding:.4rem .5rem;border:1px solid var(--apple-outline);
+    border-radius:17px;background:var(--bg-topbar);box-shadow:0 4px 14px rgba(21,39,66,.04);
+    flex-wrap:wrap;justify-content:center;gap:.3rem;
+  }
+  body.freev-apple .top-bar > .flex:first-child {
+    flex:1 1 100%;width:100%;max-width:none;justify-content:center;flex-wrap:wrap;gap:.3rem;
+  }
+  body.freev-apple .top-bar #viewModeTabs {
+    display:flex!important;flex:0 1 auto;max-width:100%;overflow-x:auto;
+  }
+  body.freev-apple .top-bar .month-picker {flex:0 1 232px;justify-content:space-between;max-width:100%}
+  body.freev-apple .top-bar .view-mode-tab {min-height:34px;padding:.35rem .55rem;font-size:.68rem}
+  body.freev-apple .content-area {padding-top:.45rem}
+  body.freev-apple .premium-workspace-head {
+    align-items:stretch;flex-direction:column;gap:.4rem;margin:.12rem 0 .5rem;padding:.3rem .05rem;
+    min-height:0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;
+  }
+  body.freev-apple .premium-workspace-head::before,
+  body.freev-apple .premium-workspace-head::after {content:none}
+  body.freev-apple .premium-workspace-head h1 {font-size:clamp(1.55rem,6vw,2rem)}
+  body.freev-apple .premium-workspace-head p {font-size:.8rem}
+  body.freev-apple .premium-workspace-head .premium-v4-context {display:none}
+  body.freev-apple .premium-workspace-actions {
+    display:grid;width:100%;max-width:none;grid-template-columns:repeat(2,minmax(0,1fr));
+    justify-content:stretch;gap:.45rem;
+  }
+  body.freev-apple .premium-workspace-action {width:100%;min-width:0;min-height:43px;padding:.5rem .45rem}
+  body.freev-apple .premium-workspace-add-wrap {width:100%;min-width:0}
+  body.freev-apple .premium-stat-grid {gap:.65rem;margin-bottom:.8rem}
+  body.freev-apple .premium-v4-stat {min-height:116px;padding:.85rem;border-radius:16px}
+  body.freev-apple .dashboard-chart-card .chart-container {height:275px;padding:.35rem 0}
+  body.freev-apple #fabAddBtn {display:none!important}
+}
+@media (min-width:769px) and (max-width:999px) {
+  body.freev-apple .dashboard-chart-toolbar {position:static;max-width:none;justify-content:flex-start;margin:.55rem 0 .25rem;flex-wrap:wrap}
+}
+@media (max-width:430px) {
+  body.freev-apple .premium-workspace-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.freev-apple .premium-workspace-action {width:100%;font-size:.72rem}
+  body.freev-apple .premium-v4-stat {min-height:98px}
+  body.freev-apple .dashboard-chart-card .chart-container {height:245px}
+}
+@media (max-width:360px) {
+  body.freev-apple .premium-workspace-actions {grid-template-columns:1fr}
+}
+@media (prefers-reduced-transparency:reduce) {
+  body.freev-apple .top-bar,body.freev-apple .sidebar {backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--apple-surface)}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple :is(.sidebar-nav .nav-item,.premium-v4-stat,.dashboard-chart-card,.btn,.premium-workspace-action) {
+    transition-duration:.01ms!important;transform:none!important;
+  }
+  body.freev-apple .premium-v4-sidebar-tools :is(.sidebar-user-info,.cloud-sync-badge,.sidebar-auth-action) {
+    animation:none!important;transition:none!important;transform:none!important;
+  }
+}
+
+/* Signature 2.2 · transitions cohérentes et entrées plus soignées. */
+body.freev-apple {
+  --signature-motion-ease:cubic-bezier(.2,.7,.2,1);
+  --signature-motion-fast:160ms;
+  --signature-motion-surface:240ms;
+}
+body.freev-apple :is(.card,.fp2-panel,.fp2-metric,.premium-v4-stat,.dashboard-chart-card,.rec-calendar-wrap,.rec-detail-card,.rec-history-card) {
+  transition:transform var(--signature-motion-surface) var(--signature-motion-ease),
+    box-shadow var(--signature-motion-surface) var(--signature-motion-ease),
+    border-color var(--signature-motion-fast) ease,
+    background-color var(--signature-motion-fast) ease;
+}
+body.freev-apple :is(.btn,.btn-icon,.premium-workspace-action,.dashboard-chart-segment button,.view-mode-tab,.v4-horizon button,.v42-presets button) {
+  transition:transform var(--signature-motion-fast) var(--signature-motion-ease),
+    box-shadow var(--signature-motion-fast) var(--signature-motion-ease),
+    color var(--signature-motion-fast) ease,
+    background-color var(--signature-motion-fast) ease,
+    border-color var(--signature-motion-fast) ease;
+}
+body.freev-apple .btn > .fa-arrow-right,
+body.freev-apple .btn > .fa-chevron-right {transition:transform var(--signature-motion-fast) var(--signature-motion-ease)}
+body.freev-apple .freev-button-ripple {background:color-mix(in srgb,var(--signature-teal) 20%,transparent)}
+body.freev-apple :is(.btn-primary,.premium-workspace-action-primary) .freev-button-ripple {background:rgba(255,255,255,.34)}
+
+@keyframes freevSurfaceEnter {
+  from {opacity:0;transform:translate3d(0,9px,0) scale(.992)}
+  to {opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+body.freev-apple .view-enter :is(.premium-stat-grid,.premium-v4-chart-grid,.fp2-metrics,.fp2-panels,.v4-layout) > * {
+  animation:freevSurfaceEnter .29s var(--signature-motion-ease) both;
+}
+body.freev-apple .view-enter :is(.premium-stat-grid,.premium-v4-chart-grid,.fp2-metrics,.fp2-panels,.v4-layout) > :nth-child(2) {animation-delay:28ms}
+body.freev-apple .view-enter :is(.premium-stat-grid,.premium-v4-chart-grid,.fp2-metrics,.fp2-panels,.v4-layout) > :nth-child(3) {animation-delay:56ms}
+body.freev-apple .view-enter :is(.premium-stat-grid,.premium-v4-chart-grid,.fp2-metrics,.fp2-panels,.v4-layout) > :nth-child(4) {animation-delay:84ms}
+
+@keyframes freevBackdropIn {from {opacity:0} to {opacity:1}}
+@keyframes freevDialogIn {
+  from {opacity:0;transform:translate3d(0,12px,0) scale(.985)}
+  to {opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+body.freev-apple .modal-overlay:not(.hidden) {animation:freevBackdropIn .2s ease-out both}
+body.freev-apple .modal-overlay:not(.hidden) > :is(.modal-content,.accounts-modal-content) {
+  animation:freevDialogIn .3s var(--signature-motion-ease) both;
+}
+
+@keyframes freevPopoverIn {
+  from {opacity:0;transform:translate3d(0,-5px,0) scale(.985)}
+  to {opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@keyframes freevMenuItemIn {from {opacity:0;transform:translate3d(0,4px,0)} to {opacity:1;transform:translate3d(0,0,0)}}
+body.freev-apple .premium-workspace-add-panel:not([hidden]) {
+  transform-origin:top right;
+  animation:freevPopoverIn .2s var(--signature-motion-ease) both;
+}
+body.freev-apple .premium-workspace-add-panel:not([hidden]) .premium-workspace-add-item:not([hidden]) {
+  animation:freevMenuItemIn .19s var(--signature-motion-ease) both;
+}
+body.freev-apple .premium-workspace-add-panel:not([hidden]) .premium-workspace-add-item:nth-child(2) {animation-delay:24ms}
+body.freev-apple .premium-workspace-add-panel:not([hidden]) .premium-workspace-add-item:nth-child(3) {animation-delay:48ms}
+body.freev-apple .premium-workspace-add-panel:not([hidden]) .premium-workspace-add-item:nth-child(4) {animation-delay:72ms}
+
+@media (hover:hover) and (pointer:fine) {
+  body.freev-apple :is(.card,.fp2-panel,.fp2-metric,.dashboard-chart-card,.rec-calendar-wrap,.rec-detail-card,.rec-history-card):hover {
+    transform:translate3d(0,-1px,0);
+    border-color:color-mix(in srgb,var(--signature-teal) 18%,var(--apple-outline));
+    box-shadow:var(--signature-raise);
+  }
+  body.freev-apple .premium-v4-stat:hover {transform:translate3d(0,-2px,0)}
+  body.freev-apple :is(.btn,.btn-icon,.premium-workspace-action):hover > .fa-arrow-right,
+  body.freev-apple :is(.btn,.btn-icon,.premium-workspace-action):hover > .fa-chevron-right {transform:translateX(2px)}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple :is(.card,.fp2-panel,.fp2-metric,.premium-v4-stat,.dashboard-chart-card,.rec-calendar-wrap,.rec-detail-card,.rec-history-card,.btn,.btn-icon,.premium-workspace-action,.dashboard-chart-segment button,.view-mode-tab,.v4-horizon button,.v42-presets button),
+  body.freev-apple :is(.btn,.btn-icon,.premium-workspace-action) > :is(.fa-arrow-right,.fa-chevron-right) {
+    transition:none!important;transform:none!important;
+  }
+  body.freev-apple :is(.modal-overlay,.modal-content,.accounts-modal-content,.premium-workspace-add-panel,.premium-workspace-add-item),
+  body.freev-apple .view-enter :is(.premium-stat-grid,.premium-v4-chart-grid,.fp2-metrics,.fp2-panels,.v4-layout) > * {
+    animation:none!important;
+  }
+}

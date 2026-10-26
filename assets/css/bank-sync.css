@@ -1,0 +1,55 @@
+.v5-bank-sync-card { display: grid; gap: 1rem; padding: 1.25rem; border: 1px solid #bfdbfe; border-radius: 1rem; background: linear-gradient(135deg, #eff6ff, #f8fafc 62%); }
+.v5-bank-sync-head { display: flex; align-items: flex-start; gap: .85rem; }
+.v5-bank-sync-head > i { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border-radius: .78rem; background: linear-gradient(135deg, #2563eb, #0ea5e9); box-shadow: inset 0 1px 0 rgba(255,255,255,.25); color: #fff; }
+.v5-bank-sync-head h3 { margin: 0 0 .2rem; color: #0f172a; font-size: 1rem; }
+.v5-bank-sync-head p { margin: 0; color: #475569; font-size: .82rem; line-height: 1.45; text-wrap: pretty; }
+.v5-bank-sync-status { display: inline-flex; width: fit-content; align-items: center; gap: .4rem; padding: .32rem .6rem; border: 1px solid #bfdbfe; border-radius: 999px; background: #fff; color: #1d4ed8; font-size: .73rem; font-weight: 800; }
+.v5-bank-sync-status::before { width: .48rem; height: .48rem; border-radius: 50%; background: #94a3b8; content: ''; }
+.v5-bank-sync-status[data-state="ready"]::before { background: #10b981; }
+.v5-bank-sync-status[data-state="syncing"]::before { background: #2563eb; animation: bankSyncPulse 1.2s ease-in-out infinite; }
+.v5-bank-sync-status[data-state="action_required"], .v5-bank-sync-status[data-state="error"]::before { background: #f59e0b; }
+.v5-bank-sync-detail { margin: -.45rem 0 0; color: #475569; font-size: .78rem; line-height: 1.5; text-wrap: pretty; }
+.v5-bank-sync-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.v5-bank-sync-points li { padding: .65rem; border: 1px solid rgba(148,163,184,.24); border-radius: .72rem; background: rgba(255,255,255,.72); color: #475569; font-size: .71rem; line-height: 1.35; }
+.v5-bank-sync-points i { margin-right: .35rem; color: #2563eb; }
+.v5-bank-sync-actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.v5-bank-sync-actions [hidden] { display: none !important; }
+.v5-bank-sync-legal { margin: 0; color: #64748b; font-size: .68rem; line-height: 1.45; }
+.v5-bank-account-mapping { display: grid; gap: .8rem; padding: 1rem; border: 1px solid rgba(37,99,235,.2); border-radius: .85rem; background: rgba(255,255,255,.78); }
+.v5-bank-account-mapping[hidden] { display: none !important; }
+.v5-bank-mapping-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; }
+.v5-bank-mapping-head h4 { margin: 0 0 .18rem; color: #0f172a; font-size: .85rem; }
+.v5-bank-mapping-head p { margin: 0; color: #64748b; font-size: .73rem; line-height: 1.4; text-wrap: pretty; }
+.v5-bank-mapping-list { display: grid; gap: .55rem; }
+.v5-bank-map-row { display: grid; grid-template-columns: minmax(0, 1fr) 1rem minmax(11rem, .86fr); align-items: center; gap: .7rem; padding: .62rem .7rem; border: 1px solid #dbeafe; border-radius: .72rem; background: #fff; }
+.v5-bank-map-source { display: flex; min-width: 0; align-items: center; gap: .55rem; }
+.v5-bank-map-source > i { display: grid; width: 1.75rem; height: 1.75rem; flex: 0 0 auto; place-items: center; border-radius: .55rem; background: #eff6ff; color: #2563eb; font-size: .72rem; }
+.v5-bank-map-source span { display: grid; min-width: 0; gap: .12rem; }
+.v5-bank-map-source strong { overflow: hidden; color: #1e293b; font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
+.v5-bank-map-source small { overflow: hidden; color: #64748b; font-size: .65rem; text-overflow: ellipsis; white-space: nowrap; }
+.v5-bank-map-arrow { color: #94a3b8; font-size: .7rem; }
+.v5-bank-map-select { min-height: 2.35rem; font-size: .73rem; }
+.v5-bank-mapping-actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.v5-bank-mapping-note { margin: 0; color: #64748b; font-size: .67rem; line-height: 1.4; }
+.v5-bank-candidates { display: grid; gap: .75rem; padding: 1rem; border: 1px solid rgba(16,185,129,.24); border-radius: .85rem; background: rgba(255,255,255,.82); }
+.v5-bank-candidates[hidden] { display: none !important; }
+.v5-bank-candidates-head h4 { margin: 0 0 .18rem; color: #0f172a; font-size: .85rem; }
+.v5-bank-candidates-head p { margin: 0; color: #64748b; font-size: .73rem; line-height: 1.4; text-wrap: pretty; }
+.v5-bank-candidates-summary { display: flex; flex-wrap: wrap; gap: .45rem; }
+.v5-bank-candidates-summary span { padding: .35rem .55rem; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-size: .67rem; }
+.v5-bank-candidates-summary strong { color: #0f172a; }
+.v5-bank-candidates-summary small { width: 100%; color: #64748b; font-size: .65rem; }
+.v5-bank-candidates-list { display: grid; gap: .45rem; max-height: 19rem; overflow: auto; }
+.v5-bank-candidate { display: grid; grid-template-columns: 1.1rem minmax(0,1fr) auto; align-items: center; gap: .65rem; padding: .62rem .7rem; border: 1px solid #dbeafe; border-radius: .72rem; background: #fff; cursor: pointer; }
+.v5-bank-candidate:hover { border-color: #93c5fd; }
+.v5-bank-candidate input { width: 1rem; height: 1rem; accent-color: #2563eb; }
+.v5-bank-candidate-main { display: grid; min-width: 0; gap: .12rem; }
+.v5-bank-candidate strong, .v5-bank-candidate small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.v5-bank-candidate strong { color: #1e293b; font-size: .75rem; }
+.v5-bank-candidate small { color: #64748b; font-size: .65rem; }
+.v5-bank-candidate b { color: #e11d48; font-size: .75rem; white-space: nowrap; }
+.v5-bank-candidate.income b { color: #059669; }
+.v5-bank-candidates-actions { display: flex; justify-content: flex-end; }
+@keyframes bankSyncPulse { 50% { transform: scale(1.35); opacity: .48; } }
+@media (max-width: 620px) { .v5-bank-sync-points { grid-template-columns: 1fr; } .v5-bank-map-row { grid-template-columns: 1fr; gap: .45rem; } .v5-bank-map-arrow { display: none; } .v5-bank-mapping-head { align-items: stretch; flex-direction: column; } .v5-bank-candidate { grid-template-columns: 1.1rem minmax(0,1fr); } .v5-bank-candidate b { grid-column: 2; text-align: left; } .v5-bank-candidates-actions .btn { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .v5-bank-sync-status::before { animation: none; } }

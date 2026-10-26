@@ -1,0 +1,68 @@
+/* FREEV · repères de première visite et prise en main */
+body.freev-apple .dashboard-welcome-guide {
+  position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:15px;
+  margin:0 0 18px;padding:18px 54px 18px 18px;border:1px solid color-mix(in srgb,var(--signature-blue) 18%,var(--apple-outline));
+  border-radius:20px;background:linear-gradient(115deg,color-mix(in srgb,var(--signature-blue) 7%,var(--apple-surface)),var(--apple-surface) 68%);
+  box-shadow:var(--apple-shadow);animation:freev-guide-enter .32s cubic-bezier(.2,.75,.25,1) both;
+}
+body.freev-apple .dashboard-welcome-guide[hidden] {display:none!important}
+body.freev-apple .dashboard-welcome-icon {
+  display:grid;place-items:center;width:44px;height:44px;border:1px solid color-mix(in srgb,var(--signature-blue) 16%,var(--apple-outline));
+  border-radius:15px;color:var(--signature-blue);background:var(--apple-surface);font-size:1.05rem;
+}
+body.freev-apple .dashboard-welcome-copy {min-width:0}
+body.freev-apple .dashboard-welcome-kicker {color:var(--signature-blue);font-size:.61rem;font-weight:800;letter-spacing:.1em}
+body.freev-apple .dashboard-welcome-copy h2 {margin:3px 0 4px;color:var(--apple-ink);font-size:1rem;line-height:1.25;letter-spacing:-.03em;text-wrap:balance}
+body.freev-apple .dashboard-welcome-copy p {margin:0;color:var(--apple-muted);font-size:.76rem;line-height:1.5;text-wrap:pretty}
+body.freev-apple .dashboard-welcome-actions {display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+body.freev-apple .dashboard-welcome-actions button {display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:8px 12px;border:1px solid var(--apple-outline);border-radius:12px;background:var(--apple-surface);color:var(--apple-ink);font:inherit;font-size:.73rem;font-weight:650;line-height:1.3;cursor:pointer;transition:background-color .16s,border-color .16s,box-shadow .16s,transform .16s}
+body.freev-apple .dashboard-welcome-actions .dashboard-welcome-primary {border-color:var(--signature-blue);background:var(--signature-blue);color:#fff;box-shadow:0 4px 12px var(--signature-ring)}
+body.freev-apple .dashboard-welcome-actions button:hover {border-color:var(--signature-blue);box-shadow:0 0 0 3px var(--signature-ring)}
+body.freev-apple .dashboard-welcome-actions button:active {transform:scale(.98)}
+body.freev-apple .dashboard-welcome-actions button:focus-visible,
+body.freev-apple .dashboard-welcome-close:focus-visible {outline:3px solid var(--apple-accent);outline-offset:3px}
+body.freev-apple .dashboard-welcome-close {position:absolute;top:9px;right:9px;display:grid;place-items:center;width:34px;height:34px;border:0;border-radius:10px;background:transparent;color:var(--apple-muted);cursor:pointer;transition:color .16s,background-color .16s}
+body.freev-apple .dashboard-welcome-close:hover {background:var(--apple-hover);color:var(--apple-ink)}
+
+body.freev-apple .freev-help-start-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+body.freev-apple .freev-help-start-card {display:grid;grid-template-columns:30px minmax(0,1fr);align-items:start;gap:11px;padding:14px;border:1px solid var(--apple-outline);border-radius:16px;background:var(--apple-surface);box-shadow:0 2px 8px rgba(18,39,69,.025)}
+body.freev-apple .freev-help-start-number {display:grid;place-items:center;width:29px;height:29px;border-radius:10px;color:var(--signature-blue);background:var(--apple-tint);font-size:.73rem;font-weight:800}
+body.freev-apple .freev-help-start-card strong {display:block;color:var(--apple-ink);font-size:.8rem;line-height:1.4}
+body.freev-apple .freev-help-start-card p {min-height:2.3em;margin:4px 0 8px;color:var(--apple-muted);font-size:.75rem;line-height:1.5;text-wrap:pretty}
+body.freev-apple .freev-help-start-card button {display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:5px 0;border:0;background:transparent;color:var(--signature-blue);font:inherit;font-size:.75rem;font-weight:700;line-height:1.35;text-align:left;cursor:pointer}
+body.freev-apple .freev-help-start-card button:hover {color:var(--apple-accent-hover)}
+body.freev-apple .freev-help-start-card button:focus-visible {outline:3px solid var(--signature-ring);outline-offset:3px;border-radius:5px}
+body.freev-apple .freev-help-space-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+body.freev-apple .freev-help-space-grid article {display:grid;align-content:start;gap:4px;padding:11px 12px;border:1px solid var(--apple-outline);border-radius:13px;background:color-mix(in srgb,var(--apple-surface) 82%,var(--apple-canvas))}
+body.freev-apple .freev-help-space-grid strong {color:var(--apple-ink);font-size:.78rem;font-weight:700}
+body.freev-apple .freev-help-space-grid span {color:var(--apple-muted);font-size:.75rem;line-height:1.45;text-wrap:pretty}
+body.freev-apple #freevHelpPanelStart .freev-help-glossary {margin-top:0}
+body.freev-apple #freevHelpPanelStart .freev-help-glossary span {line-height:1.45}
+body.freev-apple .freev-help-tabs {grid-template-columns:repeat(3,minmax(0,1fr))}
+body.freev-apple .freev-help-tabs button {min-height:42px}
+
+@keyframes freev-guide-enter {from {opacity:0;transform:translateY(5px)}to {opacity:1;transform:translateY(0)}}
+
+@media (max-width:760px) {
+  body.freev-apple .dashboard-welcome-guide {grid-template-columns:auto minmax(0,1fr);align-items:start;padding:15px 48px 15px 15px}
+  body.freev-apple .dashboard-welcome-actions {grid-column:2;justify-content:flex-start}
+  body.freev-apple .freev-help-space-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px) {
+  body.freev-apple .dashboard-welcome-guide {gap:10px}
+  body.freev-apple .dashboard-welcome-icon {width:38px;height:38px;border-radius:13px;font-size:.9rem}
+  body.freev-apple .dashboard-welcome-copy h2 {font-size:.92rem}
+  body.freev-apple .dashboard-welcome-copy p {font-size:.75rem}
+  body.freev-apple .dashboard-welcome-actions {grid-column:1/-1}
+  body.freev-apple .dashboard-welcome-actions button {flex:1;min-width:0}
+  body.freev-apple .freev-help-start-grid,
+  body.freev-apple .freev-help-space-grid {grid-template-columns:1fr}
+  body.freev-apple .freev-help-tabs {gap:5px;padding:8px}
+  body.freev-apple .freev-help-tabs button {gap:5px;min-height:42px;padding:6px 5px;font-size:.75rem}
+  body.freev-apple .freev-help-start-card p {min-height:0}
+}
+@media (prefers-reduced-motion:reduce) {
+  body.freev-apple .dashboard-welcome-guide,
+  body.freev-apple .dashboard-welcome-actions button,
+  body.freev-apple .dashboard-welcome-close {animation:none!important;transition:none!important}
+}
