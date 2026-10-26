@@ -1,0 +1,13 @@
+{
+  "name": "freev-valeur-functions",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.js",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.3",
+    "firebase-functions": "^6.3.2"
+  }
+}

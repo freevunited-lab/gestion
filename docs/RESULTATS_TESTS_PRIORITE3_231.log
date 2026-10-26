@@ -1,0 +1,1449 @@
+TAP version 13
+# Subtest: la connexion bancaire normalise les états reçus du serveur
+ok 1 - la connexion bancaire normalise les états reçus du serveur
+  ---
+  duration_ms: 1.593125
+  type: 'test'
+  ...
+# Subtest: la redirection bancaire exige HTTPS
+ok 2 - la redirection bancaire exige HTTPS
+  ---
+  duration_ms: 0.258042
+  type: 'test'
+  ...
+# Subtest: le statut ne promet pas d’import automatique silencieux
+ok 3 - le statut ne promet pas d’import automatique silencieux
+  ---
+  duration_ms: 0.252563
+  type: 'test'
+  ...
+# Subtest: chaque compte bancaire est associé à un seul compte Freev valide
+ok 4 - chaque compte bancaire est associé à un seul compte Freev valide
+  ---
+  duration_ms: 0.87061
+  type: 'test'
+  ...
+# Subtest: les opérations bancaires restent en aperçu et sont réparties par compte Freev
+ok 5 - les opérations bancaires restent en aperçu et sont réparties par compte Freev
+  ---
+  duration_ms: 1.317658
+  type: 'test'
+  ...
+# Subtest: une opération bancaire invalide ne peut pas être importée
+ok 6 - une opération bancaire invalide ne peut pas être importée
+  ---
+  duration_ms: 0.196298
+  type: 'test'
+  ...
+# Subtest: écriture CAS seulement à partir de la même révision et des mêmes données
+ok 7 - écriture CAS seulement à partir de la même révision et des mêmes données
+  ---
+  duration_ms: 3.407826
+  type: 'test'
+  ...
+# Subtest: migration de document historique sans révision détecte un changement du contenu
+ok 8 - migration de document historique sans révision détecte un changement du contenu
+  ---
+  duration_ms: 0.247345
+  type: 'test'
+  ...
+# Subtest: révision non valide, données illisibles ou série corrompue sont refusées
+ok 9 - révision non valide, données illisibles ou série corrompue sont refusées
+  ---
+  duration_ms: 0.403251
+  type: 'test'
+  ...
+# Subtest: absence de changement financier ne crée pas artificiellement une nouvelle version
+ok 10 - absence de changement financier ne crée pas artificiellement une nouvelle version
+  ---
+  duration_ms: 1.207641
+  type: 'test'
+  ...
+# Subtest: cache récent divergent nécessite la réconciliation et jamais un upload silencieux
+ok 11 - cache récent divergent nécessite la réconciliation et jamais un upload silencieux
+  ---
+  duration_ms: 0.341588
+  type: 'test'
+  ...
+# [Freev] Lecture serveur obligatoire indisponible : Error: network
+#     at getDocFromServer (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/cloud-sync-safety.test.mjs:114:58)
+#     at loadCloudAndInit (evalmachine.<anonymous>:415:24)
+#     at evalmachine.<anonymous>:506:29
+#     at Object.login (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/cloud-sync-safety.test.mjs:154:11)
+#     at TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/cloud-sync-safety.test.mjs:163:13)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: cloud hors ligne au chargement : interface bloquée et aucune sauvegarde
+ok 12 - cloud hors ligne au chargement : interface bloquée et aucune sauvegarde
+  ---
+  duration_ms: 11.038163
+  type: 'test'
+  ...
+# [Freev] Données cloud invalides ou impossibles à charger : SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+#     at JSON.parse (<anonymous>)
+#     at Module.parseCloudState (file:///mnt/data/freev_priority3/Freev1-gestion--main/assets/js/cloud-sync-guard.mjs:33:23)
+#     at loadCloudAndInit (evalmachine.<anonymous>:431:35)
+#     at async evalmachine.<anonymous>:506:23
+#     at async Object.login (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/cloud-sync-safety.test.mjs:154:5)
+#     at async TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/cloud-sync-safety.test.mjs:171:3)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: données cloud corrompues : pas de restauration locale implicite ni effacement
+ok 13 - données cloud corrompues : pas de restauration locale implicite ni effacement
+  ---
+  duration_ms: 2.496715
+  type: 'test'
+  ...
+# [Freev] Cloud save refused: CloudConflictError: Le document cloud a été modifié sur un autre appareil.
+#     at evalmachine.<anonymous>:359:32
+#     at async TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/cloud-sync-safety.test.mjs:187:16)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: deux appareils : mise à jour concurrente bloque un écrasement
+ok 14 - deux appareils : mise à jour concurrente bloque un écrasement
+  ---
+  duration_ms: 5.955739
+  type: 'test'
+  ...
+# Subtest: premier compte cloud vide : création en transaction révision 1
+ok 15 - premier compte cloud vide : création en transaction révision 1
+  ---
+  duration_ms: 2.062396
+  type: 'test'
+  ...
+# Subtest: cache local plus récent : demande un choix et ne remplace pas Firebase
+ok 16 - cache local plus récent : demande un choix et ne remplace pas Firebase
+  ---
+  duration_ms: 1.818666
+  type: 'test'
+  ...
+# Subtest: modifications locales non synchronisées détectées même si un autre appareil a une date plus récente
+ok 17 - modifications locales non synchronisées détectées même si un autre appareil a une date plus récente
+  ---
+  duration_ms: 1.472112
+  type: 'test'
+  ...
+# Subtest: cache cohérent déjà synchronisé ne produit pas un faux conflit au redémarrage
+ok 18 - cache cohérent déjà synchronisé ne produit pas un faux conflit au redémarrage
+  ---
+  duration_ms: 1.469407
+  type: 'test'
+  ...
+# Subtest: les menus déroulants Freev conservent les formulaires et le clavier
+ok 19 - les menus déroulants Freev conservent les formulaires et le clavier
+  ---
+  duration_ms: 6.307983
+  type: 'test'
+  ...
+# Subtest: les anciennes transactions restent payées par défaut
+ok 20 - les anciennes transactions restent payées par défaut
+  ---
+  duration_ms: 3.892271
+  type: 'test'
+  ...
+# Subtest: un achat prévu ne diminue pas le solde comptabilisé
+ok 21 - un achat prévu ne diminue pas le solde comptabilisé
+  ---
+  duration_ms: 2.007063
+  type: 'test'
+  ...
+# Subtest: le revenu prévu ne gonfle pas le solde comptabilisé
+ok 22 - le revenu prévu ne gonfle pas le solde comptabilisé
+  ---
+  duration_ms: 0.511575
+  type: 'test'
+  ...
+# Subtest: marquer un achat payé le comptabilise exactement une fois
+ok 23 - marquer un achat payé le comptabilise exactement une fois
+  ---
+  duration_ms: 0.225472
+  type: 'test'
+  ...
+# Subtest: une opération future datée ne diminue pas immédiatement le solde actuel
+ok 24 - une opération future datée ne diminue pas immédiatement le solde actuel
+  ---
+  duration_ms: 0.333536
+  type: 'test'
+  ...
+# Subtest: une opération prévue ancienne reste dans le prévisionnel sans affecter le réalisé
+ok 25 - une opération prévue ancienne reste dans le prévisionnel sans affecter le réalisé
+  ---
+  duration_ms: 0.399766
+  type: 'test'
+  ...
+# Subtest: une opération prévue ancienne produit une alerte de retard
+ok 26 - une opération prévue ancienne produit une alerte de retard
+  ---
+  duration_ms: 0.440988
+  type: 'test'
+  ...
+# Subtest: une récurrence prévue est intégrée à fin de mois, sans être réellement débitée
+ok 27 - une récurrence prévue est intégrée à fin de mois, sans être réellement débitée
+  ---
+  duration_ms: 9.916042
+  type: 'test'
+  ...
+# Subtest: un mois récurrent déjà enregistré ne doit pas être prévu deux fois
+ok 28 - un mois récurrent déjà enregistré ne doit pas être prévu deux fois
+  ---
+  duration_ms: 1.273019
+  type: 'test'
+  ...
+# Subtest: une exception d’octobre ne change pas le coût de novembre
+ok 29 - une exception d’octobre ne change pas le coût de novembre
+  ---
+  duration_ms: 1.274472
+  type: 'test'
+  ...
+# Subtest: les échéances ignorées restent absentes du prévisionnel
+ok 30 - les échéances ignorées restent absentes du prévisionnel
+  ---
+  duration_ms: 0.366846
+  type: 'test'
+  ...
+# Subtest: les dépenses déjà payées ce mois restent dans le solde de départ, sans doublon
+ok 31 - les dépenses déjà payées ce mois restent dans le solde de départ, sans doublon
+  ---
+  duration_ms: 0.586039
+  type: 'test'
+  ...
+# Subtest: le changement d’année conserve les échéances mensuelles
+ok 32 - le changement d’année conserve les échéances mensuelles
+  ---
+  duration_ms: 0.85126
+  type: 'test'
+  ...
+# Subtest: une récurrence annuelle ne se répète pas chaque mois
+ok 33 - une récurrence annuelle ne se répète pas chaque mois
+  ---
+  duration_ms: 0.340606
+  type: 'test'
+  ...
+# Subtest: les récurrences hebdomadaires ont des identifiants de période différents
+ok 34 - les récurrences hebdomadaires ont des identifiants de période différents
+  ---
+  duration_ms: 0.314877
+  type: 'test'
+  ...
+# Subtest: les devises sont prises au montant déjà converti en monnaie de base
+ok 35 - les devises sont prises au montant déjà converti en monnaie de base
+  ---
+  duration_ms: 1.052045
+  type: 'test'
+  ...
+# Subtest: les arrondis au centime restent déterministes
+ok 36 - les arrondis au centime restent déterministes
+  ---
+  duration_ms: 0.372185
+  type: 'test'
+  ...
+# Subtest: deux comptes apparaissent ensemble sans fusionner leurs budgets
+ok 37 - deux comptes apparaissent ensemble sans fusionner leurs budgets
+  ---
+  duration_ms: 0.471725
+  type: 'test'
+  ...
+# Subtest: 80 % de budget déclenche une alerte prudente
+ok 38 - 80 % de budget déclenche une alerte prudente
+  ---
+  duration_ms: 0.239603
+  type: 'test'
+  ...
+# Subtest: budget dépassé : niveau danger et restant négatif
+ok 39 - budget dépassé : niveau danger et restant négatif
+  ---
+  duration_ms: 0.102155
+  type: 'test'
+  ...
+# Subtest: une dépense prévue ne déclenche pas de faux dépassement du budget réalisé
+ok 40 - une dépense prévue ne déclenche pas de faux dépassement du budget réalisé
+  ---
+  duration_ms: 0.113342
+  type: 'test'
+  ...
+# Subtest: les mois passés sont des données lues, sans mutation lors de la simulation
+ok 41 - les mois passés sont des données lues, sans mutation lors de la simulation
+  ---
+  duration_ms: 0.198711
+  type: 'test'
+  ...
+# Subtest: les doublons potentiels sont signalés sans suppression
+ok 42 - les doublons potentiels sont signalés sans suppression
+  ---
+  duration_ms: 0.175596
+  type: 'test'
+  ...
+# Subtest: un paiement du même montant sur un autre compte ne déclenche pas de faux doublon
+ok 43 - un paiement du même montant sur un autre compte ne déclenche pas de faux doublon
+  ---
+  duration_ms: 0.154073
+  type: 'test'
+  ...
+# Subtest: un solde prévu négatif produit une alerte
+ok 44 - un solde prévu négatif produit une alerte
+  ---
+  duration_ms: 0.544505
+  type: 'test'
+  ...
+# Subtest: une hausse d’au moins 30 % d’un mois à l’autre est détectée
+ok 45 - une hausse d’au moins 30 % d’un mois à l’autre est détectée
+  ---
+  duration_ms: 0.169918
+  type: 'test'
+  ...
+# Subtest: un revenu seul ne déclenche pas une fausse hausse de dépenses
+ok 46 - un revenu seul ne déclenche pas une fausse hausse de dépenses
+  ---
+  duration_ms: 0.13217
+  type: 'test'
+  ...
+# Subtest: seuls revenus et dépenses manuels peuvent être planifiés
+ok 47 - seuls revenus et dépenses manuels peuvent être planifiés
+  ---
+  duration_ms: 0.174495
+  type: 'test'
+  ...
+# Subtest: statuts invalides et opérations à risque sont refusés
+ok 48 - statuts invalides et opérations à risque sont refusés
+  ---
+  duration_ms: 0.084748
+  type: 'test'
+  ...
+# Subtest: horizon maximum limité à 12 mois et mois invalides refusés
+ok 49 - horizon maximum limité à 12 mois et mois invalides refusés
+  ---
+  duration_ms: 0.583234
+  type: 'test'
+  ...
+# Subtest: une ancienne sauvegarde sans budget ni récurrences reste compatible
+ok 50 - une ancienne sauvegarde sans budget ni récurrences reste compatible
+  ---
+  duration_ms: 0.219552
+  type: 'test'
+  ...
+# Subtest: le service worker prévoit les fichiers du nouveau tableau de bord
+ok 51 - le service worker prévoit les fichiers du nouveau tableau de bord
+  ---
+  duration_ms: 0.323971
+  type: 'test'
+  ...
+# Subtest: une période hebdomadaire enregistrée sans periodKey ne repasse pas en prévision
+ok 52 - une période hebdomadaire enregistrée sans periodKey ne repasse pas en prévision
+  ---
+  duration_ms: 0.391674
+  type: 'test'
+  ...
+# Subtest: une hausse réelle sur une récurrence mensuelle déclenche une alerte spécifique
+ok 53 - une hausse réelle sur une récurrence mensuelle déclenche une alerte spécifique
+  ---
+  duration_ms: 0.720882
+  type: 'test'
+  ...
+# Subtest: un budget susceptible d’être dépassé produit une alerte prévisionnelle, non comptable
+ok 54 - un budget susceptible d’être dépassé produit une alerte prévisionnelle, non comptable
+  ---
+  duration_ms: 0.269318
+  type: 'test'
+  ...
+# Subtest: planifier un remboursement de dette en simple dépense est interdit
+ok 55 - planifier un remboursement de dette en simple dépense est interdit
+  ---
+  duration_ms: 0.082776
+  type: 'test'
+  ...
+# Subtest: le centre d’aide propose recherche, parcours, exemples et accès contextuels
+ok 56 - le centre d’aide propose recherche, parcours, exemples et accès contextuels
+  ---
+  duration_ms: 2.439939
+  type: 'test'
+  ...
+# Subtest: la sauvegarde JSON nominale reste importable
+ok 57 - la sauvegarde JSON nominale reste importable
+  ---
+  duration_ms: 2.079743
+  type: 'test'
+  ...
+# Subtest: date impossible dans une transaction JSON interdite
+ok 58 - date impossible dans une transaction JSON interdite
+  ---
+  duration_ms: 0.50829
+  type: 'test'
+  ...
+# Subtest: montant négatif, infini ou texte JSON refusés
+ok 59 - montant négatif, infini ou texte JSON refusés
+  ---
+  duration_ms: 0.445064
+  type: 'test'
+  ...
+# Subtest: type de transaction non pris en charge refusé
+ok 60 - type de transaction non pris en charge refusé
+  ---
+  duration_ms: 0.249148
+  type: 'test'
+  ...
+# Subtest: règle récurrente avec date et fréquence invalides refusée
+ok 61 - règle récurrente avec date et fréquence invalides refusée
+  ---
+  duration_ms: 0.366856
+  type: 'test'
+  ...
+# Subtest: IDs dupliqués de comptes, opérations, règles refusés
+ok 62 - IDs dupliqués de comptes, opérations, règles refusés
+  ---
+  duration_ms: 0.463662
+  type: 'test'
+  ...
+# Subtest: copier le mois deux fois est idempotent, sans doubler les opérations
+ok 63 - copier le mois deux fois est idempotent, sans doubler les opérations
+  ---
+  duration_ms: 1.351228
+  type: 'test'
+  ...
+# Subtest: copie refuse un mois de destination inexistant
+ok 64 - copie refuse un mois de destination inexistant
+  ---
+  duration_ms: 0.730858
+  type: 'test'
+  ...
+# Subtest: le backup automatique ne laisse aucun fichier local sur un appareil non fiable
+ok 65 - le backup automatique ne laisse aucun fichier local sur un appareil non fiable
+  ---
+  duration_ms: 2.781417
+  type: 'test'
+  ...
+# Subtest: désactiver le cache local nettoie les sauvegardes financières déjà enregistrées
+ok 66 - désactiver le cache local nettoie les sauvegardes financières déjà enregistrées
+  ---
+  duration_ms: 1.037543
+  type: 'test'
+  ...
+# Subtest: la sauvegarde cloud est interdite sans session de données chargée pour le même UID
+ok 67 - la sauvegarde cloud est interdite sans session de données chargée pour le même UID
+  ---
+  duration_ms: 0.436792
+  type: 'test'
+  ...
+# Subtest: la liste PWA contient tous les CSS et scripts essentiels de l’interface
+ok 68 - la liste PWA contient tous les CSS et scripts essentiels de l’interface
+  ---
+  duration_ms: 1.289925
+  type: 'test'
+  ...
+# Subtest: la déconnexion signale un échec de sauvegarde cloud plutôt que de prétendre que tout est enregistré
+ok 69 - la déconnexion signale un échec de sauvegarde cloud plutôt que de prétendre que tout est enregistré
+  ---
+  duration_ms: 0.317862
+  type: 'test'
+  ...
+# Subtest: l’interface enregistre les dix vues sans changer les données financières
+ok 70 - l’interface enregistre les dix vues sans changer les données financières
+  ---
+  duration_ms: 2.186836
+  type: 'test'
+  ...
+# Subtest: une navigation affiche un titre contextualisé et sa description
+ok 71 - une navigation affiche un titre contextualisé et sa description
+  ---
+  duration_ms: 0.702615
+  type: 'test'
+  ...
+# Subtest: les valeurs sont insérées en texte et non en HTML
+ok 72 - les valeurs sont insérées en texte et non en HTML
+  ---
+  duration_ms: 0.610205
+  type: 'test'
+  ...
+# Subtest: une vue inconnue ne modifie pas le titre ni le menu
+ok 73 - une vue inconnue ne modifie pas le titre ni le menu
+  ---
+  duration_ms: 1.594287
+  type: 'test'
+  ...
+# Subtest: une seule entrée du menu reçoit aria-current=page
+ok 74 - une seule entrée du menu reçoit aria-current=page
+  ---
+  duration_ms: 0.635664
+  type: 'test'
+  ...
+# Subtest: la navigation mobile reçoit son état actif correctement
+ok 75 - la navigation mobile reçoit son état actif correctement
+  ---
+  duration_ms: 1.104004
+  type: 'test'
+  ...
+# Subtest: le menu natif est utilisable au clavier avec un bouton par vue
+ok 76 - le menu natif est utilisable au clavier avec un bouton par vue
+  ---
+  duration_ms: 0.301547
+  type: 'test'
+  ...
+# Subtest: les en-têtes contiennent des actions qui appellent les fonctions existantes
+ok 77 - les en-têtes contiennent des actions qui appellent les fonctions existantes
+  ---
+  duration_ms: 0.108745
+  type: 'test'
+  ...
+# Subtest: le changement de vue synchronise menus et contexte sans recalcul financier
+ok 78 - le changement de vue synchronise menus et contexte sans recalcul financier
+  ---
+  duration_ms: 0.61364
+  type: 'test'
+  ...
+# Subtest: les commandes mois et menu sont annoncées au lecteur d’écran
+ok 79 - les commandes mois et menu sont annoncées au lecteur d’écran
+  ---
+  duration_ms: 0.442792
+  type: 'test'
+  ...
+# Subtest: les styles prévoient les écrans mobiles et très étroits
+ok 80 - les styles prévoient les écrans mobiles et très étroits
+  ---
+  duration_ms: 0.186122
+  type: 'test'
+  ...
+# Subtest: le mode sombre et les préférences de mouvement réduit sont respectés
+ok 81 - le mode sombre et les préférences de mouvement réduit sont respectés
+  ---
+  duration_ms: 0.105089
+  type: 'test'
+  ...
+# Subtest: la PWA charge et met en cache les deux nouveaux assets
+ok 82 - la PWA charge et met en cache les deux nouveaux assets
+  ---
+  duration_ms: 0.102856
+  type: 'test'
+  ...
+# Subtest: la PWA possède un manifeste, les icônes iPhone/Android et un cache 5.1 cohérents
+ok 83 - la PWA possède un manifeste, les icônes iPhone/Android et un cache 5.1 cohérents
+  ---
+  duration_ms: 3.783375
+  type: 'test'
+  ...
+# Error: Backup invalide
+#     at validateImportData (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/reaudit-cross-account.test.mjs:30:106)
+#     at Object.restoreFromAutoBackup (evalmachine.<anonymous>:208:51)
+#     at TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/reaudit-cross-account.test.mjs:78:7)
+#     at Test.runInAsyncScope (node:async_hooks:214:14)
+#     at Test.run (node:internal/test_runner/test:1047:25)
+#     at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+#     at Test.postRun (node:internal/test_runner/test:1173:19)
+#     at Test.run (node:internal/test_runner/test:1101:12)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: une sauvegarde locale d’un autre UID est refusée
+ok 84 - une sauvegarde locale d’un autre UID est refusée
+  ---
+  duration_ms: 3.372843
+  type: 'test'
+  ...
+# Subtest: un ancien backup sans propriétaire exige deux preuves identiques d’identité
+ok 85 - un ancien backup sans propriétaire exige deux preuves identiques d’identité
+  ---
+  duration_ms: 0.775585
+  type: 'test'
+  ...
+# Subtest: restaurer un backup d’un autre compte ne demande pas confirmation ni ne remplace les données
+ok 86 - restaurer un backup d’un autre compte ne demande pas confirmation ni ne remplace les données
+  ---
+  duration_ms: 0.946235
+  type: 'test'
+  ...
+# Subtest: un backup mal formé est rejeté avant toute mutation
+ok 87 - un backup mal formé est rejeté avant toute mutation
+  ---
+  duration_ms: 2.008505
+  type: 'test'
+  ...
+# Subtest: le bouton Annuler ne restaure pas une transaction après un changement de compte
+ok 88 - le bouton Annuler ne restaure pas une transaction après un changement de compte
+  ---
+  duration_ms: 1.017072
+  type: 'test'
+  ...
+# Subtest: un ancien bouton Annuler ne peut pas restaurer la mauvaise suppression
+ok 89 - un ancien bouton Annuler ne peut pas restaurer la mauvaise suppression
+  ---
+  duration_ms: 1.152477
+  type: 'test'
+  ...
+# Subtest: une déconnexion rend caduc un bouton Annuler même sur le même compte
+ok 90 - une déconnexion rend caduc un bouton Annuler même sur le même compte
+  ---
+  duration_ms: 0.569223
+  type: 'test'
+  ...
+# Subtest: supprimer une dette ne touche pas un autre compte dont la dette a le même ID
+ok 91 - supprimer une dette ne touche pas un autre compte dont la dette a le même ID
+  ---
+  duration_ms: 0.893114
+  type: 'test'
+  ...
+# Subtest: annuler la suppression d’une dette rétablit les liens de ses transactions
+ok 92 - annuler la suppression d’une dette rétablit les liens de ses transactions
+  ---
+  duration_ms: 1.479302
+  type: 'test'
+  ...
+# Subtest: annuler la suppression d’une dette après changement de compte ne restaure rien
+ok 93 - annuler la suppression d’une dette après changement de compte ne restaure rien
+  ---
+  duration_ms: 2.168928
+  type: 'test'
+  ...
+# Subtest: annuler une récurrence ignorée sur un autre compte ne touche pas la série
+ok 94 - annuler une récurrence ignorée sur un autre compte ne touche pas la série
+  ---
+  duration_ms: 1.104434
+  type: 'test'
+  ...
+# Subtest: un retour sur le même compte après navigation invalide un ancien Annuler
+ok 95 - un retour sur le même compte après navigation invalide un ancien Annuler
+  ---
+  duration_ms: 0.976881
+  type: 'test'
+  ...
+# Subtest: une dette supprimée délie aussi un remboursement externe qui cible explicitement le compte
+ok 96 - une dette supprimée délie aussi un remboursement externe qui cible explicitement le compte
+  ---
+  duration_ms: 0.636655
+  type: 'test'
+  ...
+# Subtest: une dette A ne doit pas délier une transaction A référant explicitement la dette B
+ok 97 - une dette A ne doit pas délier une transaction A référant explicitement la dette B
+  ---
+  duration_ms: 0.602894
+  type: 'test'
+  ...
+# Subtest: la navigation entre comptes invalide les anciennes actions Annuler
+ok 98 - la navigation entre comptes invalide les anciennes actions Annuler
+  ---
+  duration_ms: 1.007027
+  type: 'test'
+  ...
+# Subtest: une modification sur septembre ne modifie ni août ni octobre ni novembre
+ok 99 - une modification sur septembre ne modifie ni août ni octobre ni novembre
+  ---
+  duration_ms: 32.651639
+  type: 'test'
+  ...
+# Subtest: modifier un mois futur matérialise seulement cette exception, visible parmi les échéances
+ok 100 - modifier un mois futur matérialise seulement cette exception, visible parmi les échéances
+  ---
+  duration_ms: 3.749374
+  type: 'test'
+  ...
+# Subtest: changer une occurrence de période est refusé sans toucher les comptes
+ok 101 - changer une occurrence de période est refusé sans toucher les comptes
+  ---
+  duration_ms: 1.107328
+  type: 'test'
+  ...
+# Subtest: modifier toute la série depuis novembre préserve janvier et les anciens mois
+ok 102 - modifier toute la série depuis novembre préserve janvier et les anciens mois
+  ---
+  duration_ms: 1.645465
+  type: 'test'
+  ...
+# Subtest: éditer la série ne recrée pas les mois historiques absents au nouveau tarif
+ok 103 - éditer la série ne recrée pas les mois historiques absents au nouveau tarif
+  ---
+  duration_ms: 1.49124
+  type: 'test'
+  ...
+# Subtest: une occurrence sans periodKey dans une ancienne sauvegarde ne se duplique pas
+ok 104 - une occurrence sans periodKey dans une ancienne sauvegarde ne se duplique pas
+  ---
+  duration_ms: 1.115681
+  type: 'test'
+  ...
+# Subtest: modifier un transfert récurrent déjà payé ajuste une seule fois l’épargne
+ok 105 - modifier un transfert récurrent déjà payé ajuste une seule fois l’épargne
+  ---
+  duration_ms: 1.48419
+  type: 'test'
+  ...
+# Subtest: une exception hebdomadaire ne modifie pas les autres semaines du même mois
+ok 106 - une exception hebdomadaire ne modifie pas les autres semaines du même mois
+  ---
+  duration_ms: 1.548587
+  type: 'test'
+  ...
+# Subtest: le 29 février conserve sa règle annuelle quand une année reçoit une exception
+ok 107 - le 29 février conserve sa règle annuelle quand une année reçoit une exception
+  ---
+  duration_ms: 2.297983
+  type: 'test'
+  ...
+# Subtest: ignorer septembre n’annule aucune échéance des autres mois
+ok 108 - ignorer septembre n’annule aucune échéance des autres mois
+  ---
+  duration_ms: 1.624093
+  type: 'test'
+  ...
+# Subtest: une échéance au 31 s’adapte à février sans modifier le rythme de mars
+ok 109 - une échéance au 31 s’adapte à février sans modifier le rythme de mars
+  ---
+  duration_ms: 1.364098
+  type: 'test'
+  ...
+# Subtest: une modification de série ne régénère pas les trous historiques au nouveau prix au redémarrage
+ok 110 - une modification de série ne régénère pas les trous historiques au nouveau prix au redémarrage
+  ---
+  duration_ms: 1.737844
+  type: 'test'
+  ...
+# Subtest: régénération au démarrage : les anciens mois vides restent gelés
+ok 111 - régénération au démarrage : les anciens mois vides restent gelés
+  ---
+  duration_ms: 2.003377
+  type: 'test'
+  ...
+# Subtest: les doublons récurrents aux effets financiers distincts ne sont pas supprimés silencieusement
+ok 112 - les doublons récurrents aux effets financiers distincts ne sont pas supprimés silencieusement
+  ---
+  duration_ms: 0.966785
+  type: 'test'
+  ...
+# Subtest: une transaction saisie avec une date impossible est rejetée
+ok 113 - une transaction saisie avec une date impossible est rejetée
+  ---
+  duration_ms: 0.914566
+  type: 'test'
+  ...
+# Subtest: une conversion monétaire non finie est rejetée avant écriture
+ok 114 - une conversion monétaire non finie est rejetée avant écriture
+  ---
+  duration_ms: 0.937731
+  type: 'test'
+  ...
+# Subtest: modifier octobre uniquement plusieurs fois garde septembre, novembre et décembre à leur tarif initial
+ok 115 - modifier octobre uniquement plusieurs fois garde septembre, novembre et décembre à leur tarif initial
+  ---
+  duration_ms: 1.846389
+  type: 'test'
+  ...
+# Subtest: première confirmation refusée : aucun changement sur un mois passé
+ok 116 - première confirmation refusée : aucun changement sur un mois passé
+  ---
+  duration_ms: 1.277156
+  type: 'test'
+  ...
+# Subtest: deuxième confirmation refusée : ancien mois et autres mois intacts
+ok 117 - deuxième confirmation refusée : ancien mois et autres mois intacts
+  ---
+  duration_ms: 1.08199
+  type: 'test'
+  ...
+# Subtest: deux confirmations accordées : seul septembre est changé
+ok 118 - deux confirmations accordées : seul septembre est changé
+  ---
+  duration_ms: 1.596099
+  type: 'test'
+  ...
+# Subtest: moteur : modification historique directe sans autorisation interdite
+ok 119 - moteur : modification historique directe sans autorisation interdite
+  ---
+  duration_ms: 1.154841
+  type: 'test'
+  ...
+# Subtest: moteur : un ID périmé ne peut modifier une autre échéance du même abonnement
+ok 120 - moteur : un ID périmé ne peut modifier une autre échéance du même abonnement
+  ---
+  duration_ms: 0.962228
+  type: 'test'
+  ...
+# Subtest: liste récurrences : ouvrir ce mois sélectionne son occurrence (et non toute la série)
+ok 121 - liste récurrences : ouvrir ce mois sélectionne son occurrence (et non toute la série)
+  ---
+  duration_ms: 2.106213
+  type: 'test'
+  ...
+# Subtest: liste récurrences : échéance non matérialisée ciblée sur le mois, sans écriture avant validation
+ok 122 - liste récurrences : échéance non matérialisée ciblée sur le mois, sans écriture avant validation
+  ---
+  duration_ms: 0.972704
+  type: 'test'
+  ...
+# Subtest: liste récurrences : récurrence hebdomadaire demande de choisir sa semaine
+ok 123 - liste récurrences : récurrence hebdomadaire demande de choisir sa semaine
+  ---
+  duration_ms: 0.912844
+  type: 'test'
+  ...
+# Subtest: échéance ignorée : ne peut pas être modifiée silencieusement
+ok 124 - échéance ignorée : ne peut pas être modifiée silencieusement
+  ---
+  duration_ms: 0.934837
+  type: 'test'
+  ...
+# Subtest: ignorer une ancienne occurrence est soumis à une double confirmation
+ok 125 - ignorer une ancienne occurrence est soumis à une double confirmation
+  ---
+  duration_ms: 1.263165
+  type: 'test'
+  ...
+# Subtest: nouvelle récurrence antidatée : aucun ancien mois rempli sans confirmation spécifique
+ok 126 - nouvelle récurrence antidatée : aucun ancien mois rempli sans confirmation spécifique
+  ---
+  duration_ms: 1.382476
+  type: 'test'
+  ...
+# Subtest: modifier la règle ciblée ne régénère pas les opérations futures d’une autre règle
+ok 127 - modifier la règle ciblée ne régénère pas les opérations futures d’une autre règle
+  ---
+  duration_ms: 1.194361
+  type: 'test'
+  ...
+# Subtest: passage décembre-janvier : exception de décembre sans modifier janvier
+ok 128 - passage décembre-janvier : exception de décembre sans modifier janvier
+  ---
+  duration_ms: 1.357107
+  type: 'test'
+  ...
+# Subtest: transaction de sauvegarde héritée sans periodKey : édition conservée sans doublon
+ok 129 - transaction de sauvegarde héritée sans periodKey : édition conservée sans doublon
+  ---
+  duration_ms: 1.159658
+  type: 'test'
+  ...
+# Subtest: une exception future personnalisée survit à la modification du mois courant
+ok 130 - une exception future personnalisée survit à la modification du mois courant
+  ---
+  duration_ms: 1.269004
+  type: 'test'
+  ...
+# Subtest: rétablir une échéance ignorée d’un mois passé demande exactement deux confirmations
+ok 131 - rétablir une échéance ignorée d’un mois passé demande exactement deux confirmations
+  ---
+  duration_ms: 2.245784
+  type: 'test'
+  ...
+# Subtest: supprimer une règle avec des occurrences historiques requiert deux validations
+ok 132 - supprimer une règle avec des occurrences historiques requiert deux validations
+  ---
+  duration_ms: 1.025725
+  type: 'test'
+  ...
+# Subtest: une annuité de février de l’année en cours est historique dès mars
+ok 133 - une annuité de février de l’année en cours est historique dès mars
+  ---
+  duration_ms: 0.942079
+  type: 'test'
+  ...
+# Subtest: ignorer puis restaurer un ancien mois conserve le montant original même si la règle change
+ok 134 - ignorer puis restaurer un ancien mois conserve le montant original même si la règle change
+  ---
+  duration_ms: 1.647638
+  type: 'test'
+  ...
+# Subtest: une restauration historique sans montant fiable est refusée plutôt que reconstruite au mauvais tarif
+ok 135 - une restauration historique sans montant fiable est refusée plutôt que reconstruite au mauvais tarif
+  ---
+  duration_ms: 0.932905
+  type: 'test'
+  ...
+# Subtest: désactiver la case récurrente depuis une règle ne crée pas une fausse transaction
+ok 136 - désactiver la case récurrente depuis une règle ne crée pas une fausse transaction
+  ---
+  duration_ms: 0.897651
+  type: 'test'
+  ...
+# Subtest: modifier une série ne supprime pas une autre transaction avec un ID identique
+ok 137 - modifier une série ne supprime pas une autre transaction avec un ID identique
+  ---
+  duration_ms: 1.343337
+  type: 'test'
+  ...
+# Subtest: deux occurrences stockées dans le même mois ne sont pas modifiées arbitrairement
+ok 138 - deux occurrences stockées dans le même mois ne sont pas modifiées arbitrairement
+  ---
+  duration_ms: 0.945554
+  type: 'test'
+  ...
+# Subtest: supprimer une échéance passée après refus de la deuxième confirmation ne contourne pas le verrou
+ok 139 - supprimer une échéance passée après refus de la deuxième confirmation ne contourne pas le verrou
+  ---
+  duration_ms: 1.341714
+  type: 'test'
+  ...
+# Subtest: une exception du mois courant conserve la règle et journalise des snapshots réversibles
+ok 140 - une exception du mois courant conserve la règle et journalise des snapshots réversibles
+  ---
+  duration_ms: 8.822895
+  type: 'test'
+  ...
+# Subtest: le retour en arrière d’une exception projetée supprime seulement cette projection personnalisée
+ok 141 - le retour en arrière d’une exception projetée supprime seulement cette projection personnalisée
+  ---
+  duration_ms: 2.27554
+  type: 'test'
+  ...
+# Subtest: une restauration ne remplace pas une révision plus récente sur la même échéance
+ok 142 - une restauration ne remplace pas une révision plus récente sur la même échéance
+  ---
+  duration_ms: 1.633126
+  type: 'test'
+  ...
+# Subtest: la restauration d’un mois passé réclame les deux confirmations
+ok 143 - la restauration d’un mois passé réclame les deux confirmations
+  ---
+  duration_ms: 19.698993
+  type: 'test'
+  ...
+# Subtest: modifier uniquement les futurs garde les mois historiques et les exceptions
+ok 144 - modifier uniquement les futurs garde les mois historiques et les exceptions
+  ---
+  duration_ms: 3.231749
+  type: 'test'
+  ...
+# Subtest: annuler la modification future restaure la règle mais conserve une exception ponctuelle
+ok 145 - annuler la modification future restaure la règle mais conserve une exception ponctuelle
+  ---
+  duration_ms: 1.854842
+  type: 'test'
+  ...
+# Subtest: l’édition complète de la série est refusée sans double confirmation
+ok 146 - l’édition complète de la série est refusée sans double confirmation
+  ---
+  duration_ms: 1.330537
+  type: 'test'
+  ...
+# Subtest: l’édition complète doublement confirmée conserve les périodes et modifie les écritures existantes
+ok 147 - l’édition complète doublement confirmée conserve les périodes et modifie les écritures existantes
+  ---
+  duration_ms: 3.04749
+  type: 'test'
+  ...
+# Subtest: la restauration globale est refusée si une échéance a changé après
+ok 148 - la restauration globale est refusée si une échéance a changé après
+  ---
+  duration_ms: 2.349241
+  type: 'test'
+  ...
+# Subtest: le calendrier distingue mois passé incomplet, exception et projection
+ok 149 - le calendrier distingue mois passé incomplet, exception et projection
+  ---
+  duration_ms: 4.14938
+  type: 'test'
+  ...
+# Subtest: le simulateur sait isoler un mois sans impacter les autres
+ok 150 - le simulateur sait isoler un mois sans impacter les autres
+  ---
+  duration_ms: 5.820213
+  type: 'test'
+  ...
+# Subtest: le calendrier accepte les semaines et les années sans additionner des mois inexistants
+ok 151 - le calendrier accepte les semaines et les années sans additionner des mois inexistants
+  ---
+  duration_ms: 10.497073
+  type: 'test'
+  ...
+# Subtest: le calendrier est rendu sur douze mois avec historique, sans modifier les données
+ok 152 - le calendrier est rendu sur douze mois avec historique, sans modifier les données
+  ---
+  duration_ms: 3.410941
+  type: 'test'
+  ...
+# Subtest: la modification historique refuse un doublon et conserve tous les montants
+ok 153 - la modification historique refuse un doublon et conserve tous les montants
+  ---
+  duration_ms: 0.800734
+  type: 'test'
+  ...
+# Subtest: l’édition historique refuse les anciens effets d’épargne non confirmés
+ok 154 - l’édition historique refuse les anciens effets d’épargne non confirmés
+  ---
+  duration_ms: 0.746091
+  type: 'test'
+  ...
+# Subtest: l’édition historique d’un virement enregistré ajuste l’épargne une seule fois, et l’annulation inverse l’écart
+ok 155 - l’édition historique d’un virement enregistré ajuste l’épargne une seule fois, et l’annulation inverse l’écart
+  ---
+  duration_ms: 1.553715
+  type: 'test'
+  ...
+# Subtest: une série historique de plus de 120 occurrences ne peut être modifiée de façon destructrice
+ok 156 - une série historique de plus de 120 occurrences ne peut être modifiée de façon destructrice
+  ---
+  duration_ms: 1.232027
+  type: 'test'
+  ...
+# Subtest: l’historique conserve seulement les révisions récentes pour borner la taille de sauvegarde
+ok 157 - l’historique conserve seulement les révisions récentes pour borner la taille de sauvegarde
+  ---
+  duration_ms: 1.505392
+  type: 'test'
+  ...
+# Subtest: l’aperçu ponctuel inclut une ancienne échéance datant de plusieurs années
+ok 158 - l’aperçu ponctuel inclut une ancienne échéance datant de plusieurs années
+  ---
+  duration_ms: 1.209354
+  type: 'test'
+  ...
+# Subtest: les imports ont des limites et valident les identifiants avant affichage
+ok 159 - les imports ont des limites et valident les identifiants avant affichage
+  ---
+  duration_ms: 1.956126
+  type: 'test'
+  ...
+# Subtest: les tags, catégories et identifiants de transaction ne passent plus dans des gestionnaires HTML
+ok 160 - les tags, catégories et identifiants de transaction ne passent plus dans des gestionnaires HTML
+  ---
+  duration_ms: 0.576314
+  type: 'test'
+  ...
+# Subtest: le cache local et le rapport sont liés à l utilisateur Firebase connecté
+ok 161 - le cache local et le rapport sont liés à l utilisateur Firebase connecté
+  ---
+  duration_ms: 1.226149
+  type: 'test'
+  ...
+# Subtest: les règles Firestore limitent chaque document financier à son propriétaire
+ok 162 - les règles Firestore limitent chaque document financier à son propriétaire
+  ---
+  duration_ms: 0.982018
+  type: 'test'
+  ...
+# Subtest: Storage reste fermé tant que le coffre documentaire n’est pas livré
+ok 163 - Storage reste fermé tant que le coffre documentaire n’est pas livré
+  ---
+  duration_ms: 0.208225
+  type: 'test'
+  ...
+# Subtest: l’export Excel neutralise les chaînes interprétables comme formules
+ok 164 - l’export Excel neutralise les chaînes interprétables comme formules
+  ---
+  duration_ms: 1.313582
+  type: 'test'
+  ...
+# Subtest: fusion de septembre et novembre sur deux appareils sans toucher octobre
+ok 165 - fusion de septembre et novembre sur deux appareils sans toucher octobre
+  ---
+  duration_ms: 3.051986
+  type: 'test'
+  ...
+# Subtest: identifiants numériques anciens des règles : deux mois fusionnés sans conversion destructive
+ok 166 - identifiants numériques anciens des règles : deux mois fusionnés sans conversion destructive
+  ---
+  duration_ms: 2.052311
+  type: 'test'
+  ...
+# Subtest: même mois modifié simultanément : refus de fusion
+ok 167 - même mois modifié simultanément : refus de fusion
+  ---
+  duration_ms: 0.400447
+  type: 'test'
+  ...
+# Subtest: mois différents mais règle de tarif modifiée sur appareil distant : refus
+ok 168 - mois différents mais règle de tarif modifiée sur appareil distant : refus
+  ---
+  duration_ms: 0.445856
+  type: 'test'
+  ...
+# Subtest: fusion interdite lorsqu’une dette est modifiée
+ok 169 - fusion interdite lorsqu’une dette est modifiée
+  ---
+  duration_ms: 0.332805
+  type: 'test'
+  ...
+# Subtest: échéance d’épargne ou remboursement : aucune fusion financière risquée
+ok 170 - échéance d’épargne ou remboursement : aucune fusion financière risquée
+  ---
+  duration_ms: 0.464634
+  type: 'test'
+  ...
+# Subtest: suppression ou création d’une occurrence : fusion bloquée
+ok 171 - suppression ou création d’une occurrence : fusion bloquée
+  ---
+  duration_ms: 0.774334
+  type: 'test'
+  ...
+# Subtest: un état global modifié sur un appareil ne peut pas être fusionné silencieusement
+ok 172 - un état global modifié sur un appareil ne peut pas être fusionné silencieusement
+  ---
+  duration_ms: 0.216668
+  type: 'test'
+  ...
+# Subtest: un compte supplémentaire ou un changement d’ordre provoque un refus
+ok 173 - un compte supplémentaire ou un changement d’ordre provoque un refus
+  ---
+  duration_ms: 0.473518
+  type: 'test'
+  ...
+# Subtest: historique supprimé, altéré ou type de restauration : fusion refusée
+ok 174 - historique supprimé, altéré ou type de restauration : fusion refusée
+  ---
+  duration_ms: 1.627868
+  type: 'test'
+  ...
+# Subtest: état cloud corrompu : aucune écriture automatique
+ok 175 - état cloud corrompu : aucune écriture automatique
+  ---
+  duration_ms: 0.532717
+  type: 'test'
+  ...
+# Subtest: historique de révision existant conservé avec les deux nouvelles opérations
+ok 176 - historique de révision existant conservé avec les deux nouvelles opérations
+  ---
+  duration_ms: 1.367042
+  type: 'test'
+  ...
+# Subtest: historique distant changé sans modification de transaction : refus
+ok 177 - historique distant changé sans modification de transaction : refus
+  ---
+  duration_ms: 0.43565
+  type: 'test'
+  ...
+# Subtest: historique incomplet après deux changements successifs : fusion refusée
+ok 178 - historique incomplet après deux changements successifs : fusion refusée
+  ---
+  duration_ms: 0.338843
+  type: 'test'
+  ...
+# Subtest: une période récurrente en double dans la base empêche une fusion
+ok 179 - une période récurrente en double dans la base empêche une fusion
+  ---
+  duration_ms: 0.213013
+  type: 'test'
+  ...
+# Subtest: deux écritures non récurrentes modifiées en parallèle ne sont jamais fusionnées
+ok 180 - deux écritures non récurrentes modifiées en parallèle ne sont jamais fusionnées
+  ---
+  duration_ms: 0.318814
+  type: 'test'
+  ...
+# Subtest: DEUX SESSIONS : deux mois distincts sont conservés par fusion CAS
+ok 181 - DEUX SESSIONS : deux mois distincts sont conservés par fusion CAS
+  ---
+  duration_ms: 19.540603
+  type: 'test'
+  ...
+# [Freev] Cloud save refused: CloudConflictError: Le document cloud a été modifié sur un autre appareil.
+#     at evalmachine.<anonymous>:359:32
+#     at async TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/two-device-recurrences.test.mjs:252:16)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: DEUX SESSIONS : même mois en concurrence bloque la seconde écriture
+ok 182 - DEUX SESSIONS : même mois en concurrence bloque la seconde écriture
+  ---
+  duration_ms: 3.85876
+  type: 'test'
+  ...
+# [Freev] Cloud save refused: CloudConflictError: Le document cloud a été modifié sur un autre appareil.
+#     at evalmachine.<anonymous>:356:21
+#     at async TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/two-device-recurrences.test.mjs:266:16)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: DEUX SESSIONS : modification locale pendant la lecture de conflit => aucune fusion
+ok 183 - DEUX SESSIONS : modification locale pendant la lecture de conflit => aucune fusion
+  ---
+  duration_ms: 3.060259
+  type: 'test'
+  ...
+# Subtest: DEUX SESSIONS : nouvelle saisie pendant commit => conservée localement, conflit signalé
+ok 184 - DEUX SESSIONS : nouvelle saisie pendant commit => conservée localement, conflit signalé
+  ---
+  duration_ms: 3.109884
+  type: 'test'
+  ...
+# [Freev] Cloud save refused: CloudConflictError: Le document cloud a été modifié sur un autre appareil.
+#     at runTransaction (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/two-device-recurrences.test.mjs:196:75)
+#     at async evalmachine.<anonymous>:362:21
+#     at async TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/two-device-recurrences.test.mjs:302:16)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: DEUX SESSIONS : évolution du serveur pendant le commit bloque un troisième écrasement
+ok 185 - DEUX SESSIONS : évolution du serveur pendant le commit bloque un troisième écrasement
+  ---
+  duration_ms: 3.384791
+  type: 'test'
+  ...
+# [Freev] Cloud save refused: CloudConflictError: Le document cloud a été modifié sur un autre appareil.
+#     at evalmachine.<anonymous>:356:21
+#     at async TestContext.<anonymous> (file:///mnt/data/freev_priority3/Freev1-gestion--main/tests/two-device-recurrences.test.mjs:317:16)
+#     at async Test.run (node:internal/test_runner/test:1054:7)
+#     at async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+# Subtest: DEUX SESSIONS : changement de sélection de comptes pendant la fusion détecté
+ok 186 - DEUX SESSIONS : changement de sélection de comptes pendant la fusion détecté
+  ---
+  duration_ms: 2.976262
+  type: 'test'
+  ...
+# Subtest: les contrôles animés restent accessibles et respectent les mouvements réduits
+ok 187 - les contrôles animés restent accessibles et respectent les mouvements réduits
+  ---
+  duration_ms: 9.643709
+  type: 'test'
+  ...
+# Subtest: les revenus et dépenses ont le bon signe
+ok 188 - les revenus et dépenses ont le bon signe
+  ---
+  duration_ms: 1.217506
+  type: 'test'
+  ...
+# Subtest: le solde respecte la date limite et le capital initial
+ok 189 - le solde respecte la date limite et le capital initial
+  ---
+  duration_ms: 0.673511
+  type: 'test'
+  ...
+# Subtest: les objectifs calculent progression et effort mensuel
+ok 190 - les objectifs calculent progression et effort mensuel
+  ---
+  duration_ms: 0.338573
+  type: 'test'
+  ...
+# Subtest: les enveloppes détectent les dépassements
+ok 191 - les enveloppes détectent les dépassements
+  ---
+  duration_ms: 0.396391
+  type: 'test'
+  ...
+# Subtest: la prévision produit une trajectoire finie et déterministe
+ok 192 - la prévision produit une trajectoire finie et déterministe
+  ---
+  duration_ms: 1.244427
+  type: 'test'
+  ...
+# Subtest: l’utilisateur choisit si les opérations occasionnelles alimentent la projection
+ok 193 - l’utilisateur choisit si les opérations occasionnelles alimentent la projection
+  ---
+  duration_ms: 1.190214
+  type: 'test'
+  ...
+# Subtest: la prévision explique exactement le cas utilisateur à 142 euros
+ok 194 - la prévision explique exactement le cas utilisateur à 142 euros
+  ---
+  duration_ms: 0.750407
+  type: 'test'
+  ...
+# Subtest: le simulateur combine revenus, dépenses et imprévu sans toucher aux données
+ok 195 - le simulateur combine revenus, dépenses et imprévu sans toucher aux données
+  ---
+  duration_ms: 1.454225
+  type: 'test'
+  ...
+# Subtest: le résumé de projection repère le point bas et le premier découvert
+ok 196 - le résumé de projection repère le point bas et le premier découvert
+  ---
+  duration_ms: 0.444123
+  type: 'test'
+  ...
+# Subtest: la recherche retrouve une transaction dans tous les comptes
+ok 197 - la recherche retrouve une transaction dans tous les comptes
+  ---
+  duration_ms: 0.493998
+  type: 'test'
+  ...
+# Subtest: le calendrier ajoute les prochaines échéances récurrentes sans doublon
+ok 198 - le calendrier ajoute les prochaines échéances récurrentes sans doublon
+  ---
+  duration_ms: 9.469927
+  type: 'test'
+  ...
+# Subtest: le planificateur cumule les dépenses récurrentes par catégorie sur tout l’horizon
+ok 199 - le planificateur cumule les dépenses récurrentes par catégorie sur tout l’horizon
+  ---
+  duration_ms: 0.77871
+  type: 'test'
+  ...
+# Subtest: le calendrier long conserve les échéances hebdomadaires jusqu’à 24 mois
+ok 200 - le calendrier long conserve les échéances hebdomadaires jusqu’à 24 mois
+  ---
+  duration_ms: 1.229103
+  type: 'test'
+  ...
+# Subtest: les alertes signalent un budget dépassé
+ok 201 - les alertes signalent un budget dépassé
+  ---
+  duration_ms: 0.343871
+  type: 'test'
+  ...
+# Subtest: le score financier reste expliqué et borné sur 100
+ok 202 - le score financier reste expliqué et borné sur 100
+  ---
+  duration_ms: 0.530604
+  type: 'test'
+  ...
+# Subtest: les trois scénarios produisent des soldes ordonnés
+ok 203 - les trois scénarios produisent des soldes ordonnés
+  ---
+  duration_ms: 0.496914
+  type: 'test'
+  ...
+# Subtest: les scénarios comparés respectent le filtre choisi dans le planificateur
+ok 204 - les scénarios comparés respectent le filtre choisi dans le planificateur
+  ---
+  duration_ms: 0.439767
+  type: 'test'
+  ...
+# Subtest: le plan d’actions est priorisé à partir des données
+ok 205 - le plan d’actions est priorisé à partir des données
+  ---
+  duration_ms: 0.327046
+  type: 'test'
+  ...
+# Subtest: la prévision compte les vraies semaines et respecte une échéance ignorée
+ok 206 - la prévision compte les vraies semaines et respecte une échéance ignorée
+  ---
+  duration_ms: 0.702895
+  type: 'test'
+  ...
+# Subtest: un objectif dépassé est signalé sans inventer un mois restant
+ok 207 - un objectif dépassé est signalé sans inventer un mois restant
+  ---
+  duration_ms: 0.103928
+  type: 'test'
+  ...
+# Subtest: le planificateur explique la confiance, le risque et la marge de sécurité
+ok 208 - le planificateur explique la confiance, le risque et la marge de sécurité
+  ---
+  duration_ms: 1.016411
+  type: 'test'
+  ...
+# Subtest: la prévision longue conserve 24 mois exacts sans déplacer un imprévu
+ok 209 - la prévision longue conserve 24 mois exacts sans déplacer un imprévu
+  ---
+  duration_ms: 0.576885
+  type: 'test'
+  ...
+# Subtest: un horizon enregistré hors limites est normalisé de façon déterministe
+ok 210 - un horizon enregistré hors limites est normalisé de façon déterministe
+  ---
+  duration_ms: 0.165971
+  type: 'test'
+  ...
+# Subtest: le CSV français accepte les décimales, les guillemets et les accents
+ok 211 - le CSV français accepte les décimales, les guillemets et les accents
+  ---
+  duration_ms: 2.64531
+  type: 'test'
+  ...
+# Subtest: le CSV débit/crédit classe correctement les mouvements
+ok 212 - le CSV débit/crédit classe correctement les mouvements
+  ---
+  duration_ms: 0.454499
+  type: 'test'
+  ...
+# Subtest: les dates impossibles et les lignes incomplètes sont refusées
+ok 213 - les dates impossibles et les lignes incomplètes sont refusées
+  ---
+  duration_ms: 0.226864
+  type: 'test'
+  ...
+# Subtest: le QIF produit des revenus et dépenses normalisés
+ok 214 - le QIF produit des revenus et dépenses normalisés
+  ---
+  duration_ms: 0.612869
+  type: 'test'
+  ...
+# Subtest: les doublons sont détectés dans le relevé et dans le compte existant
+ok 215 - les doublons sont détectés dans le relevé et dans le compte existant
+  ---
+  duration_ms: 0.426477
+  type: 'test'
+  ...
+# Subtest: les règles automatisent sans modifier le tableau d’origine
+ok 216 - les règles automatisent sans modifier le tableau d’origine
+  ---
+  duration_ms: 0.364703
+  type: 'test'
+  ...
+# Subtest: les suggestions exigent au moins deux classements cohérents
+ok 217 - les suggestions exigent au moins deux classements cohérents
+  ---
+  duration_ms: 0.500209
+  type: 'test'
+  ...
+# Subtest: les abonnements mensuels et leurs hausses sont détectés
+ok 218 - les abonnements mensuels et leurs hausses sont détectés
+  ---
+  duration_ms: 7.529245
+  type: 'test'
+  ...
+# Subtest: une récurrence existante n’est pas détectée une deuxième fois
+ok 219 - une récurrence existante n’est pas détectée une deuxième fois
+  ---
+  duration_ms: 0.395349
+  type: 'test'
+  ...
+# Subtest: le patrimoine net combine trésorerie, épargne, actifs et dettes
+ok 220 - le patrimoine net combine trésorerie, épargne, actifs et dettes
+  ---
+  duration_ms: 0.464614
+  type: 'test'
+  ...
+# Subtest: les rappels locaux détectent budgets, échéances et hausses sans données distantes
+ok 221 - les rappels locaux détectent budgets, échéances et hausses sans données distantes
+  ---
+  duration_ms: 8.39109
+  type: 'test'
+  ...
+# Subtest: les paiements très instables ne sont pas présentés comme un abonnement
+ok 222 - les paiements très instables ne sont pas présentés comme un abonnement
+  ---
+  duration_ms: 1.087429
+  type: 'test'
+  ...
+# Subtest: le centre intelligent compare deux mois complets et priorise les dérives
+ok 223 - le centre intelligent compare deux mois complets et priorise les dérives
+  ---
+  duration_ms: 1.229274
+  type: 'test'
+  ...
+# Subtest: le chargement d’une bibliothèque distante expire rapidement et reste réessayable
+ok 224 - le chargement d’une bibliothèque distante expire rapidement et reste réessayable
+  ---
+  duration_ms: 1.02257
+  type: 'test'
+  ...
+# Subtest: le tableau de bord explique l’indisponibilité des graphiques
+ok 225 - le tableau de bord explique l’indisponibilité des graphiques
+  ---
+  duration_ms: 1.893981
+  type: 'test'
+  ...
+# Subtest: CORS limite les appels au site Freev publie
+ok 226 - CORS limite les appels au site Freev publie
+  ---
+  duration_ms: 23.409588
+  type: 'test'
+  ...
+# Subtest: les identifiants bancaires rendus au navigateur sont opaques et les IBAN masques
+ok 227 - les identifiants bancaires rendus au navigateur sont opaques et les IBAN masques
+  ---
+  duration_ms: 6.362996
+  type: 'test'
+  ...
+# Subtest: les associations imposent un compte externe et Freev uniques
+ok 228 - les associations imposent un compte externe et Freev uniques
+  ---
+  duration_ms: 0.740733
+  type: 'test'
+  ...
+# Subtest: les etats du prestataire restent comprehensibles pour Freev
+ok 229 - les etats du prestataire restent comprehensibles pour Freev
+  ---
+  duration_ms: 0.444163
+  type: 'test'
+  ...
+# Subtest: la protection anti-abus limite les appels sans stocker IP ou UID en clair
+ok 230 - la protection anti-abus limite les appels sans stocker IP ou UID en clair
+  ---
+  duration_ms: 2.589646
+  type: 'test'
+  ...
+# Subtest: la protection anti-abus bloque aussi une rafale concurrente dans une instance Worker
+ok 231 - la protection anti-abus bloque aussi une rafale concurrente dans une instance Worker
+  ---
+  duration_ms: 1.197826
+  type: 'test'
+  ...
+1..231
+# tests 231
+# suites 0
+# pass 231
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 630.380457

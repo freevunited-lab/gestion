@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "logicalTransactions": 1000000000,
+  "accountCount": 1,
+  "materializedTransactions": 0,
+  "cycleSize": 1000000,
+  "calculationMs": 756696,
+  "startingBalanceMinor": 79983677000,
+  "current": {
+    "incomeMinor": 34374725000,
+    "expensesMinor": 20009003000,
+    "transfersMinor": 6251675000,
+    "paidCount": 750000000,
+    "plannedCount": 2000
+  },
+  "forecasts": [
+    {
+      "month": "2026-10",
+      "balanceMinor": 79984771000,
+      "items": 2001
+    },
+    {
+      "month": "2026-11",
+      "balanceMinor": 79984767000,
+      "items": 2
+    },
+    {
+      "month": "2026-12",
+      "balanceMinor": 79984762500,
+      "items": 2
+    }
+  ],
+  "alerts": [
+    "Courses (Compte unique — stress 1 milliard) : 168 757 770,00 € sur 100 000 000,00 €.",
+    "Hausse d’une récurrence (« Loyer ») par rapport au mois précédent. Vérifiez le nouveau prélèvement.",
+    "Doublons potentiels dans « Compte unique — stress 1 milliard » : vérifiez les opérations du mois. Aucune suppression automatique."
+  ],
+  "heapBeforeMiB": 6.5,
+  "heapAfterMiB": 102.5,
+  "rssAfterMiB": 294.9,
+  "checks": [
+    "month-totals",
+    "previous-month-totals",
+    "paid-vs-planned",
+    "booked-balance",
+    "future-dated-operations",
+    "monthly-recurrence-rate-change",
+    "savings-transfer-forecast",
+    "budget-alert",
+    "duplicate-alert",
+    "recurring-price-alert"
+  ]
+}
