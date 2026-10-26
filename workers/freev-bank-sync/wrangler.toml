@@ -1,0 +1,20 @@
+name = "freev-bank-sync"
+main = "src/index.js"
+compatibility_date = "2026-08-24"
+
+# Valeurs publiques : elles peuvent être versionnées. Les secrets restent dans
+# Cloudflare via `npx wrangler secret put ...` et ne doivent jamais apparaître ici.
+[vars]
+FIREBASE_PROJECT_ID = "freev-valeur"
+FREEV_ALLOWED_ORIGIN = "https://trystan2340.github.io"
+FREEV_REDIRECT_URI = "https://trystan2340.github.io/Freev1-gestion-/"
+POWENS_API_BASE = "https://freev-sandbox.biapi.pro/2.0"
+POWENS_WEBVIEW_DOMAIN = "freev-sandbox.biapi.pro"
+
+# Namespace KV gratuit créé sur le compte Cloudflare Freev United.
+[[kv_namespaces]]
+binding = "FREEV_BANK_DATA"
+id = "504ba9ce535f4549b6d856ff4acfd08d"
+
+[secrets]
+required = ["BANK_DATA_ENCRYPTION_KEY", "FIREBASE_WEB_API_KEY", "POWENS_CLIENT_ID", "POWENS_CLIENT_SECRET", "POWENS_WEBHOOK_SECRET"]
