@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Aucun document financier n’est encore envoyé dans Storage en version 5.0.
+    // Le stockage reste fermé jusqu’à l’ajout d’un coffre chiffré et testé.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

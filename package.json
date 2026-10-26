@@ -1,0 +1,23 @@
+{
+  "name": "freev-valeur",
+  "version": "5.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:rules": "firebase emulators:exec --project freev-valeur-rules-test --only firestore \"node tests/firestore-emulator.mjs\"",
+    "test:browser": "node scripts/browser-smoke.mjs",
+    "icons": "node scripts/generate-icons.mjs",
+    "validate": "node scripts/validate.mjs && node --test",
+    "test:concurrency": "node --test tests/two-device-recurrences.test.mjs",
+    "benchmark:projection": "node scripts/priority4-benchmark.mjs",
+    "benchmark:performance": "node scripts/priority5-benchmark.mjs",
+    "benchmark:intelligence": "node scripts/automation-intelligence-benchmark.mjs"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.1",
+    "axe-core": "^4.12.1",
+    "firebase-tools": "^15.25.1",
+    "playwright": "^1.62.1"
+  }
+}

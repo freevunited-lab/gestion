@@ -1,0 +1,43 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function owns(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    // Transactions financières : refuse les écritures des anciennes versions
+    // qui n'incrémentent pas le compteur de révision (anti-écrasement).
+    // Remarque : le premier update d'un document historique sans révision
+    // migre son compteur à 1, exclusivement pour son propriétaire.
+    function validFinancialWrite() {
+      return request.resource.data.keys().hasAll(['accountData', 'revision'])
+        && request.resource.data.accountData is string
+        && request.resource.data.accountData.size() <= 900000
+        && request.resource.data.revision is int
+        && request.resource.data.revision >= 1;
+    }
+
+    match /users/{userId} {
+      allow read: if owns(userId);
+      allow create: if owns(userId) && validFinancialWrite()
+        && request.resource.data.revision == 1;
+      allow update: if owns(userId) && validFinancialWrite()
+        && ((!('revision' in resource.data) && request.resource.data.revision == 1)
+          || (('revision' in resource.data)
+            && request.resource.data.revision == resource.data.revision + 1));
+      // Destruction définitive via administration contrôlée uniquement.
+      // Une commande client/ancienne version ne peut pas effacer le journal financier.
+      allow delete: if false;
+    }
+
+    // Toute nouvelle collection doit obtenir une règle explicite avant usage.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

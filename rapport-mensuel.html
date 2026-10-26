@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freev — Rapport Mensuel</title>
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script id="reportChartLibrary" defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/report.css">
+  <link rel="stylesheet" href="assets/css/chart-motion.css">
+</head>
+<body>
+<div class="app">
+
+<!-- ========== SIDEBAR ========== -->
+<aside class="sidebar">
+  <a class="sb-logo" href="index.html">💳 Freev <em>Valeur</em><small>Rapport mensuel</small></a>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Compte</div>
+    <select class="cs" id="accountSel" onchange="onCtrlChange()"></select>
+  </div>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Mois</div>
+    <input class="ci" type="month" id="monthSel" onchange="onCtrlChange()">
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Nom du fichier PDF</div>
+    <input class="ci" type="text" id="pdfName" placeholder="Freev_Rapport_2025-01">
+    <label style="font-size:.63rem;color:rgba(255,255,255,.28);margin-top:-2px;">.pdf ajouté automatiquement</label>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 🎨 THEME DE COULEUR -->
+  <div class="sb-sec">
+    <div class="sb-lbl">🎨 Thème de couleur</div>
+    <div class="theme-row">
+      <div class="theme-sw active" data-t="blue"   onclick="setTheme(this)" style="--tc:#3b82f6" title="Océan"></div>
+      <div class="theme-sw"        data-t="green"  onclick="setTheme(this)" style="--tc:#10b981" title="Émeraude"></div>
+      <div class="theme-sw"        data-t="amber"  onclick="setTheme(this)" style="--tc:#f59e0b" title="Ambre"></div>
+      <div class="theme-sw"        data-t="rose"   onclick="setTheme(this)" style="--tc:#f43f5e" title="Corail"></div>
+      <div class="theme-sw"        data-t="violet" onclick="setTheme(this)" style="--tc:#8b5cf6" title="Violet"></div>
+    </div>
+  </div>
+
+  <!-- 🗜️ DENSITÉ D'AFFICHAGE -->
+  <div class="sb-sec">
+    <div class="sb-lbl">🗜️ Densité d'affichage</div>
+    <div class="radio-row" id="compGroup">
+      <div class="rpill active" data-v="normal"  onclick="setCompact(this)">Normal</div>
+      <div class="rpill"        data-v="compact" onclick="setCompact(this)">Compact</div>
+    </div>
+  </div>
+
+  <!-- 📊 TYPE GRAPHIQUE CATÉGORIES -->
+  <div class="sb-sec">
+    <div class="sb-lbl">📊 Graphique catégories</div>
+    <div class="radio-row" id="catChGroup">
+      <div class="rpill"        data-v="donut" onclick="setCatChType(this)">Donut</div>
+      <div class="rpill active" data-v="bar"   onclick="setCatChType(this)">Barres</div>
+      <div class="rpill"        data-v="radar" onclick="setCatChType(this)">Radar</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Précision des montants</div>
+    <div class="radio-row" id="precGroup">
+      <div class="rpill active" data-v="2" onclick="setPrecision(this)">2 déc.</div>
+      <div class="rpill"        data-v="3" onclick="setPrecision(this)">3 déc.</div>
+      <div class="rpill"        data-v="0" onclick="setPrecision(this)">Entier</div>
+    </div>
+  </div>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Transactions affichées</div>
+    <div class="radio-row" id="txLimGroup">
+      <div class="rpill active" data-v="all" onclick="setTxLim(this)">Toutes</div>
+      <div class="rpill"        data-v="20"  onclick="setTxLim(this)">Top 20</div>
+      <div class="rpill"        data-v="10"  onclick="setTxLim(this)">Top 10</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Sections incluses</div>
+    <label class="check-row"><input type="checkbox" id="o_ins" checked onchange="onReportOptionChange()"><span>✨ Synthèse automatique</span></label>
+    <label class="check-row"><input type="checkbox" id="o_cf"  checked onchange="onReportOptionChange()"><span>🌉 Pont de trésorerie</span></label>
+    <label class="check-row"><input type="checkbox" id="o_tr"  checked onchange="onReportOptionChange()"><span>📉 Tendance 12 mois</span></label>
+    <label class="check-row"><input type="checkbox" id="o_bc"  checked onchange="render()"><span>📈 Graphique solde</span></label>
+    <label class="check-row"><input type="checkbox" id="o_cc"  checked onchange="render()"><span>🥧 Graphique catégories</span></label>
+    <label class="check-row"><input type="checkbox" id="o_ic"  checked onchange="render()"><span>📊 Revenus / Dépenses</span></label>
+    <label class="check-row"><input type="checkbox" id="o_cd"  checked onchange="render()"><span>📋 Détail catégories</span></label>
+    <label class="check-row"><input type="checkbox" id="o_st"  checked onchange="render()"><span>🔢 Statistiques avancées</span></label>
+    <label class="check-row"><input type="checkbox" id="o_bu"  checked onchange="render()"><span>🎯 Analyse budget</span></label>
+    <label class="check-row"><input type="checkbox" id="o_sd"  checked onchange="render()"><span>🏦 Détail épargne</span></label>
+    <label class="check-row"><input type="checkbox" id="o_tx"  checked onchange="render()"><span>📄 Tableau transactions</span></label>
+    <label class="check-row"><input type="checkbox" id="o_tg"        onchange="render()"><span>🏷️ Tags dans tableau</span></label>
+    <label class="check-row"><input type="checkbox" id="o_cmp" checked onchange="render()"><span>↔️ Comparaison mois préc.</span></label>
+  </div>
+
+  <div class="sb-spacer"></div>
+
+  <div style="display:flex;flex-direction:column;gap:.55rem;">
+    <button class="btn-gen" id="printBtn" onclick="doPrint()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Préparer le PDF
+    </button>
+    <a class="btn-back" href="index.html">← Retour à Freev</a>
+  </div>
+</aside>
+
+<!-- ========== MAIN ========== -->
+<main class="main">
+  <div class="rw" id="RW">
+    <div id="RC">
+      <div style="text-align:center;padding:4rem;color:var(--s400);">
+        <div style="font-size:2rem;margin-bottom:.5rem;">📊</div><div>Chargement…</div>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/chart-motion.js"></script>
+  <script src="assets/js/report.js"></script>
+</body>
+</html>
